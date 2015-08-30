@@ -4,7 +4,7 @@ This is an Android Dialog Library that you can directly use it's default inner d
 and it also support both custom dialog and animation by self.
 
 ##Demo
-
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/preview_FlycoDialog.gif)
 
 ##Gradle
 
@@ -15,8 +15,9 @@ dependencies{
 ```
 
 ##Usage
-###Inner Default Dialog
+###Inner Default Dialog(默认内置自带Dialog)
 
+Here's the dialog usages corresponding to the demo listview item sort.(下面dialog使用方法和Demo中的列表顺序对应)
 ```Java
 
     BaseAnimatorSet bas_in = new FlipVerticalSwingEnter();
@@ -327,4 +328,168 @@ dependencies{
 ```
 
 
-###Custom Dialog
+###Custom Dialog(自定义Dialog)
+
+*   extends BaseDialog(继承BaseDialog)
+*   create layout and find views in method onCreateView(在onCreateView方法填充布局和查找控件)
+*   do some logic operation in method setUiBeforShow , return false go on to show dialog else return true don't(在setUiBeforShow方法中做一些逻辑操作,返回值false显示dialog,返回值true不显示)
+
+```Java
+public class CustomBaseDialog extends BaseDialog {
+    private TextView tv_cancel;
+    private TextView tv_exit;
+
+    public CustomBaseDialog(Context context) {
+        super(context);
+    }
+
+    @Override
+    public View onCreateView() {
+        widthScale(0.85f);
+        showAnim(new Swing());
+
+        // dismissAnim(this, new ZoomOutExit());
+        View inflate = View.inflate(context, R.layout.dialog_custom_base, null);
+        tv_cancel = ViewFindUtils.find(inflate, R.id.tv_cancel);
+        tv_exit = ViewFindUtils.find(inflate, R.id.tv_exit);
+        inflate.setBackgroundDrawable(
+                CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(5)));
+
+        return inflate;
+    }
+
+    @Override
+    public boolean setUiBeforShow() {
+        tv_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+        tv_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+        return false;
+    }
+}
+```
+
+###Custom Animation(自定义动画)
+Here is an example that custom animation in custom dialog.You can also just custom animtaion for showAnim() and dismissAnim() method.(下面例子是在自定Dialog内部中自定义动画,你也可以只是自定义动画给showAnim和dismissAnim方法调用)
+
+```Java
+public class IOSTaoBaoDialog extends BottomBaseDialog {
+    private LinearLayout ll_wechat_friend_circle;
+    private LinearLayout ll_wechat_friend;
+    private LinearLayout ll_qq;
+    private LinearLayout ll_sms;
+
+    public IOSTaoBaoDialog(Context context, View animateView) {
+        super(context, animateView);
+    }
+
+    public IOSTaoBaoDialog(Context context) {
+        super(context);
+    }
+
+    @Override
+    public View onCreateView() {
+        View inflate = View.inflate(context, R.layout.dialog_ios_taobao, null);
+        ll_wechat_friend_circle = ViewFindUtils.find(inflate, R.id.ll_wechat_friend_circle);
+        ll_wechat_friend = ViewFindUtils.find(inflate, R.id.ll_wechat_friend);
+        ll_qq = ViewFindUtils.find(inflate, R.id.ll_qq);
+        ll_sms = ViewFindUtils.find(inflate, R.id.ll_sms);
+
+        return inflate;
+    }
+
+    @Override
+    public boolean setUiBeforShow() {
+        ll_wechat_friend_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                T.showShort(context, "朋友圈");
+                dismiss();
+            }
+        });
+        ll_wechat_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                T.showShort(context, "微信");
+                dismiss();
+            }
+        });
+        ll_qq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                T.showShort(context, "QQ");
+                dismiss();
+            }
+        });
+        ll_sms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                T.showShort(context, "短信");
+                dismiss();
+            }
+        });
+
+        return false;
+    }
+
+    private BaseAnimatorSet windowInAs;
+    private BaseAnimatorSet windowOutAs;
+
+    @Override
+    protected BaseAnimatorSet getWindowInAs() {
+        if (windowInAs == null) {
+            windowInAs = new WindowsInAs();
+        }
+        return windowInAs;
+    }
+
+    @Override
+    protected BaseAnimatorSet getWindowOutAs() {
+        if (windowOutAs == null) {
+            windowOutAs = new WindowsOutAs();
+        }
+        return windowOutAs;
+    }
+
+    class WindowsInAs extends BaseAnimatorSet {
+        @Override
+        public void setAnimation(View view) {
+            ObjectAnimator rotationX = ObjectAnimator.ofFloat(view, "rotationX", 10, 0f).setDuration(150);
+            rotationX.setStartDelay(200);
+            animatorSet.playTogether(
+                    ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 0.8f).setDuration(350),
+                    ObjectAnimator.ofFloat(view, "scaleY", 1.0f, 0.8f).setDuration(350),
+//                    ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.5f).setDuration(350),
+                    ObjectAnimator.ofFloat(view, "rotationX", 0f, 10).setDuration(200),
+                    rotationX,
+                    ObjectAnimator.ofFloat(view, "translationY", 0, -0.1f * dm.heightPixels).setDuration(350)
+            );
+        }
+    }
+
+    class WindowsOutAs extends BaseAnimatorSet {
+        @Override
+        public void setAnimation(View view) {
+            ObjectAnimator rotationX = ObjectAnimator.ofFloat(view, "rotationX", 10, 0f).setDuration(150);
+            rotationX.setStartDelay(200);
+            animatorSet.playTogether(
+                    ObjectAnimator.ofFloat(view, "scaleX", 0.8f, 1.0f).setDuration(350),
+                    ObjectAnimator.ofFloat(view, "scaleY", 0.8f, 1.0f).setDuration(350),
+//                    ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.5f).setDuration(350),
+                    ObjectAnimator.ofFloat(view, "rotationX", 0f, 10).setDuration(200),
+                    rotationX,
+                    ObjectAnimator.ofFloat(view, "translationY", -0.1f * dm.heightPixels, 0).setDuration(350)
+            );
+        }
+    }
+```
