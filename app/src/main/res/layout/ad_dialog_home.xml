@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48dp"
+    android:background="#ffffff"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="5dp"
+        android:layout_height="48dp"
+        android:background="#468ED0" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:text="Dialog"
+        android:textColor="#468ED0"
+        android:textSize="16sp" />
+</LinearLayout>
