@@ -5,6 +5,7 @@ and it also support both custom dialog and animation by self.
 
 ##Demo
 ![](https://github.com/H07000223/FlycoDialog_Master/blob/master/preview_FlycoDialog.gif)
+[DemoApk](https://github.com/H07000223/FlycoDialog_Master/blob/master/FlycoDialogSamples.apk)
 
 ##Gradle
 
@@ -13,6 +14,10 @@ dependencies{
     compile 'com.flyco.dialog:FlycoDialog_Lib:1.0.0'
 }
 ```
+##Thanks
+*   [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
+*   [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects) many show animation reference to it
+*   [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations) many show and dismiss animation reference to it
 
 ##Usage
 ###Inner Default Dialog(默认内置自带Dialog)
