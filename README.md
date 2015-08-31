@@ -16,6 +16,13 @@ dependencies{
     compile 'com.flyco.dialog:FlycoDialog_Lib:1.0.0'
 }
 ```
+
+##Eclispe
+Eclipse Developers should include jars blew into your porject.
+*   [FlycoAnimation_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoAnimation_Lib-v1.0.0.jar)
+*   [FlycoDialog_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoDialog_Lib-v1.0.0.jar)
+*   [nineoldandroids-2.4.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/nineoldandroids-2.4.0.jar)
+
 ##Thanks
 *   [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 *   [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects) many show animation reference to it
