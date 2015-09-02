@@ -1,8 +1,8 @@
 #FlycoDialog-Matser
 
 This is an Android Dialog Library that you can directly use default inner dialog and default animation.
-It has 6 kinds of diaog and many kings of show and dimiss animations inside Library.
-It has good expansibility.If you don not like inner dialog and animation, you can custom them what you like in a sample way.It support API LEVEL 8+.
+It has 6 kinds of dialog and many kinds of show and dismiss animations inside Library.
+It has good expansibility. If you don't like inner dialog and animation, you can customise them what you like in a simple way.It support API LEVEL 8+.
 
 ##Demo
 ![](https://github.com/H07000223/FlycoDialog_Master/blob/master/preview_FlycoDialog.gif)
@@ -18,7 +18,7 @@ dependencies{
 ```
 
 ##Eclispe
-Eclipse Developers should include jars blew into your porject.
+Eclipse Developers should include jars below into your project.
 *   [FlycoAnimation_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoAnimation_Lib-v1.0.0.jar)
 *   [FlycoDialog_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoDialog_Lib-v1.0.0.jar)
 *   [nineoldandroids-2.4.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/nineoldandroids-2.4.0.jar)
@@ -346,7 +346,7 @@ Here's the dialog usages corresponding to the demo listview item sort.(下面dia
 
 *   extends BaseDialog(继承BaseDialog)
 *   create layout and find views in method onCreateView(在onCreateView方法填充布局和查找控件)
-*   do some logic operation in method setUiBeforShow , return false go on to show dialog else return true don't(在setUiBeforShow方法中做一些逻辑操作,返回值false显示dialog,返回值true不显示)
+*   do some logic operation in method setUiBeforeShow , return false go on to show dialog else return true don't(在setUiBeforShow方法中做一些逻辑操作,返回值false显示dialog,返回值true不显示)
 
 ```Java
 public class CustomBaseDialog extends BaseDialog {
@@ -394,7 +394,7 @@ public class CustomBaseDialog extends BaseDialog {
 ```
 
 ###Custom Animation(自定义动画)
-Here is an example that custom animation in custom dialog.You can also just custom animtaion for showAnim() and dismissAnim() method.(下面例子是在自定Dialog内部中自定义动画,你也可以只是自定义动画给showAnim和dismissAnim方法调用)
+Here is an example that custom animation in custom dialog. You can also just custom animation for showAnim() and dismissAnim() method.(下面例子是在自定Dialog内部中自定义动画,你也可以只是自定义动画给showAnim和dismissAnim方法调用)
 
 ```Java
 public class IOSTaoBaoDialog extends BottomBaseDialog {
