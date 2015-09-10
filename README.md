@@ -1,8 +1,7 @@
 #FlycoDialog-Matser
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoDialog--Matser-green.svg?style=flat)](https://android-arsenal.com/details/1/2430)
 
-This is an Android Dialog Library that you can directly use default inner dialog and default animation.
-It has 6 kinds of dialog and many kinds of show and dismiss animations inside Library.
-It has good expansibility. If you don't like inner dialog and animation, you can customise them what you like in a simple way.It support API LEVEL 8+.
+A powerful android dialog library with inner widgets and animations supports customization.Easy to use, easy to customise. Support for Android 2.2 and up. 
 
 ##Demo
 ![](https://github.com/H07000223/FlycoDialog_Master/blob/master/preview_FlycoDialog.gif)
