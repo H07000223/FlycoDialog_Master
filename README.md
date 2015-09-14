@@ -12,7 +12,9 @@ A powerful android dialog library with inner widgets and animations supports cus
 
 ```groovy
 dependencies{
-    compile 'com.flyco.dialog:FlycoDialog_Lib:1.0.0'
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.0.0@aar'
+     compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
+     compile 'com.nineoldandroids:library:2.4.0'
 }
 ```
 
@@ -24,8 +26,8 @@ Eclipse Developers should include jars below into your project.
 
 ##Thanks
 *   [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
-*   [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects) many show animation reference to it
-*   [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations) many show and dismiss animation reference to it
+*   [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects)
+*   [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations)
 
 ##Usage
 ###Inner Default Dialog(默认内置自带Dialog)
