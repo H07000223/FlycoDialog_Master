@@ -108,6 +108,7 @@ public class NormalListDialog extends BaseDialog {
     public NormalListDialog(Context context, ArrayList<DialogMenuItem> baseItems) {
         super(context);
         this.contents.addAll(baseItems);
+        init();
     }
 
     public NormalListDialog(Context context, String[] items) {
@@ -117,17 +118,30 @@ public class NormalListDialog extends BaseDialog {
             DialogMenuItem customBaseItem = new DialogMenuItem(item, 0);
             contents.add(customBaseItem);
         }
+        init();
     }
 
     public NormalListDialog(Context context, BaseAdapter adapter) {
         super(context);
         this.adapter = adapter;
+        init();
+    }
+
+    private void init() {
+        widthScale(0.8f);
+
+        /** LayoutAnimation */
+        TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 2f, Animation.RELATIVE_TO_SELF,
+                0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.setDuration(550);
+
+        lac = new LayoutAnimationController(animation, 0.12f);
+        lac.setInterpolator(new DecelerateInterpolator());
     }
 
     @Override
     public View onCreateView() {
-        widthScale(0.8f);
-
         LinearLayout ll_container = new LinearLayout(context);
         ll_container.setOrientation(LinearLayout.VERTICAL);
 
@@ -150,15 +164,6 @@ public class NormalListDialog extends BaseDialog {
         lv.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
         ll_container.addView(lv);
-
-        /** LayoutAnimation */
-        TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 2f, Animation.RELATIVE_TO_SELF,
-                0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0);
-        animation.setInterpolator(new DecelerateInterpolator());
-        animation.setDuration(550);
-
-        lac = new LayoutAnimationController(animation, 0.12f);
-        lac.setInterpolator(new DecelerateInterpolator());
 
         return ll_container;
     }

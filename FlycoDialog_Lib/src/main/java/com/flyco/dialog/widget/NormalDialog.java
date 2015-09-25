@@ -137,12 +137,11 @@ public class NormalDialog extends BaseDialog {
 
     public NormalDialog(Context context) {
         super(context);
+        widthScale(0.88f);
     }
 
     @Override
     public View onCreateView() {
-        widthScale(0.88f);
-
         ll_container = new LinearLayout(context);
         ll_container.setOrientation(LinearLayout.VERTICAL);
 

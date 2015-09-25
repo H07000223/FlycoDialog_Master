@@ -111,8 +111,6 @@ public abstract class BaseDialog extends Dialog {
 
     /**
      * set Ui data or logic opreation before attatched window(在对话框显示之前,设置界面数据或者逻辑)
-     *
-     * @return true dialog show,fasle dialog not show
      */
     public abstract boolean setUiBeforShow();
 
@@ -358,6 +356,7 @@ public abstract class BaseDialog extends Dialog {
 
     /**
      * dp to px
+     *
      * @param dp
      * @return
      */

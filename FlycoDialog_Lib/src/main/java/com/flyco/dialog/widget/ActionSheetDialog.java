@@ -121,6 +121,7 @@ public class ActionSheetDialog extends BottomBaseDialog {
     public ActionSheetDialog(Context context, ArrayList<DialogMenuItem> baseItems, View animateView) {
         super(context, animateView);
         this.contents.addAll(baseItems);
+        init();
     }
 
     public ActionSheetDialog(Context context, String[] items, View animateView) {
@@ -130,16 +131,31 @@ public class ActionSheetDialog extends BottomBaseDialog {
             DialogMenuItem customBaseItem = new DialogMenuItem(item, 0);
             contents.add(customBaseItem);
         }
+        init();
     }
 
     public ActionSheetDialog(Context context, BaseAdapter adapter, View animateView) {
         super(context, animateView);
         this.adapter = adapter;
+        init();
+    }
+
+    private void init() {
+        widthScale(0.95f);
+        /** LayoutAnimation */
+        TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF,
+                0f, Animation.RELATIVE_TO_SELF, 6f, Animation.RELATIVE_TO_SELF, 0);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.setDuration(350);
+        animation.setStartOffset(150);
+
+        lac = new LayoutAnimationController(animation, 0.12f);
+        lac.setInterpolator(new DecelerateInterpolator());
     }
 
     @Override
     public View onCreateView() {
-        widthScale(0.95f);
+
 
         LinearLayout ll_container = new LinearLayout(context);
         ll_container.setOrientation(LinearLayout.VERTICAL);
@@ -178,16 +194,6 @@ public class ActionSheetDialog extends BottomBaseDialog {
         tv_cancel.setLayoutParams(lp);
 
         ll_container.addView(tv_cancel);
-
-        /** LayoutAnimation */
-        TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF,
-                0f, Animation.RELATIVE_TO_SELF, 6f, Animation.RELATIVE_TO_SELF, 0);
-        animation.setInterpolator(new DecelerateInterpolator());
-        animation.setDuration(350);
-        animation.setStartOffset(150);
-
-        lac = new LayoutAnimationController(animation, 0.12f);
-        lac.setInterpolator(new DecelerateInterpolator());
 
         return ll_container;
     }
@@ -408,6 +414,7 @@ public class ActionSheetDialog extends BottomBaseDialog {
 
     /**
      * set layoutAnimation(设置layout动画 ,传入null将不显示layout动画)
+     *
      * @param lac
      * @return ActionSheetDialog
      */
