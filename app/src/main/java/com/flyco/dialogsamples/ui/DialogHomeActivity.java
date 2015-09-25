@@ -435,6 +435,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     private void NormalListDialogStringArr() {
         final NormalListDialog dialog = new NormalListDialog(context, stringItems);
         dialog.title("请选择")//
+                .layoutAnimation(null)
                 .show(R.style.myDialogAnim);
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
