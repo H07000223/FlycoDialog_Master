@@ -53,8 +53,8 @@ public class MaterialDialog extends BaseAlertDialog {
         /**set background color and corner radius */
         float radius = dp2px(cornerRadius_DP);
         ll_container.setBackgroundDrawable(CornerUtils.cornerDrawable(bgColor, radius));
-        tv_btn_left.setBackgroundDrawable(CornerUtils.btnSelector(0, bgColor, btnPressColor, 0));
-        tv_btn_right.setBackgroundDrawable(CornerUtils.btnSelector(0, bgColor, btnPressColor, 1));
-        tv_btn_middle.setBackgroundDrawable(CornerUtils.btnSelector(0, bgColor, btnPressColor, 1));
+        tv_btn_left.setBackgroundDrawable(CornerUtils.btnSelector(radius, bgColor, btnPressColor, -2));
+        tv_btn_right.setBackgroundDrawable(CornerUtils.btnSelector(radius, bgColor, btnPressColor, -2));
+        tv_btn_middle.setBackgroundDrawable(CornerUtils.btnSelector(radius, bgColor, btnPressColor, -2));
     }
 }

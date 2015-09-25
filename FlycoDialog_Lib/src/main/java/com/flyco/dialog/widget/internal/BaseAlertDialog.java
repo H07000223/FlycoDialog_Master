@@ -152,6 +152,13 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog> extends BaseDia
         tv_btn_right.setTextSize(TypedValue.COMPLEX_UNIT_SP, rightBtnTextSize_SP);
         tv_btn_middle.setTextSize(TypedValue.COMPLEX_UNIT_SP, middleBtnTextSize_SP);
 
+        if (btnNum == 1) {
+            tv_btn_left.setVisibility(View.GONE);
+            tv_btn_right.setVisibility(View.GONE);
+        } else if (btnNum == 2) {
+            tv_btn_middle.setVisibility(View.GONE);
+        }
+
         tv_btn_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

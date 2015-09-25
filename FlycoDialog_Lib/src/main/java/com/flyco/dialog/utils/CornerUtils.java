@@ -51,6 +51,9 @@ public class CornerUtils {
         } else if (postion == -1) {// only one btn
             normal = cornerDrawable(normalColor, new float[]{0, 0, 0, 0, radius, radius, radius, radius});
             pressed = cornerDrawable(pressColor, new float[]{0, 0, 0, 0, radius, radius, radius, radius});
+        } else if (postion == -2) {// for material dialog
+            normal = cornerDrawable(normalColor, radius);
+            pressed = cornerDrawable(pressColor, radius);
         }
 
         bg.addState(new int[]{-android.R.attr.state_pressed}, normal);

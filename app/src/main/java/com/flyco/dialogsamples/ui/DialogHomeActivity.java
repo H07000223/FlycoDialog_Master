@@ -27,7 +27,6 @@ import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.listener.OnOperItemClickL;
 import com.flyco.dialog.widget.ActionSheetDialog;
 import com.flyco.dialog.widget.MaterialDialog;
-import com.flyco.dialog.widget.MaterialTipDialog;
 import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.NormalListDialog;
 import com.flyco.dialog.widget.NormalTipDialog;
@@ -40,12 +39,21 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     public static String[][] childs = {
             /**Default Inner Dialog*/
             {
-                    "NormalDialog StyleOne", "NormalDialog StyleTwo", "NormalDialog Custom Attr",
-                    "NormalTipDialog StyleOne", "NormalTipDialog StyleTwo",
-                    "MaterialDialog", "MaterialDialog NoTitle", "MaterialTipDialog",
-                    "NormalListDialog", "NormalListDialog Custom Attr", "NormalListDialog No Title",
-                    "NormalListDialog DataSource String[]", "NormalListDialog DataSource Adapter",
-                    "ActionSheetDialog", "ActionSheetDialog NoTitle"
+                    "NormalDialog StyleOne",                    //0
+                    "NormalDialog StyleTwo",                    //1
+                    "NormalDialog Custom Attr",                 //2
+                    "NormalTipDialog StyleOne",                 //3
+                    "NormalTipDialog StyleTwo",                 //4
+                    "MaterialDialogDefault Default(two btns)",  //5
+                    "MaterialDialogDefault(one btn)",           //6
+                    "MaterialDialogDefault(three btn)",         //7
+                    "NormalListDialog",                         //8
+                    "NormalListDialog Custom Attr",             //10
+                    "NormalListDialog No Title",                //11
+                    "NormalListDialog DataSource String[]",     //12
+                    "NormalListDialog DataSource Adapter",      //13
+                    "ActionSheetDialog",                        //14
+                    "ActionSheetDialog NoTitle"                 //15
             },
             /**Custom Dialog*/
             {
@@ -126,11 +134,11 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
             } else if (childPosition == 4) {
                 NormalTipDialogStyleTwo();
             } else if (childPosition == 5) {
-                MaterialDialog();
+                MaterialDialogDefault();
             } else if (childPosition == 6) {
-                MaterialDialogNoTitle();
+                MaterialDialogOneBtn();
             } else if (childPosition == 7) {
-                MaterialTipDialog();
+                MaterialDialogThreeBtns();
             } else if (childPosition == 8) {
                 NormalListDialog();
             } else if (childPosition == 9) {
@@ -193,7 +201,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnLeftClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "onBtnLeftClick");
+                T.showShort(context, "left");
                 dialog.dismiss();
             }
         });
@@ -201,7 +209,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "onBtnRightClick");
+                T.showShort(context, "right");
                 dialog.dismiss();
             }
         });
@@ -227,7 +235,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "onBtnRightClick");
+                T.showShort(context, "right");
                 dialog.dismiss();
             }
         });
@@ -253,7 +261,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnLeftClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "onBtnLeftClick");
+                T.showShort(context, "left");
                 dialog.dismiss();
             }
         });
@@ -261,7 +269,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "onBtnRightClick");
+                T.showShort(context, "right");
                 dialog.dismiss();
             }
         });
@@ -300,10 +308,10 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         });
     }
 
-    private void MaterialDialog() {
+    private void MaterialDialogDefault() {
         final MaterialDialog dialog = new MaterialDialog(context);
         dialog.content(
-                "嗨！这是一个 MaterialDialog. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。"
+                "嗨！这是一个 MaterialDialogDefault. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。"
                         + "它简洁小巧，完全遵照 Google 2014 年发布的 Material Design 风格，希望你能喜欢它！^ ^")//
                 .btnText("取消", "确定")//
                 .showAnim(bas_in)//
@@ -314,14 +322,14 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 new OnBtnClickL() {//left btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "onBtnLeftClick");
+                        T.showShort(context, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {//right btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "onBtnRightClick");
+                        T.showShort(context, "right");
                         dialog.dismiss();
                     }
                 }
@@ -329,11 +337,12 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     }
 
 
-    private void MaterialDialogNoTitle() {
+    private void MaterialDialogThreeBtns() {
         final MaterialDialog dialog = new MaterialDialog(context);
         dialog.isTitleShow(false)//
+                .btnNum(3)
                 .content("为保证咖啡豆的新鲜度和咖啡的香味，并配以特有的传统烘焙和手工冲。")//
-                .btnText("确定", "取消")//
+                .btnText("确定", "取消", "知道了")//
                 .showAnim(bas_in)//
                 .dismissAnim(bas_out)//
                 .show();
@@ -342,25 +351,32 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 new OnBtnClickL() {//left btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "onBtnLeftClick");
+                        T.showShort(context, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {//right btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "onBtnRightClick");
+                        T.showShort(context, "right");
+                        dialog.dismiss();
+                    }
+                }
+                ,
+                new OnBtnClickL() {//middle btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "middle");
                         dialog.dismiss();
                     }
                 }
         );
-
     }
 
-    private void MaterialTipDialog() {
-        final MaterialTipDialog dialog = new MaterialTipDialog(context);
+    private void MaterialDialogOneBtn() {
+        final MaterialDialog dialog = new MaterialDialog(context);
         dialog//
-                // .isTitleShow(false)//
+                .btnNum(1)
                 .content("为保证咖啡豆的新鲜度和咖啡的香味，并配以特有的传统烘焙和手工冲。")//
                 .btnText("确定")//
                 .showAnim(bas_in)//
@@ -370,6 +386,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
+                T.showShort(context, "middle");
                 dialog.dismiss();
             }
         });
