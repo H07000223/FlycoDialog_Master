@@ -6,7 +6,7 @@ A powerful android dialog library with inner widgets and animations supports cus
 ##Demo
 ![](https://github.com/H07000223/FlycoDialog_Master/blob/master/preview_FlycoDialog.gif)
 
-####[Here is a DemoApk download](http://pkg.fir.im/0793e0044c968f6dfeb0be8ccfe15c14e0621694?attname=FlycoDialogSamples.apk_1.0.0.apk&e=1442478927&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:ari5WusSPG5Lt4M7QmjwMepUb18=)
+####[Here is a DemoApk download](http://fir.im/mj9p)
 
 ##Gradle
 
