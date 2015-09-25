@@ -46,7 +46,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                     "NormalTipDialog StyleTwo",                 //4
                     "MaterialDialogDefault Default(two btns)",  //5
                     "MaterialDialogDefault(one btn)",           //6
-                    "MaterialDialogDefault(three btn)",         //7
+                    "MaterialDialogDefault(three btns)",        //7
                     "NormalListDialog",                         //8
                     "NormalListDialog Custom Attr",             //10
                     "NormalListDialog No Title",                //11
