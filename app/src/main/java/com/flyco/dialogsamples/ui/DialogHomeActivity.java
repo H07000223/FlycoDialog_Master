@@ -24,8 +24,6 @@ import com.flyco.animation.FadeExit.FadeExit;
 import com.flyco.animation.FlipEnter.FlipVerticalSwingEnter;
 import com.flyco.dialog.entity.DialogMenuItem;
 import com.flyco.dialog.listener.OnBtnClickL;
-import com.flyco.dialog.listener.OnBtnLeftClickL;
-import com.flyco.dialog.listener.OnBtnRightClickL;
 import com.flyco.dialog.listener.OnOperItemClickL;
 import com.flyco.dialog.widget.ActionSheetDialog;
 import com.flyco.dialog.widget.MaterialDialog;
@@ -192,17 +190,17 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnLeftClickL() {
+        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
             @Override
-            public void onBtnLeftClick() {
+            public void onBtnClick() {
                 T.showShort(context, "onBtnLeftClick");
                 dialog.dismiss();
             }
         });
 
-        dialog.setOnBtnRightClickL(new OnBtnRightClickL() {
+        dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
-            public void onBtnRightClick() {
+            public void onBtnClick() {
                 T.showShort(context, "onBtnRightClick");
                 dialog.dismiss();
             }
@@ -218,17 +216,17 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnLeftClickL() {
+        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
             @Override
-            public void onBtnLeftClick() {
+            public void onBtnClick() {
                 T.showShort(context, "onBtnLeftClick定");
                 dialog.dismiss();
             }
         });
 
-        dialog.setOnBtnRightClickL(new OnBtnRightClickL() {
+        dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
-            public void onBtnRightClick() {
+            public void onBtnClick() {
                 T.showShort(context, "onBtnRightClick");
                 dialog.dismiss();
             }
@@ -252,17 +250,17 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnLeftClickL() {
+        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
             @Override
-            public void onBtnLeftClick() {
+            public void onBtnClick() {
                 T.showShort(context, "onBtnLeftClick");
                 dialog.dismiss();
             }
         });
 
-        dialog.setOnBtnRightClickL(new OnBtnRightClickL() {
+        dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
-            public void onBtnRightClick() {
+            public void onBtnClick() {
                 T.showShort(context, "onBtnRightClick");
                 dialog.dismiss();
             }
@@ -312,21 +310,22 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnLeftClickL() {
-            @Override
-            public void onBtnLeftClick() {
-                T.showShort(context, "onBtnLeftClick");
-                dialog.dismiss();
-            }
-        });
-
-        dialog.setOnBtnRightClickL(new OnBtnRightClickL() {
-            @Override
-            public void onBtnRightClick() {
-                T.showShort(context, "onBtnRightClick");
-                dialog.dismiss();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {//left btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "onBtnLeftClick");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {//right btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "onBtnRightClick");
+                        dialog.dismiss();
+                    }
+                }
+        );
     }
 
 
@@ -339,21 +338,23 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnLeftClickL() {
-            @Override
-            public void onBtnLeftClick() {
-                T.showShort(context, "onBtnLeftClick");
-                dialog.dismiss();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {//left btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "onBtnLeftClick");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {//right btn click listener
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "onBtnRightClick");
+                        dialog.dismiss();
+                    }
+                }
+        );
 
-        dialog.setOnBtnRightClickL(new OnBtnRightClickL() {
-            @Override
-            public void onBtnRightClick() {
-                T.showShort(context, "onBtnRightClick");
-                dialog.dismiss();
-            }
-        });
     }
 
     private void MaterialTipDialog() {
@@ -503,16 +504,16 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnLeftClickL() {
+        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
             @Override
-            public void onBtnLeftClick() {
+            public void onBtnClick() {
                 dialog.dismiss();
             }
         });
 
-        dialog.setOnBtnRightClickL(new OnBtnRightClickL() {
+        dialog.setOnBtnRightClickL(new OnBtnClickL() {
             @Override
-            public void onBtnRightClick() {
+            public void onBtnClick() {
                 dialog.superDismiss();
                 finish();
             }

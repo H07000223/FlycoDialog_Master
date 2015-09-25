@@ -37,7 +37,7 @@ public class IOSTaoBaoDialog extends BottomBaseDialog {
     }
 
     @Override
-    public boolean setUiBeforShow() {
+    public void setUiBeforShow() {
         ll_wechat_friend_circle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,8 +66,6 @@ public class IOSTaoBaoDialog extends BottomBaseDialog {
                 dismiss();
             }
         });
-
-        return false;
     }
 
     private BaseAnimatorSet windowInAs;

@@ -8,7 +8,7 @@ import android.view.animation.Animation.AnimationListener;
 
 import com.flyco.animation.BaseAnimatorSet;
 
-public abstract class BottomTopBaseDialog extends BaseDialog {
+public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> extends BaseDialog {
     protected View animateView;
     private BaseAnimatorSet windowInAs;
     private BaseAnimatorSet windowOutAs;
@@ -23,19 +23,18 @@ public abstract class BottomTopBaseDialog extends BaseDialog {
         super(context);
     }
 
-    /**
-     * set duration for inner animation of animateView(设置animateView内置动画时长)
-     * @param innerAnimDuration
-     */
-    public void innerAnimDuration(long innerAnimDuration) {
+    /** set duration for inner animation of animateView(设置animateView内置动画时长) */
+    public T innerAnimDuration(long innerAnimDuration) {
         this.innerAnimDuration = innerAnimDuration;
+        return (T) this;
     }
 
-    public void padding(int left, int top, int right, int bottom) {
+    public T padding(int left, int top, int right, int bottom) {
         this.left = left;
         this.top = top;
         this.right = right;
         this.bottom = bottom;
+        return (T) this;
     }
 
     /**

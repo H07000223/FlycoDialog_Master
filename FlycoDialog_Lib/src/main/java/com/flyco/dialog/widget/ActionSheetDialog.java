@@ -199,7 +199,7 @@ public class ActionSheetDialog extends BottomBaseDialog {
     }
 
     @Override
-    public boolean setUiBeforShow() {
+    public void setUiBeforShow() {
         /** title */
         float radius = dp2px(cornerRadius_DP);
         tv_title.setHeight(dp2px(titleHeight));
@@ -255,8 +255,6 @@ public class ActionSheetDialog extends BottomBaseDialog {
         });
 
         lv.setLayoutAnimation(lac);
-
-        return false;
     }
 
     /**

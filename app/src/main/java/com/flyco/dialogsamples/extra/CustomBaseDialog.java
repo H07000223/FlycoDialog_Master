@@ -35,21 +35,18 @@ public class CustomBaseDialog extends BaseDialog {
     }
 
     @Override
-    public boolean setUiBeforShow() {
+    public void setUiBeforShow() {
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-
         tv_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-
-        return false;
     }
 }

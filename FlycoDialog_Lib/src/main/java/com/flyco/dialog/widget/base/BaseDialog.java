@@ -19,66 +19,38 @@ import com.nineoldandroids.animation.Animator;
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.utils.StatusBarUtils;
 
-public abstract class BaseDialog extends Dialog {
-    /**
-     * TAG(日志)
-     */
+public abstract class BaseDialog<T extends BaseDialog> extends Dialog {
+    /** TAG(日志) */
     protected String TAG;
-    /**
-     * context(上下文)
-     */
+    /** context(上下文) */
     protected Context context;
-    /**
-     * (DisplayMetrics)设备密度
-     */
+    /** (DisplayMetrics)设备密度 */
     protected DisplayMetrics dm;
-    /**
-     * enable dismiss outside dialog(设置点击对话框以外区域,是否dismiss)
-     */
+    /** enable dismiss outside dialog(设置点击对话框以外区域,是否dismiss) */
     protected boolean cancel;
-    /**
-     * dialog width scale(宽度比例)
-     */
+    /** dialog width scale(宽度比例) */
     protected float widthScale = 1;
-    /**
-     * dialog height scale(高度比例)
-     */
+    /** dialog height scale(高度比例) */
     protected float heightScale;
-    /**
-     * showAnim(对话框显示动画)
-     */
+    /** showAnim(对话框显示动画) */
     private BaseAnimatorSet showAnim;
-    /**
-     * dismissAnim(对话框消失动画)
-     */
+    /** dismissAnim(对话框消失动画) */
     private BaseAnimatorSet dismissAnim;
-    /**
-     * top container(最上层容器)
-     */
+    /** top container(最上层容器) */
     protected LinearLayout ll_top;
-    /**
-     * container to control dialog height(用于控制对话框高度)
-     */
+    /** container to control dialog height(用于控制对话框高度) */
     protected LinearLayout ll_control_height;
-    /**
-     * is showAnim running(显示动画是否正在执行)
-     */
+    /** is showAnim running(显示动画是否正在执行) */
     private boolean isShowAnim;
-    /**
-     * is DismissAnim running(消失动画是否正在执行)
-     */
+    /** is DismissAnim running(消失动画是否正在执行) */
     private boolean isDismissAnim;
-    /**
-     * max height(最大高度)
-     */
+    /** max height(最大高度) */
     protected float maxHeight;
 
     /**
      * method execute order:
      * show:constrouctor---show---oncreate---onStart---onAttachToWindow
      * dismiss:dismiss---onDetachedFromWindow---onStop
-     *
-     * @param context
      */
     public BaseDialog(Context context) {
         super(context);
@@ -112,7 +84,7 @@ public abstract class BaseDialog extends Dialog {
     /**
      * set Ui data or logic opreation before attatched window(在对话框显示之前,设置界面数据或者逻辑)
      */
-    public abstract boolean setUiBeforShow();
+    public abstract void setUiBeforShow();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -260,81 +232,50 @@ public abstract class BaseDialog extends Dialog {
         }
     }
 
-    /**
-     * dismiss without anim(无动画dismiss)
-     */
+    /** dismiss without anim(无动画dismiss) */
     public void superDismiss() {
         super.dismiss();
     }
 
-    /**
-     * dialog anim by styles(动画弹出对话框,style动画资源)
-     *
-     * @param animStyle
-     */
+    /** dialog anim by styles(动画弹出对话框,style动画资源) */
     public void show(int animStyle) {
         Window window = getWindow();
         window.setWindowAnimations(animStyle);
         show();
     }
 
-    /**
-     * set window dim or not(设置背景是否昏暗)
-     *
-     * @param isDimEnabled
-     * @return BaseDialog
-     */
-    public BaseDialog dimEnabled(boolean isDimEnabled) {
+    /** set window dim or not(设置背景是否昏暗) */
+    public T dimEnabled(boolean isDimEnabled) {
         if (isDimEnabled) {
             getWindow().addFlags(LayoutParams.FLAG_DIM_BEHIND);
         } else {
             getWindow().clearFlags(LayoutParams.FLAG_DIM_BEHIND);
         }
-        return this;
+        return (T) this;
     }
 
-    /**
-     * set dialog width scale:0-1(设置对话框宽度,占屏幕宽的比例0-1)
-     *
-     * @param widthScale
-     * @return BaseDialog
-     */
-    public BaseDialog widthScale(float widthScale) {
+    /** set dialog width scale:0-1(设置对话框宽度,占屏幕宽的比例0-1) */
+    public T widthScale(float widthScale) {
         this.widthScale = widthScale;
-        return this;
+        return (T) this;
     }
 
-    /**
-     * set dialog height scale:0-1(设置对话框高度,占屏幕宽的比例0-1)
-     *
-     * @param heightScale
-     * @return BaseDialog
-     */
-    public BaseDialog heightScale(float heightScale) {
+    /** set dialog height scale:0-1(设置对话框高度,占屏幕宽的比例0-1) */
+    public T heightScale(float heightScale) {
         this.heightScale = heightScale;
-        return this;
+        return (T) this;
     }
 
-    /**
-     * set show anim(设置显示的动画)
-     *
-     * @param showAnim
-     * @return BaseDialog
-     */
-    public BaseDialog showAnim(BaseAnimatorSet showAnim) {
+    /** set show anim(设置显示的动画) */
+    public T showAnim(BaseAnimatorSet showAnim) {
         this.showAnim = showAnim;
-        return this;
+        return (T) this;
     }
 
-    /**
-     * set dismiss anim(设置隐藏的动画)
-     *
-     * @param dismissAnim
-     * @return BaseDialog
-     */
-    public BaseDialog dismissAnim(BaseAnimatorSet dismissAnim) {
+    /** set dismiss anim(设置隐藏的动画) */
+    public T dismissAnim(BaseAnimatorSet dismissAnim) {
         this.dismissAnim = dismissAnim;
-        return this;
+        return (T) this;
     }
 
     @Override
@@ -353,13 +294,7 @@ public abstract class BaseDialog extends Dialog {
         super.onBackPressed();
     }
 
-
-    /**
-     * dp to px
-     *
-     * @param dp
-     * @return
-     */
+    /** dp to px */
     protected int dp2px(float dp) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);

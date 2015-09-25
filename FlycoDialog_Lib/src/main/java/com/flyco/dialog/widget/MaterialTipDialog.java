@@ -138,7 +138,7 @@ public class MaterialTipDialog extends BaseDialog {
     }
 
     @Override
-    public boolean setUiBeforShow() {
+    public void setUiBeforShow() {
         float radius = dp2px(cornerRadius_DP);
 
         /** title */
@@ -181,8 +181,6 @@ public class MaterialTipDialog extends BaseDialog {
                 }
             }
         });
-
-        return false;
     }
 
     // --->属性设置

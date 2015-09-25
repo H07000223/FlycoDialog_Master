@@ -9,8 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.flyco.dialog.listener.OnBtnLeftClickL;
-import com.flyco.dialog.listener.OnBtnRightClickL;
+import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.widget.base.BaseDialog;
 
@@ -125,11 +124,11 @@ public class NormalDialog extends BaseDialog {
     /**
      * left btn click listener(左按钮接口)
      */
-    private OnBtnLeftClickL onBtnLeftClickL;
+    private OnBtnClickL onBtnLeftClickL;
     /**
      * right btn click listener(右按钮接口)
      */
-    private OnBtnRightClickL onBtnRightClickL;
+    private OnBtnClickL onBtnRightClickL;
 
     public static final int STYLE_ONE = 0;
     public static final int STYLE_TWO = 1;
@@ -188,7 +187,7 @@ public class NormalDialog extends BaseDialog {
     }
 
     @Override
-    public boolean setUiBeforShow() {
+    public void setUiBeforShow() {
         float radius = dp2px(cornerRadius_DP);
 
         /** title */
@@ -247,7 +246,7 @@ public class NormalDialog extends BaseDialog {
             @Override
             public void onClick(View v) {
                 if (onBtnLeftClickL != null) {
-                    onBtnLeftClickL.onBtnLeftClick();
+                    onBtnLeftClickL.onBtnClick();
                 }
             }
         });
@@ -256,12 +255,10 @@ public class NormalDialog extends BaseDialog {
             @Override
             public void onClick(View v) {
                 if (onBtnRightClickL != null) {
-                    onBtnRightClickL.onBtnRightClick();
+                    onBtnRightClickL.onBtnClick();
                 }
             }
         });
-
-        return false;
     }
 
     // --->属性设置
@@ -443,7 +440,7 @@ public class NormalDialog extends BaseDialog {
      *
      * @param onBtnLeftClickL
      */
-    public void setOnBtnLeftClickL(OnBtnLeftClickL onBtnLeftClickL) {
+    public void setOnBtnLeftClickL(OnBtnClickL onBtnLeftClickL) {
         this.onBtnLeftClickL = onBtnLeftClickL;
     }
 
@@ -452,7 +449,7 @@ public class NormalDialog extends BaseDialog {
      *
      * @param onBtnRightClickL
      */
-    public void setOnBtnRightClickL(OnBtnRightClickL onBtnRightClickL) {
+    public void setOnBtnRightClickL(OnBtnClickL onBtnRightClickL) {
         this.onBtnRightClickL = onBtnRightClickL;
     }
 

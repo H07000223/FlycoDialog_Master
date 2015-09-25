@@ -170,7 +170,7 @@ public class NormalListDialog extends BaseDialog {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean setUiBeforShow() {
+    public void setUiBeforShow() {
         /** title */
         float radius = dp2px(cornerRadius_DP);
         tv_title.setBackgroundDrawable(CornerUtils.cornerDrawable(titleBgColor, new float[]{radius, radius, radius,
@@ -206,8 +206,6 @@ public class NormalListDialog extends BaseDialog {
         });
 
         lv.setLayoutAnimation(lac);
-
-        return false;
     }
 
     /***

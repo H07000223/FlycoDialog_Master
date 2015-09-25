@@ -35,7 +35,7 @@ public class ShareBottomDialog extends BottomBaseDialog {
 	}
 
 	@Override
-	public boolean setUiBeforShow() {
+	public void setUiBeforShow() {
 		ll_wechat_friend_circle.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -64,7 +64,5 @@ public class ShareBottomDialog extends BottomBaseDialog {
 				dismiss();
 			}
 		});
-
-		return false;
 	}
 }

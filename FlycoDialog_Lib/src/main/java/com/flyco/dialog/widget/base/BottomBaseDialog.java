@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.flyco.animation.BaseAnimatorSet;
 
-public abstract class BottomBaseDialog extends BottomTopBaseDialog {
+public abstract class BottomBaseDialog<T extends BottomBaseDialog<T>> extends BottomTopBaseDialog {
     public BottomBaseDialog(Context context, View animateView) {
         super(context);
         this.animateView = animateView;
