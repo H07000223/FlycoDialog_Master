@@ -29,7 +29,6 @@ import com.flyco.dialog.widget.ActionSheetDialog;
 import com.flyco.dialog.widget.MaterialDialog;
 import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.NormalListDialog;
-import com.flyco.dialog.widget.NormalTipDialog;
 
 import java.util.ArrayList;
 
@@ -39,11 +38,11 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     public static String[][] childs = {
             /**Default Inner Dialog*/
             {
-                    "NormalDialog StyleOne",                    //0
+                    "NormalDialog Default(two btns)",                    //0
                     "NormalDialog StyleTwo",                    //1
                     "NormalDialog Custom Attr",                 //2
-                    "NormalTipDialog StyleOne",                 //3
-                    "NormalTipDialog StyleTwo",                 //4
+                    "NormalDialog(one btn)",                 //3
+                    "NormalDialog(three btns)",                 //4
                     "MaterialDialogDefault Default(two btns)",  //5
                     "MaterialDialogDefault(one btn)",           //6
                     "MaterialDialogDefault(three btns)",        //7
@@ -130,9 +129,9 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
             } else if (childPosition == 2) {
                 NormalDialogCustomAttr();
             } else if (childPosition == 3) {
-                NormalTipDialogStyleOne();
+                NormalDialogOneBtn();
             } else if (childPosition == 4) {
-                NormalTipDialogStyleTwo();
+                NormalDialoThreeBtn();
             } else if (childPosition == 5) {
                 MaterialDialogDefault();
             } else if (childPosition == 6) {
@@ -276,9 +275,10 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 });
     }
 
-    private void NormalTipDialogStyleOne() {
-        final NormalTipDialog dialog = new NormalTipDialog(context);
+    private void NormalDialogOneBtn() {
+        final NormalDialog dialog = new NormalDialog(context);
         dialog.content("你今天的抢购名额已用完~")//
+                .btnNum(1)
                 .btnText("继续逛逛")//
                 .showAnim(bas_in)//
                 .dismissAnim(bas_out)//
@@ -287,26 +287,44 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnBtnClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
+                T.showShort(context, "middle");
                 dialog.dismiss();
             }
         });
     }
 
-    private void NormalTipDialogStyleTwo() {
-        final NormalTipDialog dialog = new NormalTipDialog(context);
+    private void NormalDialoThreeBtn() {
+        final NormalDialog dialog = new NormalDialog(context);
         dialog.content("你今天的抢购名额已用完~")//
-                .style(NormalTipDialog.STYLE_TWO)//
-                .btnText("继续逛逛")//
+                .style(NormalDialog.STYLE_TWO)//
+                .btnNum(3)
+                .btnText("取消", "确定", "继续逛逛")//
                 .showAnim(bas_in)//
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                dialog.dismiss();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "left");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "right");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "middle");
+                        dialog.dismiss();
+                    }
+                });
     }
 
     private void MaterialDialogDefault() {
