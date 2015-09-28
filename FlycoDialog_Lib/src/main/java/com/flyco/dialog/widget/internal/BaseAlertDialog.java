@@ -2,7 +2,6 @@ package com.flyco.dialog.widget.internal;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -11,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.dialog.listener.OnBtnClickL;
-import com.flyco.dialog.widget.MaterialDialog;
 import com.flyco.dialog.widget.base.BaseDialog;
 
 public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends BaseDialog {
