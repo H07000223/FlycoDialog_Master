@@ -11,7 +11,7 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.widget.base.BottomBaseDialog;
 
-public class IOSTaoBaoDialog extends BottomBaseDialog {
+public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
     private LinearLayout ll_wechat_friend_circle;
     private LinearLayout ll_wechat_friend;
     private LinearLayout ll_qq;

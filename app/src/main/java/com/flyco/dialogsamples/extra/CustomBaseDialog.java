@@ -11,7 +11,7 @@ import com.flyco.animation.Attention.Swing;
 import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.widget.base.BaseDialog;
 
-public class CustomBaseDialog extends BaseDialog {
+public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
     private TextView tv_cancel;
     private TextView tv_exit;
 
