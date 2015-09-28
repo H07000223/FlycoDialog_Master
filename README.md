@@ -4,7 +4,23 @@
 A powerful android dialog library with inner widgets and animations supports customization.Easy to use, easy to customise. Support for Android 2.2 and up. 
 
 ##Demo
-![](https://github.com/H07000223/FlycoDialog_Master/blob/master/preview_FlycoDialog.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_1.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_2.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_3.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_4.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_5.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_6.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_7.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_8.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_9.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_10.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_11.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_14.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_15.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_16.gif)
+![](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_17.gif)
 
 ####[Here is a DemoApk download](http://fir.im/mj9p)
 
@@ -12,7 +28,7 @@ A powerful android dialog library with inner widgets and animations supports cus
 
 ```groovy
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.0.2@aar'
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.1.0@aar'
      compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
