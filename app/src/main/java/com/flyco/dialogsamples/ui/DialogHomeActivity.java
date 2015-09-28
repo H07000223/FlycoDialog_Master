@@ -198,21 +198,21 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                T.showShort(context, "left");
-                dialog.dismiss();
-            }
-        });
-
-        dialog.setOnBtnRightClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                T.showShort(context, "right");
-                dialog.dismiss();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "left");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "right");
+                        dialog.dismiss();
+                    }
+                });
     }
 
     private void NormalDialogStyleTwo() {
@@ -224,21 +224,22 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                T.showShort(context, "onBtnLeftClick定");
-                dialog.dismiss();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "left");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "right");
+                        dialog.dismiss();
+                    }
+                });
 
-        dialog.setOnBtnRightClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                T.showShort(context, "right");
-                dialog.dismiss();
-            }
-        });
     }
 
     private void NormalDialogCustomAttr() {
@@ -252,27 +253,27 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dividerColor(Color.parseColor("#222222"))//
                 .btnTextSize(15.5f, 15.5f)//
                 .btnTextColor(Color.parseColor("#ffffff"), Color.parseColor("#ffffff"))//
-                .btnColorPress(Color.parseColor("#2B2B2B"))//
+                .btnPressColor(Color.parseColor("#2B2B2B"))//
                 .widthScale(0.85f)//
                 .showAnim(bas_in)//
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                T.showShort(context, "left");
-                dialog.dismiss();
-            }
-        });
-
-        dialog.setOnBtnRightClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                T.showShort(context, "right");
-                dialog.dismiss();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "left");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "right");
+                        dialog.dismiss();
+                    }
+                });
     }
 
     private void NormalTipDialogStyleOne() {
@@ -521,19 +522,20 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(bas_out)//
                 .show();
 
-        dialog.setOnBtnLeftClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.setOnBtnRightClickL(new OnBtnClickL() {
-            @Override
-            public void onBtnClick() {
-                dialog.superDismiss();
-                finish();
-            }
-        });
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "left");
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        T.showShort(context, "right");
+                        dialog.dismiss();
+                    }
+                });
     }
 }

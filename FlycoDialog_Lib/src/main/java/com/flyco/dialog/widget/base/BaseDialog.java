@@ -19,7 +19,7 @@ import com.nineoldandroids.animation.Animator;
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.utils.StatusBarUtils;
 
-public abstract class BaseDialog<T extends BaseDialog> extends Dialog {
+public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     /** TAG(日志) */
     protected String TAG;
     /** context(上下文) */

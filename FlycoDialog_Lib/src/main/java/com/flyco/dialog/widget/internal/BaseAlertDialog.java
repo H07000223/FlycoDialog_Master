@@ -14,10 +14,9 @@ import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.MaterialDialog;
 import com.flyco.dialog.widget.base.BaseDialog;
 
-public abstract class BaseAlertDialog<T extends BaseAlertDialog> extends BaseDialog {
+public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends BaseDialog {
     /** container */
     protected LinearLayout ll_container;
-
     //title
     /** title */
     protected TextView tv_title;
@@ -93,34 +92,22 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog> extends BaseDia
 
         /** title */
         tv_title = new TextView(context);
-        tv_title.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll_container.addView(tv_title);
 
         /** content */
         tv_content = new TextView(context);
-        tv_content.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll_container.addView(tv_content);
 
         /**btns*/
         ll_btns = new LinearLayout(context);
         ll_btns.setOrientation(LinearLayout.HORIZONTAL);
-        ll_btns.setGravity(Gravity.RIGHT);
 
         tv_btn_left = new TextView(context);
         tv_btn_left.setGravity(Gravity.CENTER);
-        ll_btns.addView(tv_btn_left);
 
         tv_btn_middle = new TextView(context);
         tv_btn_middle.setGravity(Gravity.CENTER);
-        ll_btns.addView(tv_btn_middle);
 
         tv_btn_right = new TextView(context);
         tv_btn_right.setGravity(Gravity.CENTER);
-        ll_btns.addView(tv_btn_right);
-
-        ll_container.addView(ll_btns);
     }
 
     @Override
