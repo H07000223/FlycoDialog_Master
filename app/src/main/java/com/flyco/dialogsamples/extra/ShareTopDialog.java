@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.flyco.animation.FlipEnter.FlipVerticalSwingEnter;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.utils.T;
 import com.flyco.dialogsamples.utils.ViewFindUtils;
@@ -25,6 +26,8 @@ public class ShareTopDialog extends TopBaseDialog<ShareTopDialog> {
 
     @Override
     public View onCreateView() {
+        showAnim(new FlipVerticalSwingEnter());
+        dismissAnim(null);
         View inflate = View.inflate(context, R.layout.dialog_share, null);
         ll_wechat_friend_circle = ViewFindUtils.find(inflate, R.id.ll_wechat_friend_circle);
         ll_wechat_friend = ViewFindUtils.find(inflate, R.id.ll_wechat_friend);

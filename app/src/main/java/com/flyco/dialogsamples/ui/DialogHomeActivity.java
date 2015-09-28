@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
+import com.flyco.animation.BounceEnter.BounceTopEnter;
+import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.adapter.HomeAdapter;
 import com.flyco.dialogsamples.adapter.TestAdapter;
@@ -96,8 +98,8 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         testItems.add(new DialogMenuItem("歌手", R.mipmap.ic_winstyle_artist));
         testItems.add(new DialogMenuItem("专辑", R.mipmap.ic_winstyle_album));
 
-        bas_in = new FlipVerticalSwingEnter();
-        bas_out = new FadeExit();
+        bas_in = new BounceTopEnter();
+        bas_out = new SlideBottomExit();
 
 
         View decorView = getWindow().getDecorView();
