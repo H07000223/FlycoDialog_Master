@@ -546,15 +546,14 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
-                        dialog.dismiss();
+                        dialog.superDismiss();
+                        finish();
                     }
                 });
     }
