@@ -1,4 +1,4 @@
-#FlycoDialog-Matser
+#FlycoDialog-Master
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoDialog--Matser-green.svg?style=flat)](https://android-arsenal.com/details/1/2430)
 
 A powerful android dialog library with inner widgets and animations supports customization.Easy to use, easy to customise. Support for Android 2.2 and up. 
