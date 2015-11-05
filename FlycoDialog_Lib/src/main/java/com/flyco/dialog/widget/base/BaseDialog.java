@@ -90,6 +90,9 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");
         dm = context.getResources().getDisplayMetrics();
+        maxHeight = dm.heightPixels - StatusBarUtils.getHeight(context);
+        // maxHeight = dm.heightPixels;
+
         ll_top = new LinearLayout(context);
         ll_top.setGravity(Gravity.CENTER);
 
@@ -99,8 +102,6 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         ll_control_height.addView(onCreateView());
         ll_top.addView(ll_control_height);
 
-        maxHeight = dm.heightPixels - StatusBarUtils.getHeight(context);
-        // maxHeight = dm.heightPixels;
         setContentView(ll_top, new ViewGroup.LayoutParams(dm.widthPixels, (int) maxHeight));
         setCanceledOnTouchOutside(true);
 
