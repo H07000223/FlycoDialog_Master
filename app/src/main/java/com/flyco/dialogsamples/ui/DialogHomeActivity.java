@@ -9,8 +9,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
+import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
+import com.flyco.dialog.entity.DialogMenuItem;
+import com.flyco.dialog.listener.OnBtnClickL;
+import com.flyco.dialog.listener.OnOperItemClickL;
+import com.flyco.dialog.widget.ActionSheetDialog;
+import com.flyco.dialog.widget.MaterialDialog;
+import com.flyco.dialog.widget.NormalDialog;
+import com.flyco.dialog.widget.NormalListDialog;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.adapter.HomeAdapter;
 import com.flyco.dialogsamples.adapter.TestAdapter;
@@ -21,16 +29,6 @@ import com.flyco.dialogsamples.extra.ShareTopDialog;
 import com.flyco.dialogsamples.utils.DiaogAnimChoose;
 import com.flyco.dialogsamples.utils.T;
 import com.flyco.dialogsamples.utils.ViewFindUtils;
-import com.flyco.animation.BaseAnimatorSet;
-import com.flyco.animation.FadeExit.FadeExit;
-import com.flyco.animation.FlipEnter.FlipVerticalSwingEnter;
-import com.flyco.dialog.entity.DialogMenuItem;
-import com.flyco.dialog.listener.OnBtnClickL;
-import com.flyco.dialog.listener.OnOperItemClickL;
-import com.flyco.dialog.widget.ActionSheetDialog;
-import com.flyco.dialog.widget.MaterialDialog;
-import com.flyco.dialog.widget.NormalDialog;
-import com.flyco.dialog.widget.NormalListDialog;
 
 import java.util.ArrayList;
 

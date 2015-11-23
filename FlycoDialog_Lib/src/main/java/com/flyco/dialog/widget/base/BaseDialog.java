@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.nineoldandroids.animation.Animator;
@@ -46,6 +47,8 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     private boolean isDismissAnim;
     /** max height(最大高度) */
     protected float maxHeight;
+    /** show Dialog as PopupWindow(想PopupWindow一样展示Dialog) */
+    private boolean isPopupStyle;
 
     /**
      * method execute order:
@@ -58,6 +61,11 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         this.context = context;
         this.TAG = this.getClass().getSimpleName();
         Log.d(TAG, "constructor");
+    }
+
+    public BaseDialog(Context context, boolean isPopupStyle) {
+        this(context);
+        this.isPopupStyle = isPopupStyle;
     }
 
     /**
@@ -102,7 +110,12 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         ll_control_height.addView(onCreateView());
         ll_top.addView(ll_control_height);
 
-        setContentView(ll_top, new ViewGroup.LayoutParams(dm.widthPixels, (int) maxHeight));
+        if (isPopupStyle) {
+            setContentView(ll_top, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        } else {
+            setContentView(ll_top, new ViewGroup.LayoutParams(dm.widthPixels, (int) maxHeight));
+        }
         setCanceledOnTouchOutside(true);
 
         ll_top.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +256,25 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         Window window = getWindow();
         window.setWindowAnimations(animStyle);
         show();
+    }
+
+    /** show at location only valid for isPopupStyle true(指定位置显示,只对isPopupStyle为true有效) */
+    public void showAtLocation(int gravity, int x, int y) {
+        if (isPopupStyle) {
+            Window window = getWindow();
+            LayoutParams params = window.getAttributes();
+            window.setGravity(gravity);
+            params.x = x;
+            params.y = y;
+        }
+
+        show();
+    }
+
+    /** show at location only valid for isPopupStyle true(指定位置显示,只对isPopupStyle为true有效) */
+    public void showAtLocation(int x, int y) {
+        int gravity = Gravity.LEFT | Gravity.TOP;//Left Top (坐标原点为右上角)
+        showAtLocation(gravity, x, y);
     }
 
     /** set window dim or not(设置背景是否昏暗) */

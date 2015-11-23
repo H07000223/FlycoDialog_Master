@@ -11,4 +11,8 @@ Version 1.1.0 *(2015-09-25)*
     * combine NormalTipDialog and NormalDialog to one
     * NormalDialog and MaterialDialog supports at most three btns.
 
+Version 1.1.6 *(2015-11-23)*
+----------------------------
+* new added attribute isPopupStyle : show Dialog as PopupWindow
+
 
