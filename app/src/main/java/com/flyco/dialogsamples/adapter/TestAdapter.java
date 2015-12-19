@@ -20,14 +20,14 @@ import java.util.ArrayList;
 public class TestAdapter extends BaseAdapter {
 	private Context mContext;
 	private ArrayList<DialogMenuItem> mMenuItems;
-	private DisplayMetrics dm;
+	private DisplayMetrics mDisplayMetrics;
 
 	public TestAdapter(Context context, ArrayList<DialogMenuItem> customBaseItems) {
 		this.mContext = context;
 		this.mMenuItems = customBaseItems;
 
-		dm = new DisplayMetrics();
-		((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(dm);
+		mDisplayMetrics = new DisplayMetrics();
+		((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class TestAdapter extends BaseAdapter {
 		ll_item.setGravity(Gravity.CENTER_VERTICAL);
 
 		ImageView iv_item = new ImageView(mContext);
-		iv_item.setPadding(0, 0, (int) (15 * dm.density), 0);
+		iv_item.setPadding(0, 0, (int) (15 * mDisplayMetrics.density), 0);
 		ll_item.addView(iv_item);
 
 		TextView tv_item = new TextView(mContext);
@@ -65,8 +65,8 @@ public class TestAdapter extends BaseAdapter {
 		tv_item.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 
 		ll_item.addView(tv_item);
-		ll_item.setPadding(item.mResId == 0 ? (int) (18 * dm.density) : (int) (16 * dm.density), (int) (10 * dm.density), 0,
-				(int) (10 * dm.density));
+		ll_item.setPadding(item.mResId == 0 ? (int) (18 * mDisplayMetrics.density) : (int) (16 * mDisplayMetrics.density), (int) (10 * mDisplayMetrics.density), 0,
+				(int) (10 * mDisplayMetrics.density));
 
 		iv_item.setImageResource(item.mResId);
 		tv_item.setText(item.mOperName);
