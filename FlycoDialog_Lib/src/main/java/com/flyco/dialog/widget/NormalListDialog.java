@@ -79,7 +79,7 @@ public class NormalListDialog extends BaseDialog {
 
     public NormalListDialog(Context context, String[] items) {
         super(context);
-        mContents = new ArrayList<DialogMenuItem>();
+        mContents = new ArrayList<>();
         for (String item : items) {
             DialogMenuItem customBaseItem = new DialogMenuItem(item, 0);
             mContents.add(customBaseItem);
