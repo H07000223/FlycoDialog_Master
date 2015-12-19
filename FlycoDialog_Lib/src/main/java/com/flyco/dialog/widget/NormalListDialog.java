@@ -283,28 +283,28 @@ public class NormalListDialog extends BaseDialog {
         public View getView(int position, View convertView, ViewGroup parent) {
             final DialogMenuItem item = mContents.get(position);
 
-            LinearLayout ll_item = new LinearLayout(mContext);
-            ll_item.setOrientation(LinearLayout.HORIZONTAL);
-            ll_item.setGravity(Gravity.CENTER_VERTICAL);
+            LinearLayout llItem = new LinearLayout(mContext);
+            llItem.setOrientation(LinearLayout.HORIZONTAL);
+            llItem.setGravity(Gravity.CENTER_VERTICAL);
 
-            ImageView iv_item = new ImageView(mContext);
-            iv_item.setPadding(0, 0, dp2px(15), 0);
-            ll_item.addView(iv_item);
+            ImageView ivItem = new ImageView(mContext);
+            ivItem.setPadding(0, 0, dp2px(15), 0);
+            llItem.addView(ivItem);
 
-            TextView tv_item = new TextView(mContext);
-            tv_item.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+            TextView tvItem = new TextView(mContext);
+            tvItem.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
-            tv_item.setSingleLine(true);
-            tv_item.setTextColor(mItemTextColor);
-            tv_item.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
+            tvItem.setSingleLine(true);
+            tvItem.setTextColor(mItemTextColor);
+            tvItem.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
 
-            ll_item.addView(tv_item);
+            llItem.addView(tvItem);
             float radius = dp2px(mCornerRadius);
             if (mIsTitleShow) {
-                ll_item.setBackgroundDrawable((CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
+                llItem.setBackgroundDrawable((CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
                         position == mContents.size() - 1)));
             } else {
-                ll_item.setBackgroundDrawable(CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
+                llItem.setBackgroundDrawable(CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
                         mContents.size(), position));
             }
 
@@ -312,13 +312,13 @@ public class NormalListDialog extends BaseDialog {
             int top = dp2px(10);
             int right = 0;
             int bottom = dp2px(10);
-            ll_item.setPadding(left + mItemExtraLeft, top + mItemExtraTop, right + mItemExtraRight, bottom + mItemExtraBottom);
+            llItem.setPadding(left + mItemExtraLeft, top + mItemExtraTop, right + mItemExtraRight, bottom + mItemExtraBottom);
 
-            iv_item.setImageResource(item.mResId);
-            tv_item.setText(item.mOperName);
-            iv_item.setVisibility(item.mResId == 0 ? View.GONE : View.VISIBLE);
+            ivItem.setImageResource(item.mResId);
+            tvItem.setText(item.mOperName);
+            ivItem.setVisibility(item.mResId == 0 ? View.GONE : View.VISIBLE);
 
-            return ll_item;
+            return llItem;
         }
     }
 }

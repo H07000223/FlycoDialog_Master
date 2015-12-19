@@ -67,8 +67,12 @@ public class ActionSheetDialog extends BottomBaseDialog {
     private float mItemHeight = 48;
     /** enable title show(是否显示标题) */
     private boolean mIsTitleShow = true;
-    /*** mCancel btn text(取消按钮内容) */
+    /*** cancel btn text(取消按钮内容) */
     private String mCancelText = "取消";
+    /** cancel btn text color(取消按钮文字颜色) */
+    private int mCancelTextColor = Color.parseColor("#44A2FF");
+    /** cancel btn text size(取消按钮文字大小) */
+    private float mCancelTextSize = 17.5f;
     /** adapter(自定义适配器) */
     private BaseAdapter mAdapter;
     /** operation items(操作items) */
@@ -178,8 +182,8 @@ public class ActionSheetDialog extends BottomBaseDialog {
         /** mCancel btn */
         mTvCancel.setHeight(dp2px(mItemHeight));
         mTvCancel.setText(mCancelText);
-        mTvCancel.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
-        mTvCancel.setTextColor(mItemTextColor);
+        mTvCancel.setTextSize(TypedValue.COMPLEX_UNIT_SP, mCancelTextSize);
+        mTvCancel.setTextColor(mCancelTextColor);
         mTvCancel.setBackgroundDrawable(CornerUtils.listItemSelector(radius, mLvBgColor, mItemPressColor, 1, 0));
 
         mTvCancel.setOnClickListener(new View.OnClickListener() {
@@ -307,9 +311,21 @@ public class ActionSheetDialog extends BottomBaseDialog {
         return this;
     }
 
-    /** set mCancel btn text(设置取消按钮内容) */
+    /** set cancel btn text(设置取消按钮内容) */
     public ActionSheetDialog cancelText(String cancelText) {
         mCancelText = cancelText;
+        return this;
+    }
+
+    /** cancel btn text color(取消按钮文字颜色) */
+    public ActionSheetDialog cancelText(int cancelTextColor) {
+        mCancelTextColor = cancelTextColor;
+        return this;
+    }
+
+    /** cancel btn text size(取消按钮文字大小) */
+    public ActionSheetDialog cancelTextSize(float cancelTextSize) {
+        mCancelTextSize = cancelTextSize;
         return this;
     }
 
@@ -334,37 +350,37 @@ public class ActionSheetDialog extends BottomBaseDialog {
         public View getView(int position, View convertView, ViewGroup parent) {
             final DialogMenuItem item = mContents.get(position);
 
-            LinearLayout ll_item = new LinearLayout(mContext);
-            ll_item.setOrientation(LinearLayout.HORIZONTAL);
-            ll_item.setGravity(Gravity.CENTER_VERTICAL);
+            LinearLayout llItem = new LinearLayout(mContext);
+            llItem.setOrientation(LinearLayout.HORIZONTAL);
+            llItem.setGravity(Gravity.CENTER_VERTICAL);
 
-            ImageView iv_item = new ImageView(mContext);
-            iv_item.setPadding(0, 0, dp2px(15), 0);
-            ll_item.addView(iv_item);
+            ImageView ivItem = new ImageView(mContext);
+            ivItem.setPadding(0, 0, dp2px(15), 0);
+            llItem.addView(ivItem);
 
-            TextView tv_item = new TextView(mContext);
-            tv_item.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-            tv_item.setSingleLine(true);
-            tv_item.setGravity(Gravity.CENTER);
-            tv_item.setTextColor(mItemTextColor);
-            tv_item.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
-            tv_item.setHeight(dp2px(mItemHeight));
+            TextView tvItem = new TextView(mContext);
+            tvItem.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            tvItem.setSingleLine(true);
+            tvItem.setGravity(Gravity.CENTER);
+            tvItem.setTextColor(mItemTextColor);
+            tvItem.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
+            tvItem.setHeight(dp2px(mItemHeight));
 
-            ll_item.addView(tv_item);
+            llItem.addView(tvItem);
             float radius = dp2px(mCornerRadius);
             if (mIsTitleShow) {
-                ll_item.setBackgroundDrawable((CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
+                llItem.setBackgroundDrawable((CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
                         position == mContents.size() - 1)));
             } else {
-                ll_item.setBackgroundDrawable(CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
+                llItem.setBackgroundDrawable(CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
                         mContents.size(), position));
             }
 
-            iv_item.setImageResource(item.mResId);
-            tv_item.setText(item.mOperName);
-            iv_item.setVisibility(item.mResId == 0 ? View.GONE : View.VISIBLE);
+            ivItem.setImageResource(item.mResId);
+            tvItem.setText(item.mOperName);
+            ivItem.setVisibility(item.mResId == 0 ? View.GONE : View.VISIBLE);
 
-            return ll_item;
+            return llItem;
         }
     }
 }

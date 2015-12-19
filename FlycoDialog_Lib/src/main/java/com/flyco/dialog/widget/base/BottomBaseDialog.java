@@ -29,11 +29,11 @@ public abstract class BottomBaseDialog<T extends BottomBaseDialog<T>> extends Bo
     @Override
     protected void onStart() {
         super.onStart();
-        mLinearLayoutTop.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+        mLlTop.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
-        mLinearLayoutTop.setGravity(Gravity.BOTTOM);
+        mLlTop.setGravity(Gravity.BOTTOM);
         getWindow().setGravity(Gravity.BOTTOM);
-        mLinearLayoutTop.setPadding(mLeft, mTop, mRight, mBottom);
+        mLlTop.setPadding(mLeft, mTop, mRight, mBottom);
     }
 
     @Override

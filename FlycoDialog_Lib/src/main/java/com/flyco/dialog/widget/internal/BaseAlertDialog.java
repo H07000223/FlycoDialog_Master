@@ -14,7 +14,7 @@ import com.flyco.dialog.widget.base.BaseDialog;
 
 public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends BaseDialog {
     /** container */
-    protected LinearLayout mLinearLayoutContainer;
+    protected LinearLayout mLlContainer;
     //title
     /** title */
     protected TextView mTvTitle;
@@ -43,7 +43,7 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
     /** num of btns, [1,3] */
     protected int mBtnNum = 2;
     /** btn container */
-    protected LinearLayout mLinearLayoutBtns;
+    protected LinearLayout mLlBtns;
     /** btns */
     protected TextView mTvBtnLeft;
     protected TextView mTvBtnRight;
@@ -85,8 +85,8 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
         super(context);
         widthScale(0.88f);
 
-        mLinearLayoutContainer = new LinearLayout(context);
-        mLinearLayoutContainer.setOrientation(LinearLayout.VERTICAL);
+        mLlContainer = new LinearLayout(context);
+        mLlContainer.setOrientation(LinearLayout.VERTICAL);
 
         /** title */
         mTvTitle = new TextView(context);
@@ -95,8 +95,8 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
         mTvContent = new TextView(context);
 
         /**btns*/
-        mLinearLayoutBtns = new LinearLayout(context);
-        mLinearLayoutBtns.setOrientation(LinearLayout.HORIZONTAL);
+        mLlBtns = new LinearLayout(context);
+        mLlBtns.setOrientation(LinearLayout.HORIZONTAL);
 
         mTvBtnLeft = new TextView(context);
         mTvBtnLeft.setGravity(Gravity.CENTER);

@@ -36,28 +36,28 @@ public class MaterialDialog extends BaseAlertDialog<MaterialDialog> {
         mTvTitle.setPadding(dp2px(20), dp2px(20), dp2px(20), dp2px(0));
         mTvTitle.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        mLinearLayoutContainer.addView(mTvTitle);
+        mLlContainer.addView(mTvTitle);
 
         /** content */
         mTvContent.setPadding(dp2px(20), dp2px(20), dp2px(20), dp2px(20));
         mTvContent.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        mLinearLayoutContainer.addView(mTvContent);
+        mLlContainer.addView(mTvContent);
 
         /**btns*/
-        mLinearLayoutBtns.setGravity(Gravity.RIGHT);
-        mLinearLayoutBtns.addView(mTvBtnLeft);
-        mLinearLayoutBtns.addView(mTvBtnMiddle);
-        mLinearLayoutBtns.addView(mTvBtnRight);
+        mLlBtns.setGravity(Gravity.RIGHT);
+        mLlBtns.addView(mTvBtnLeft);
+        mLlBtns.addView(mTvBtnMiddle);
+        mLlBtns.addView(mTvBtnRight);
 
         mTvBtnLeft.setPadding(dp2px(15), dp2px(8), dp2px(15), dp2px(8));
         mTvBtnRight.setPadding(dp2px(15), dp2px(8), dp2px(15), dp2px(8));
         mTvBtnMiddle.setPadding(dp2px(15), dp2px(8), dp2px(15), dp2px(8));
-        mLinearLayoutBtns.setPadding(dp2px(20), dp2px(0), dp2px(10), dp2px(10));
+        mLlBtns.setPadding(dp2px(20), dp2px(0), dp2px(10), dp2px(10));
 
-        mLinearLayoutContainer.addView(mLinearLayoutBtns);
+        mLlContainer.addView(mLlBtns);
 
-        return mLinearLayoutContainer;
+        return mLlContainer;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class MaterialDialog extends BaseAlertDialog<MaterialDialog> {
         super.setUiBeforShow();
         /**set background color and corner radius */
         float radius = dp2px(mCornerRadius);
-        mLinearLayoutContainer.setBackgroundDrawable(CornerUtils.cornerDrawable(mBgColor, radius));
+        mLlContainer.setBackgroundDrawable(CornerUtils.cornerDrawable(mBgColor, radius));
         mTvBtnLeft.setBackgroundDrawable(CornerUtils.btnSelector(radius, mBgColor, mBtnPressColor, -2));
         mTvBtnRight.setBackgroundDrawable(CornerUtils.btnSelector(radius, mBgColor, mBtnPressColor, -2));
         mTvBtnMiddle.setBackgroundDrawable(CornerUtils.btnSelector(radius, mBgColor, mBtnPressColor, -2));

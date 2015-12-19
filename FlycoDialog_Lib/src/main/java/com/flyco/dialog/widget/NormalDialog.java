@@ -49,42 +49,42 @@ public class NormalDialog extends BaseAlertDialog<NormalDialog> {
         /** title */
         mTvTitle.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        mLinearLayoutContainer.addView(mTvTitle);
+        mLlContainer.addView(mTvTitle);
 
         /** title underline */
         mVLineTitle = new View(mContext);
-        mLinearLayoutContainer.addView(mVLineTitle);
+        mLlContainer.addView(mVLineTitle);
 
         /** content */
         mTvContent.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        mLinearLayoutContainer.addView(mTvContent);
+        mLlContainer.addView(mTvContent);
 
         mVLineHorizontal = new View(mContext);
         mVLineHorizontal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1));
-        mLinearLayoutContainer.addView(mVLineHorizontal);
+        mLlContainer.addView(mVLineHorizontal);
 
         /** btns */
         mTvBtnLeft.setLayoutParams(new LinearLayout.LayoutParams(0, dp2px(45), 1));
-        mLinearLayoutBtns.addView(mTvBtnLeft);
+        mLlBtns.addView(mTvBtnLeft);
 
         mVLineVertical = new View(mContext);
         mVLineVertical.setLayoutParams(new LinearLayout.LayoutParams(1, LinearLayout.LayoutParams.MATCH_PARENT));
-        mLinearLayoutBtns.addView(mVLineVertical);
+        mLlBtns.addView(mVLineVertical);
 
         mTvBtnMiddle.setLayoutParams(new LinearLayout.LayoutParams(0, dp2px(45), 1));
-        mLinearLayoutBtns.addView(mTvBtnMiddle);
+        mLlBtns.addView(mTvBtnMiddle);
 
         mVLineVertical2 = new View(mContext);
         mVLineVertical2.setLayoutParams(new LinearLayout.LayoutParams(1, LinearLayout.LayoutParams.MATCH_PARENT));
-        mLinearLayoutBtns.addView(mVLineVertical2);
+        mLlBtns.addView(mVLineVertical2);
 
         mTvBtnRight.setLayoutParams(new LinearLayout.LayoutParams(0, dp2px(45), 1));
-        mLinearLayoutBtns.addView(mTvBtnRight);
+        mLlBtns.addView(mTvBtnRight);
 
-        mLinearLayoutContainer.addView(mLinearLayoutBtns);
+        mLlContainer.addView(mLlBtns);
 
-        return mLinearLayoutContainer;
+        return mLlContainer;
     }
 
     @Override
@@ -136,7 +136,7 @@ public class NormalDialog extends BaseAlertDialog<NormalDialog> {
 
         /**set background color and corner radius */
         float radius = dp2px(mCornerRadius);
-        mLinearLayoutContainer.setBackgroundDrawable(CornerUtils.cornerDrawable(mBgColor, radius));
+        mLlContainer.setBackgroundDrawable(CornerUtils.cornerDrawable(mBgColor, radius));
         mTvBtnLeft.setBackgroundDrawable(CornerUtils.btnSelector(radius, mBgColor, mBtnPressColor, 0));
         mTvBtnRight.setBackgroundDrawable(CornerUtils.btnSelector(radius, mBgColor, mBtnPressColor, 1));
         mTvBtnMiddle.setBackgroundDrawable(CornerUtils.btnSelector(mBtnNum == 1 ? radius : 0, mBgColor, mBtnPressColor, -1));

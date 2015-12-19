@@ -37,9 +37,9 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     /** mDismissAnim(对话框消失动画) */
     private BaseAnimatorSet mDismissAnim;
     /** top container(最上层容器) */
-    protected LinearLayout mLinearLayoutTop;
+    protected LinearLayout mLlTop;
     /** container to control dialog height(用于控制对话框高度) */
-    protected LinearLayout mLinearLayoutControlHeight;
+    protected LinearLayout mLlControlHeight;
     /** is mShowAnim running(显示动画是否正在执行) */
     private boolean mIsShowAnim;
     /** is DismissAnim running(消失动画是否正在执行) */
@@ -96,23 +96,23 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         mMaxHeight = mDisplayMetrics.heightPixels - StatusBarUtils.getHeight(mContext);
         // mMaxHeight = mDisplayMetrics.heightPixels;
 
-        mLinearLayoutTop = new LinearLayout(mContext);
-        mLinearLayoutTop.setGravity(Gravity.CENTER);
+        mLlTop = new LinearLayout(mContext);
+        mLlTop.setGravity(Gravity.CENTER);
 
-        mLinearLayoutControlHeight = new LinearLayout(mContext);
-        mLinearLayoutControlHeight.setOrientation(LinearLayout.VERTICAL);
+        mLlControlHeight = new LinearLayout(mContext);
+        mLlControlHeight.setOrientation(LinearLayout.VERTICAL);
 
-        mLinearLayoutControlHeight.addView(onCreateView());
-        mLinearLayoutTop.addView(mLinearLayoutControlHeight);
+        mLlControlHeight.addView(onCreateView());
+        mLlTop.addView(mLlControlHeight);
 
         if (mIsPopupStyle) {
-            setContentView(mLinearLayoutTop, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            setContentView(mLlTop, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
         } else {
-            setContentView(mLinearLayoutTop, new ViewGroup.LayoutParams(mDisplayMetrics.widthPixels, (int) mMaxHeight));
+            setContentView(mLlTop, new ViewGroup.LayoutParams(mDisplayMetrics.widthPixels, (int) mMaxHeight));
         }
 
-        mLinearLayoutTop.setOnClickListener(new View.OnClickListener() {
+        mLlTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mCancel) {
@@ -150,7 +150,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
             height = (int) (mMaxHeight * mHeightScale);
         }
 
-        mLinearLayoutControlHeight.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        mLlControlHeight.setLayoutParams(new LinearLayout.LayoutParams(width, height));
 
         if (mShowAnim != null) {
             mShowAnim.listener(new BaseAnimatorSet.AnimatorListener() {
@@ -172,9 +172,9 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
                 public void onAnimationCancel(Animator animator) {
                     mIsShowAnim = false;
                 }
-            }).playOn(mLinearLayoutControlHeight);
+            }).playOn(mLlControlHeight);
         } else {
-            BaseAnimatorSet.reset(mLinearLayoutControlHeight);
+            BaseAnimatorSet.reset(mLlControlHeight);
         }
     }
 
@@ -235,7 +235,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
                     mIsDismissAnim = false;
                     superDismiss();
                 }
-            }).playOn(mLinearLayoutControlHeight);
+            }).playOn(mLlControlHeight);
         } else {
             superDismiss();
         }

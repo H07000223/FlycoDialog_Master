@@ -57,7 +57,7 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
                     mIsInnerShowAnim = false;
                 }
             });
-            mLinearLayoutControlHeight.startAnimation(mInnerShowAnim);
+            mLlControlHeight.startAnimation(mInnerShowAnim);
         }
 
         if (mAnimateView != null) {
@@ -90,7 +90,7 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
                 }
             });
 
-            mLinearLayoutControlHeight.startAnimation(mInnerDismissAnim);
+            mLlControlHeight.startAnimation(mInnerDismissAnim);
         } else {
             superDismiss();
         }

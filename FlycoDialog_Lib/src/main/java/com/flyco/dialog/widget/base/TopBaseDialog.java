@@ -29,11 +29,11 @@ public abstract class TopBaseDialog<T extends TopBaseDialog<T>> extends BottomTo
     @Override
     protected void onStart() {
         super.onStart();
-        mLinearLayoutTop.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+        mLlTop.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
-        mLinearLayoutTop.setGravity(Gravity.TOP);
+        mLlTop.setGravity(Gravity.TOP);
         getWindow().setGravity(Gravity.TOP);
-        mLinearLayoutTop.setPadding(mLeft, mTop, mRight, mBottom);
+        mLlTop.setPadding(mLeft, mTop, mRight, mBottom);
     }
 
     @Override
