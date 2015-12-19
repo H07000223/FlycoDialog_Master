@@ -106,7 +106,7 @@ public class DiaogAnimChoose {
         dialog.title("使用内置show动画设置对话框显示动画\r\n指定对话框将显示效果")//
                 .titleTextSize_SP(14.5f)//
                 .layoutAnimation(null)//
-                .cancelText("mCancel")
+                .cancelText("cancel")
                 .show();
         dialog.setCanceledOnTouchOutside(false);
 
@@ -151,7 +151,7 @@ public class DiaogAnimChoose {
                 itemList.toArray(contents), null);
         dialog.title("使用内置dismiss动画设置对话框消失动画\r\n指定对话框将消失效果")//
                 .titleTextSize_SP(14.5f)//
-                .cancelText("mCancel")
+                .cancelText("cancel")
                 .show();
 
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
