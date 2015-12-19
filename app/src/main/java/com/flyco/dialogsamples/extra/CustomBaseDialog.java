@@ -12,8 +12,8 @@ import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.widget.base.BaseDialog;
 
 public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
-    private TextView tv_cancel;
-    private TextView tv_exit;
+    private TextView mTvCancel;
+    private TextView mTvExit;
 
     public CustomBaseDialog(Context context) {
         super(context);
@@ -25,9 +25,9 @@ public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
         showAnim(new Swing());
 
         // dismissAnim(this, new ZoomOutExit());
-        View inflate = View.inflate(context, R.layout.dialog_custom_base, null);
-        tv_cancel = ViewFindUtils.find(inflate, R.id.tv_cancel);
-        tv_exit = ViewFindUtils.find(inflate, R.id.tv_exit);
+        View inflate = View.inflate(mContext, R.layout.dialog_custom_base, null);
+        mTvCancel = ViewFindUtils.find(inflate, R.id.tv_cancel);
+        mTvExit = ViewFindUtils.find(inflate, R.id.tv_exit);
         inflate.setBackgroundDrawable(
                 CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(5)));
 
@@ -36,13 +36,13 @@ public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
 
     @Override
     public void setUiBeforShow() {
-        tv_cancel.setOnClickListener(new View.OnClickListener() {
+        mTvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-        tv_exit.setOnClickListener(new View.OnClickListener() {
+        mTvExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();

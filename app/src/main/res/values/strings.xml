@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">FlycoDialogSample</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">FlycoDialog</string>
     <string name="action_settings">Settings</string>
 </resources>

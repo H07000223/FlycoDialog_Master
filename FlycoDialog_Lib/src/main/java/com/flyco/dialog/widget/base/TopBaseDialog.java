@@ -13,12 +13,12 @@ import com.flyco.animation.BaseAnimatorSet;
 public abstract class TopBaseDialog<T extends TopBaseDialog<T>> extends BottomTopBaseDialog {
     public TopBaseDialog(Context context, View animateView) {
         super(context);
-        this.animateView = animateView;
+        this.mAnimateView = animateView;
 
-        innerShowAnim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
+        mInnerShowAnim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
                 Animation.RELATIVE_TO_SELF, -1, Animation.RELATIVE_TO_SELF, 0);
 
-        innerDismissAnim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
+        mInnerDismissAnim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
                 Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -1);
     }
 
@@ -29,11 +29,11 @@ public abstract class TopBaseDialog<T extends TopBaseDialog<T>> extends BottomTo
     @Override
     protected void onStart() {
         super.onStart();
-        ll_top.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+        mLinearLayoutTop.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
-        ll_top.setGravity(Gravity.TOP);
+        mLinearLayoutTop.setGravity(Gravity.TOP);
         getWindow().setGravity(Gravity.TOP);
-        ll_top.setPadding(left, top, right, bottom);
+        mLinearLayoutTop.setPadding(mLeft, mTop, mRight, mBottom);
     }
 
     @Override
@@ -47,23 +47,23 @@ public abstract class TopBaseDialog<T extends TopBaseDialog<T>> extends BottomTo
         dismissWithAnim();
     }
 
-    private BaseAnimatorSet windowInAs;
-    private BaseAnimatorSet windowOutAs;
+    private BaseAnimatorSet mWindowInAs;
+    private BaseAnimatorSet mWindowOutAs;
 
     @Override
     protected BaseAnimatorSet getWindowInAs() {
-        if (windowInAs == null) {
-            windowInAs = new WindowInAs();
+        if (mWindowInAs == null) {
+            mWindowInAs = new WindowInAs();
         }
-        return windowInAs;
+        return mWindowInAs;
     }
 
     @Override
     protected BaseAnimatorSet getWindowOutAs() {
-        if (windowOutAs == null) {
-            windowOutAs = new WindowOutAs();
+        if (mWindowOutAs == null) {
+            mWindowOutAs = new WindowOutAs();
         }
-        return windowOutAs;
+        return mWindowOutAs;
     }
 
     private class WindowInAs extends BaseAnimatorSet {

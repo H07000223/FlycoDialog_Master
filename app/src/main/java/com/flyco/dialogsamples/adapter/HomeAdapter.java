@@ -13,21 +13,21 @@ import com.flyco.dialogsamples.utils.ViewFindUtils;
 
 
 public class HomeAdapter extends BaseExpandableListAdapter {
-    private Context context;
+    private Context mContext;
 
     public HomeAdapter(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     // --->group
     @Override
     public int getGroupCount() {
-        return DialogHomeActivity.groups.length;
+        return DialogHomeActivity.mGroups.length;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return DialogHomeActivity.groups[groupPosition];
+        return DialogHomeActivity.mGroups[groupPosition];
     }
 
     @Override
@@ -38,23 +38,23 @@ public class HomeAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.ad_dialog_home, null);
+            convertView = View.inflate(mContext, R.layout.ad_dialog_home, null);
         }
 
         TextView tv = ViewFindUtils.find(convertView, R.id.tv);
-        tv.setText(DialogHomeActivity.groups[groupPosition]);
+        tv.setText(DialogHomeActivity.mGroups[groupPosition]);
         return convertView;
     }
 
     // --->child
     @Override
     public int getChildrenCount(int groupPosition) {
-        return DialogHomeActivity.childs[groupPosition].length;
+        return DialogHomeActivity.mChilds[groupPosition].length;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return DialogHomeActivity.childs[groupPosition][childPosition];
+        return DialogHomeActivity.mChilds[groupPosition][childPosition];
     }
 
     @Override
@@ -66,7 +66,7 @@ public class HomeAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView,
                              ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.ad_dialog_home, null);
+            convertView = View.inflate(mContext, R.layout.ad_dialog_home, null);
         }
 
         TextView tv = ViewFindUtils.find(convertView, R.id.tv);
@@ -74,7 +74,7 @@ public class HomeAdapter extends BaseExpandableListAdapter {
 
         v_line.setVisibility(View.INVISIBLE);
         tv.setTextColor(Color.parseColor("#383838"));
-        tv.setText(DialogHomeActivity.childs[groupPosition][childPosition]);
+        tv.setText(DialogHomeActivity.mChilds[groupPosition][childPosition]);
 
         return convertView;
     }

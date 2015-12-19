@@ -12,10 +12,10 @@ import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.widget.base.BottomBaseDialog;
 
 public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
-    private LinearLayout ll_wechat_friend_circle;
-    private LinearLayout ll_wechat_friend;
-    private LinearLayout ll_qq;
-    private LinearLayout ll_sms;
+    private LinearLayout mLlWechatFriendCircle;
+    private LinearLayout mLlWechatFriend;
+    private LinearLayout mLlQq;
+    private LinearLayout mLlSms;
 
     public IOSTaoBaoDialog(Context context, View animateView) {
         super(context, animateView);
@@ -27,64 +27,64 @@ public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
 
     @Override
     public View onCreateView() {
-        View inflate = View.inflate(context, R.layout.dialog_ios_taobao, null);
-        ll_wechat_friend_circle = ViewFindUtils.find(inflate, R.id.ll_wechat_friend_circle);
-        ll_wechat_friend = ViewFindUtils.find(inflate, R.id.ll_wechat_friend);
-        ll_qq = ViewFindUtils.find(inflate, R.id.ll_qq);
-        ll_sms = ViewFindUtils.find(inflate, R.id.ll_sms);
+        View inflate = View.inflate(mContext, R.layout.dialog_ios_taobao, null);
+        mLlWechatFriendCircle = ViewFindUtils.find(inflate, R.id.ll_wechat_friend_circle);
+        mLlWechatFriend = ViewFindUtils.find(inflate, R.id.ll_wechat_friend);
+        mLlQq = ViewFindUtils.find(inflate, R.id.ll_qq);
+        mLlSms = ViewFindUtils.find(inflate, R.id.ll_sms);
 
         return inflate;
     }
 
     @Override
     public void setUiBeforShow() {
-        ll_wechat_friend_circle.setOnClickListener(new View.OnClickListener() {
+        mLlWechatFriendCircle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                T.showShort(context, "朋友圈");
+                T.showShort(mContext, "朋友圈");
                 dismiss();
             }
         });
-        ll_wechat_friend.setOnClickListener(new View.OnClickListener() {
+        mLlWechatFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                T.showShort(context, "微信");
+                T.showShort(mContext, "微信");
                 dismiss();
             }
         });
-        ll_qq.setOnClickListener(new View.OnClickListener() {
+        mLlQq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                T.showShort(context, "QQ");
+                T.showShort(mContext, "QQ");
                 dismiss();
             }
         });
-        ll_sms.setOnClickListener(new View.OnClickListener() {
+        mLlSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                T.showShort(context, "短信");
+                T.showShort(mContext, "短信");
                 dismiss();
             }
         });
     }
 
-    private BaseAnimatorSet windowInAs;
-    private BaseAnimatorSet windowOutAs;
+    private BaseAnimatorSet mWindowInAs;
+    private BaseAnimatorSet mWindowOutAs;
 
     @Override
     protected BaseAnimatorSet getWindowInAs() {
-        if (windowInAs == null) {
-            windowInAs = new WindowsInAs();
+        if (mWindowInAs == null) {
+            mWindowInAs = new WindowsInAs();
         }
-        return windowInAs;
+        return mWindowInAs;
     }
 
     @Override
     protected BaseAnimatorSet getWindowOutAs() {
-        if (windowOutAs == null) {
-            windowOutAs = new WindowsOutAs();
+        if (mWindowOutAs == null) {
+            mWindowOutAs = new WindowsOutAs();
         }
-        return windowOutAs;
+        return mWindowOutAs;
     }
 
     class WindowsInAs extends BaseAnimatorSet {
@@ -98,7 +98,7 @@ public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
 //                    ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.5f).setDuration(350),
                     ObjectAnimator.ofFloat(view, "rotationX", 0f, 10).setDuration(200),
                     rotationX,
-                    ObjectAnimator.ofFloat(view, "translationY", 0, -0.1f * dm.heightPixels).setDuration(350)
+                    ObjectAnimator.ofFloat(view, "translationY", 0, -0.1f * mDisplayMetrics.heightPixels).setDuration(350)
             );
         }
     }
@@ -114,7 +114,7 @@ public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
 //                    ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.5f).setDuration(350),
                     ObjectAnimator.ofFloat(view, "rotationX", 0f, 10).setDuration(200),
                     rotationX,
-                    ObjectAnimator.ofFloat(view, "translationY", -0.1f * dm.heightPixels, 0).setDuration(350)
+                    ObjectAnimator.ofFloat(view, "translationY", -0.1f * mDisplayMetrics.heightPixels, 0).setDuration(350)
             );
         }
     }

@@ -15,4 +15,10 @@ Version 1.1.6 *(2015-11-23)*
 ----------------------------
 * new added attribute isPopupStyle : show Dialog as PopupWindow
 
+Version 1.1.8 *(2015-12-19)*
+----------------------------
+* new added method cancelText for ActionSheetDialog
+* fix bug method setCanceledOnTouchOutside() sometime invalid 
+* change code style
+
 

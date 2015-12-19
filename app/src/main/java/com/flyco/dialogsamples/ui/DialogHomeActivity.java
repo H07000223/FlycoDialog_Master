@@ -33,9 +33,9 @@ import com.flyco.dialogsamples.utils.ViewFindUtils;
 import java.util.ArrayList;
 
 public class DialogHomeActivity extends AppCompatActivity implements ExpandableListView.OnChildClickListener {
-    private Context context = this;
-    public static String[] groups = {"Default Inner Dialog", "Custom Dialog", "Default Inner Anim", "Custom Anim"};
-    public static String[][] childs = {
+    private Context mContext = this;
+    public static String[] mGroups = {"Default Inner Dialog", "Custom Dialog", "Default Inner Anim", "Custom Anim"};
+    public static String[][] mChilds = {
             /**Default Inner Dialog*/
             {
                     "NormalDialog Default(two btns)",                    //0
@@ -67,19 +67,19 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                     "Custom Anim like ios taobao"
             }
     };
-    private ArrayList<DialogMenuItem> testItems = new ArrayList<>();
-    private String[] stringItems = {"收藏", "下载", "分享", "删除", "歌手", "专辑"};
-    private BaseAnimatorSet bas_in;
-    private BaseAnimatorSet bas_out;
-    private ExpandableListView elv;
+    private ArrayList<DialogMenuItem> mMenuItems = new ArrayList<>();
+    private String[] mStringItems = {"收藏", "下载", "分享", "删除", "歌手", "专辑"};
+    private BaseAnimatorSet mBasIn;
+    private BaseAnimatorSet mBasOut;
+    private ExpandableListView mElv;
 
 
     public void setBasIn(BaseAnimatorSet bas_in) {
-        this.bas_in = bas_in;
+        this.mBasIn = bas_in;
     }
 
     public void setBasOut(BaseAnimatorSet bas_out) {
-        this.bas_out = bas_out;
+        this.mBasOut = bas_out;
     }
 
 
@@ -89,28 +89,28 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
         setContentView(R.layout.ac_dialog_home);
 
-        testItems.add(new DialogMenuItem("收藏", R.mipmap.ic_winstyle_favor));
-        testItems.add(new DialogMenuItem("下载", R.mipmap.ic_winstyle_download));
-        testItems.add(new DialogMenuItem("分享", R.mipmap.ic_winstyle_share));
-        testItems.add(new DialogMenuItem("删除", R.mipmap.ic_winstyle_delete));
-        testItems.add(new DialogMenuItem("歌手", R.mipmap.ic_winstyle_artist));
-        testItems.add(new DialogMenuItem("专辑", R.mipmap.ic_winstyle_album));
+        mMenuItems.add(new DialogMenuItem("收藏", R.mipmap.ic_winstyle_favor));
+        mMenuItems.add(new DialogMenuItem("下载", R.mipmap.ic_winstyle_download));
+        mMenuItems.add(new DialogMenuItem("分享", R.mipmap.ic_winstyle_share));
+        mMenuItems.add(new DialogMenuItem("删除", R.mipmap.ic_winstyle_delete));
+        mMenuItems.add(new DialogMenuItem("歌手", R.mipmap.ic_winstyle_artist));
+        mMenuItems.add(new DialogMenuItem("专辑", R.mipmap.ic_winstyle_album));
 
-        bas_in = new BounceTopEnter();
-        bas_out = new SlideBottomExit();
+        mBasIn = new BounceTopEnter();
+        mBasOut = new SlideBottomExit();
 
 
         View decorView = getWindow().getDecorView();
-        elv = ViewFindUtils.find(decorView, R.id.elv);
-        HomeAdapter adapter = new HomeAdapter(context);
-        elv.setAdapter(adapter);
+        mElv = ViewFindUtils.find(decorView, R.id.elv);
+        HomeAdapter adapter = new HomeAdapter(mContext);
+        mElv.setAdapter(adapter);
         // extend all group
-        for (int i = 0; i < groups.length; i++) {
-            elv.expandGroup(i);
+        for (int i = 0; i < mGroups.length; i++) {
+            mElv.expandGroup(i);
         }
 
-        elv.setOnChildClickListener(this);
-        elv.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        mElv.setOnChildClickListener(this);
+        mElv.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 return true;
@@ -157,16 +157,17 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         /**Custom Dialog*/
         if (groupPosition == 1) {
             if (childPosition == 0) {
-                final CustomBaseDialog dialog = new CustomBaseDialog(context);
+                final CustomBaseDialog dialog = new CustomBaseDialog(mContext);
                 dialog.show();
+                dialog.setCanceledOnTouchOutside(false);
             } else if (childPosition == 1) {
-                final ShareBottomDialog dialog = new ShareBottomDialog(context, elv);
-                dialog.showAnim(bas_in)//
+                final ShareBottomDialog dialog = new ShareBottomDialog(mContext, mElv);
+                dialog.showAnim(mBasIn)//
                         .show();//
                 // .show(0, 100);
             } else if (childPosition == 2) {
-                final ShareTopDialog dialog = new ShareTopDialog(context);
-                dialog.showAnim(bas_in)//
+                final ShareTopDialog dialog = new ShareTopDialog(mContext);
+                dialog.showAnim(mBasIn)//
                         .show();
                 // .show(0, 100);
             }
@@ -174,15 +175,15 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         /**Default Inner Anim*/
         if (groupPosition == 2) {
             if (childPosition == 0) {
-                DiaogAnimChoose.showAnim(context);
+                DiaogAnimChoose.showAnim(mContext);
             } else if (childPosition == 1) {
-                DiaogAnimChoose.dissmissAnim(context);
+                DiaogAnimChoose.dissmissAnim(mContext);
             }
         }
         /**Custom Anim*/
         if (groupPosition == 3) {
             if (childPosition == 0) {
-                final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(context, (View) elv.getParent());
+                final IOSTaoBaoDialog dialog = new IOSTaoBaoDialog(mContext, (View) mElv.getParent());
                 dialog.show();
                 // .show(0, 100);
             }
@@ -191,50 +192,50 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     }
 
     private void NormalDialogStyleOne() {
-        final NormalDialog dialog = new NormalDialog(context);
+        final NormalDialog dialog = new NormalDialog(mContext);
         dialog.content("是否确定退出程序?")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
+                        T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
+                        T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 });
     }
 
     private void NormalDialogStyleTwo() {
-        final NormalDialog dialog = new NormalDialog(context);
+        final NormalDialog dialog = new NormalDialog(mContext);
         dialog.content("为保证咖啡豆的新鲜度和咖啡的香味，并配以特有的传统烘焙和手工冲。")//
                 .style(NormalDialog.STYLE_TWO)//
                 .titleTextSize(23)//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
+                        T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
+                        T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 });
@@ -242,7 +243,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     }
 
     private void NormalDialogCustomAttr() {
-        final NormalDialog dialog = new NormalDialog(context);
+        final NormalDialog dialog = new NormalDialog(mContext);
         dialog.isTitleShow(false)//
                 .bgColor(Color.parseColor("#383838"))//
                 .cornerRadius(5)//
@@ -254,101 +255,101 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .btnTextColor(Color.parseColor("#ffffff"), Color.parseColor("#ffffff"))//
                 .btnPressColor(Color.parseColor("#2B2B2B"))//
                 .widthScale(0.85f)//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
+                        T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
+                        T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 });
     }
 
     private void NormalDialogOneBtn() {
-        final NormalDialog dialog = new NormalDialog(context);
+        final NormalDialog dialog = new NormalDialog(mContext);
         dialog.content("你今天的抢购名额已用完~")//
                 .btnNum(1)
                 .btnText("继续逛逛")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "middle");
+                T.showShort(mContext, "middle");
                 dialog.dismiss();
             }
         });
     }
 
     private void NormalDialoThreeBtn() {
-        final NormalDialog dialog = new NormalDialog(context);
+        final NormalDialog dialog = new NormalDialog(mContext);
         dialog.content("你今天的抢购名额已用完~")//
                 .style(NormalDialog.STYLE_TWO)//
                 .btnNum(3)
                 .btnText("取消", "确定", "继续逛逛")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
+                        T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
+                        T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "middle");
+                        T.showShort(mContext, "middle");
                         dialog.dismiss();
                     }
                 });
     }
 
     private void MaterialDialogDefault() {
-        final MaterialDialog dialog = new MaterialDialog(context);
+        final MaterialDialog dialog = new MaterialDialog(mContext);
         dialog.content(
                 "嗨！这是一个 MaterialDialogDefault. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。"
                         + "它简洁小巧，完全遵照 Google 2014 年发布的 Material Design 风格，希望你能喜欢它！^ ^")//
                 .btnText("取消", "确定")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(
                 new OnBtnClickL() {//left btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
+                        T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {//right btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
+                        T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 }
@@ -357,27 +358,27 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
 
     private void MaterialDialogThreeBtns() {
-        final MaterialDialog dialog = new MaterialDialog(context);
+        final MaterialDialog dialog = new MaterialDialog(mContext);
         dialog.isTitleShow(false)//
                 .btnNum(3)
                 .content("为保证咖啡豆的新鲜度和咖啡的香味，并配以特有的传统烘焙和手工冲。")//
                 .btnText("确定", "取消", "知道了")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(
                 new OnBtnClickL() {//left btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "left");
+                        T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
                 new OnBtnClickL() {//right btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "right");
+                        T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 }
@@ -385,7 +386,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 new OnBtnClickL() {//middle btn click listener
                     @Override
                     public void onBtnClick() {
-                        T.showShort(context, "middle");
+                        T.showShort(mContext, "middle");
                         dialog.dismiss();
                     }
                 }
@@ -393,34 +394,34 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     }
 
     private void MaterialDialogOneBtn() {
-        final MaterialDialog dialog = new MaterialDialog(context);
+        final MaterialDialog dialog = new MaterialDialog(mContext);
         dialog//
                 .btnNum(1)
                 .content("为保证咖啡豆的新鲜度和咖啡的香味，并配以特有的传统烘焙和手工冲。")//
                 .btnText("确定")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(new OnBtnClickL() {
             @Override
             public void onBtnClick() {
-                T.showShort(context, "middle");
+                T.showShort(mContext, "middle");
                 dialog.dismiss();
             }
         });
     }
 
     private void NormalListDialog() {
-        final NormalListDialog dialog = new NormalListDialog(context, testItems);
+        final NormalListDialog dialog = new NormalListDialog(mContext, mMenuItems);
         dialog.title("请选择")//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, testItems.get(position).operName);
+                T.showShort(mContext, mMenuItems.get(position).mOperName);
                 dialog.dismiss();
             }
         });
@@ -428,7 +429,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
 
     private void NormalListDialogCustomAttr() {
-        final NormalListDialog dialog = new NormalListDialog(context, testItems);
+        final NormalListDialog dialog = new NormalListDialog(mContext, mMenuItems);
         dialog.title("请选择")//
                 .titleTextSize_SP(18)//
                 .titleBgColor(Color.parseColor("#409ED7"))//
@@ -442,7 +443,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, testItems.get(position).operName);
+                T.showShort(mContext, mMenuItems.get(position).mOperName);
                 dialog.dismiss();
             }
         });
@@ -450,7 +451,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
 
     private void NormalListDialogNoTitle() {
-        final NormalListDialog dialog = new NormalListDialog(context, testItems);
+        final NormalListDialog dialog = new NormalListDialog(mContext, mMenuItems);
         dialog.title("请选择")//
                 .isTitleShow(false)//
                 .itemPressColor(Color.parseColor("#85D3EF"))//
@@ -463,34 +464,34 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, testItems.get(position).operName);
+                T.showShort(mContext, mMenuItems.get(position).mOperName);
                 dialog.dismiss();
             }
         });
     }
 
     private void NormalListDialogStringArr() {
-        final NormalListDialog dialog = new NormalListDialog(context, stringItems);
+        final NormalListDialog dialog = new NormalListDialog(mContext, mStringItems);
         dialog.title("请选择")//
                 .layoutAnimation(null)
                 .show(R.style.myDialogAnim);
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, testItems.get(position).operName);
+                T.showShort(mContext, mMenuItems.get(position).mOperName);
                 dialog.dismiss();
             }
         });
     }
 
     private void NormalListDialogAdapter() {
-        final NormalListDialog dialog = new NormalListDialog(context, new TestAdapter(context, testItems));
+        final NormalListDialog dialog = new NormalListDialog(mContext, new TestAdapter(mContext, mMenuItems));
         dialog.title("请选择")//
                 .show(R.style.myDialogAnim);
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, testItems.get(position).operName);
+                T.showShort(mContext, mMenuItems.get(position).mOperName);
                 dialog.dismiss();
             }
         });
@@ -499,7 +500,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
     private void ActionSheetDialog() {
         final String[] stringItems = {"接收消息并提醒", "接收消息但不提醒", "收进群助手且不提醒", "屏蔽群消息"};
-        final ActionSheetDialog dialog = new ActionSheetDialog(context, stringItems, null);
+        final ActionSheetDialog dialog = new ActionSheetDialog(mContext, stringItems, null);
         dialog.title("选择群消息提醒方式\r\n(该群在电脑的设置:接收消息并提醒)")//
                 .titleTextSize_SP(14.5f)//
                 .show();
@@ -507,7 +508,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, stringItems[position]);
+                T.showShort(mContext, stringItems[position]);
                 dialog.dismiss();
             }
         });
@@ -515,13 +516,13 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
     private void ActionSheetDialogNoTitle() {
         final String[] stringItems = {"版本更新", "帮助与反馈", "退出QQ"};
-        final ActionSheetDialog dialog = new ActionSheetDialog(context, stringItems, elv);
+        final ActionSheetDialog dialog = new ActionSheetDialog(mContext, stringItems, mElv);
         dialog.isTitleShow(false).show();
 
         dialog.setOnOperItemClickL(new OnOperItemClickL() {
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(context, stringItems[position]);
+                T.showShort(mContext, stringItems[position]);
                 dialog.dismiss();
             }
         });
@@ -529,15 +530,15 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
     @Override
     public void onBackPressed() {
-        final NormalDialog dialog = new NormalDialog(context);
+        final NormalDialog dialog = new NormalDialog(mContext);
         dialog.content("亲,真的要走吗?再看会儿吧~(●—●)")//
                 .style(NormalDialog.STYLE_TWO)//
                 .titleTextSize(23)//
                 .btnText("继续逛逛", "残忍退出")//
                 .btnTextColor(Color.parseColor("#383838"), Color.parseColor("#D4D4D4"))//
                 .btnTextSize(16f, 16f)//
-                .showAnim(bas_in)//
-                .dismissAnim(bas_out)//
+                .showAnim(mBasIn)//
+                .dismissAnim(mBasOut)//
                 .show();
 
         dialog.setOnBtnClickL(

@@ -27,116 +27,78 @@ import com.flyco.dialog.widget.base.BottomBaseDialog;
 
 import java.util.ArrayList;
 
-/***
+/**
  * Dialog like iOS ActionSheet(iOS风格对话框)
  */
 public class ActionSheetDialog extends BottomBaseDialog {
-    /**
-     * ListView
-     */
-    private ListView lv;
-    /**
-     * title
-     */
-    private TextView tv_title;
-    /**
-     * title underline(标题下划线)
-     */
-    private View v_line_title;
-    /**
-     * cancel button(取消按钮)
-     */
-    private TextView tv_cancel;
-    /**
-     * corner radius,dp(圆角程度,单位dp)
-     */
-    private float cornerRadius_DP = 5;
-    /**
-     * title background color(标题背景颜色)
-     */
-    private int titleBgColor = Color.parseColor("#ddffffff");
-    /**
-     * title text(标题)
-     */
-    private String title = "提示";
-    /**
-     * title height(标题栏高度)
-     */
-    private float titleHeight = 48;
-    /**
-     * title textcolor(标题颜色)
-     */
-    private int titleTextColor = Color.parseColor("#8F8F8F");
-    /**
-     * title textsize(标题字体大小,单位sp)
-     */
-    private float titleTextSize_SP = 17.5f;
-    /**
-     * ListView background color(ListView背景色)
-     */
-    private int lvBgColor = Color.parseColor("#ddffffff");
-    /**
-     * divider color(ListView divider颜色)
-     */
-    private int dividerColor = Color.parseColor("#D7D7D9");
-    /**
-     * divider height(ListView divider高度)
-     */
-    private float dividerHeight_DP = 0.8f;
-    /**
-     * item press color(ListView item按住颜色)
-     */
-    private int itemPressColor = Color.parseColor("#ffcccccc");
-    /**
-     * item textcolor(ListView item文字颜色)
-     */
-    private int itemTextColor = Color.parseColor("#44A2FF");
-    /**
-     * item textsize(ListView item文字大小)
-     */
-    private float itemTextSize_SP = 17.5f;
-    /**
-     * item height(ListView item高度)
-     */
-    private float itemHeight_DP = 48;
-    /**
-     * enable title show(是否显示标题)
-     */
-    private boolean isTitleShow = true;
-    /**
-     * adapter(自定义适配器)
-     */
-    private BaseAdapter adapter;
-    /**
-     * operation items(操作items)
-     */
-    private ArrayList<DialogMenuItem> contents = new ArrayList<>();
-    private OnOperItemClickL onOperItemClickL;
-    private LayoutAnimationController lac;
+    /** ListView */
+    private ListView mLv;
+    /** title */
+    private TextView mTvTitle;
+    /** title underline(标题下划线) */
+    private View mVLineTitle;
+    /** mCancel button(取消按钮) */
+    private TextView mTvCancel;
+    /** corner radius,dp(圆角程度,单位dp) */
+    private float mCornerRadius = 5;
+    /** title background color(标题背景颜色) */
+    private int mTitleBgColor = Color.parseColor("#ddffffff");
+    /** title text(标题) */
+    private String mTitle = "提示";
+    /** title height(标题栏高度) */
+    private float mTitleHeight = 48;
+    /** title textcolor(标题颜色) */
+    private int mTitleTextColor = Color.parseColor("#8F8F8F");
+    /** title textsize(标题字体大小,单位sp) */
+    private float mTitleTextSize = 17.5f;
+    /** ListView background color(ListView背景色) */
+    private int mLvBgColor = Color.parseColor("#ddffffff");
+    /** divider color(ListView divider颜色) */
+    private int mDividerColor = Color.parseColor("#D7D7D9");
+    /** divider height(ListView divider高度) */
+    private float mDividerHeight = 0.8f;
+    /** item press color(ListView item按住颜色) */
+    private int mItemPressColor = Color.parseColor("#ffcccccc");
+    /** item textcolor(ListView item文字颜色) */
+    private int mItemTextColor = Color.parseColor("#44A2FF");
+    /** item textsize(ListView item文字大小) */
+    private float mItemTextSize = 17.5f;
+    /** item height(ListView item高度) */
+    private float mItemHeight = 48;
+    /** enable title show(是否显示标题) */
+    private boolean mIsTitleShow = true;
+    /*** mCancel btn text(取消按钮内容) */
+    private String mCancelText = "取消";
+    /** adapter(自定义适配器) */
+    private BaseAdapter mAdapter;
+    /** operation items(操作items) */
+    private ArrayList<DialogMenuItem> mContents = new ArrayList<>();
+    private OnOperItemClickL mOnOperItemClickL;
+    private LayoutAnimationController mLac;
 
     public void setOnOperItemClickL(OnOperItemClickL onOperItemClickL) {
-        this.onOperItemClickL = onOperItemClickL;
+        mOnOperItemClickL = onOperItemClickL;
     }
 
     public ActionSheetDialog(Context context, ArrayList<DialogMenuItem> baseItems, View animateView) {
         super(context, animateView);
-        this.contents.addAll(baseItems);
+        mContents.addAll(baseItems);
         init();
     }
 
     public ActionSheetDialog(Context context, String[] items, View animateView) {
         super(context, animateView);
-        this.contents = new ArrayList<>();
+        mContents = new ArrayList<>();
         for (String item : items) {
             DialogMenuItem customBaseItem = new DialogMenuItem(item, 0);
-            contents.add(customBaseItem);
+            mContents.add(customBaseItem);
         }
         init();
     }
 
     public ActionSheetDialog(Context context, BaseAdapter adapter, View animateView) {
         super(context, animateView);
-        this.adapter = adapter;
+        mAdapter = adapter;
         init();
     }
 
@@ -149,51 +111,49 @@ public class ActionSheetDialog extends BottomBaseDialog {
         animation.setDuration(350);
         animation.setStartOffset(150);
 
-        lac = new LayoutAnimationController(animation, 0.12f);
-        lac.setInterpolator(new DecelerateInterpolator());
+        mLac = new LayoutAnimationController(animation, 0.12f);
+        mLac.setInterpolator(new DecelerateInterpolator());
     }
 
     @Override
     public View onCreateView() {
-
-
-        LinearLayout ll_container = new LinearLayout(context);
+        LinearLayout ll_container = new LinearLayout(mContext);
         ll_container.setOrientation(LinearLayout.VERTICAL);
         ll_container.setBackgroundColor(Color.TRANSPARENT);
 
         /** title */
-        tv_title = new TextView(context);
-        tv_title.setGravity(Gravity.CENTER);
-        tv_title.setPadding(dp2px(10), dp2px(5), dp2px(10), dp2px(5));
+        mTvTitle = new TextView(mContext);
+        mTvTitle.setGravity(Gravity.CENTER);
+        mTvTitle.setPadding(dp2px(10), dp2px(5), dp2px(10), dp2px(5));
 
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         params.topMargin = dp2px(20);
 
-        ll_container.addView(tv_title, params);
+        ll_container.addView(mTvTitle, params);
 
         /** title underline */
-        v_line_title = new View(context);
-        ll_container.addView(v_line_title);
+        mVLineTitle = new View(mContext);
+        ll_container.addView(mVLineTitle);
 
         /** listview */
-        lv = new ListView(context);
-        lv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1));
-        lv.setCacheColorHint(Color.TRANSPARENT);
-        lv.setFadingEdgeLength(0);
-        lv.setVerticalScrollBarEnabled(false);
-        lv.setSelector(new ColorDrawable(Color.TRANSPARENT));
+        mLv = new ListView(mContext);
+        mLv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1));
+        mLv.setCacheColorHint(Color.TRANSPARENT);
+        mLv.setFadingEdgeLength(0);
+        mLv.setVerticalScrollBarEnabled(false);
+        mLv.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
-        ll_container.addView(lv);
+        ll_container.addView(mLv);
 
-        /** cancel btn */
-        tv_cancel = new TextView(context);
-        tv_cancel.setGravity(Gravity.CENTER);
+        /** mCancel btn */
+        mTvCancel = new TextView(mContext);
+        mTvCancel.setGravity(Gravity.CENTER);
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         lp.topMargin = dp2px(7);
         lp.bottomMargin = dp2px(7);
-        tv_cancel.setLayoutParams(lp);
+        mTvCancel.setLayoutParams(lp);
 
-        ll_container.addView(tv_cancel);
+        ll_container.addView(mTvCancel);
 
         return ll_container;
     }
@@ -201,28 +161,28 @@ public class ActionSheetDialog extends BottomBaseDialog {
     @Override
     public void setUiBeforShow() {
         /** title */
-        float radius = dp2px(cornerRadius_DP);
-        tv_title.setHeight(dp2px(titleHeight));
-        tv_title.setBackgroundDrawable(CornerUtils.cornerDrawable(titleBgColor, new float[]{radius, radius, radius,
+        float radius = dp2px(mCornerRadius);
+        mTvTitle.setHeight(dp2px(mTitleHeight));
+        mTvTitle.setBackgroundDrawable(CornerUtils.cornerDrawable(mTitleBgColor, new float[]{radius, radius, radius,
                 radius, 0, 0, 0, 0}));
-        tv_title.setText(title);
-        tv_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleTextSize_SP);
-        tv_title.setTextColor(titleTextColor);
-        tv_title.setVisibility(isTitleShow ? View.VISIBLE : View.GONE);
+        mTvTitle.setText(mTitle);
+        mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTitleTextSize);
+        mTvTitle.setTextColor(mTitleTextColor);
+        mTvTitle.setVisibility(mIsTitleShow ? View.VISIBLE : View.GONE);
 
         /** title underline */
-        v_line_title.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(dividerHeight_DP)));
-        v_line_title.setBackgroundColor(dividerColor);
-        v_line_title.setVisibility(isTitleShow ? View.VISIBLE : View.GONE);
+        mVLineTitle.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(mDividerHeight)));
+        mVLineTitle.setBackgroundColor(mDividerColor);
+        mVLineTitle.setVisibility(mIsTitleShow ? View.VISIBLE : View.GONE);
 
-        /** cancel btn */
-        tv_cancel.setHeight(dp2px(itemHeight_DP));
-        tv_cancel.setText("取消");
-        tv_cancel.setTextSize(TypedValue.COMPLEX_UNIT_SP, itemTextSize_SP);
-        tv_cancel.setTextColor(itemTextColor);
-        tv_cancel.setBackgroundDrawable(CornerUtils.listItemSelector(radius, lvBgColor, itemPressColor, 1, 0));
+        /** mCancel btn */
+        mTvCancel.setHeight(dp2px(mItemHeight));
+        mTvCancel.setText(mCancelText);
+        mTvCancel.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
+        mTvCancel.setTextColor(mItemTextColor);
+        mTvCancel.setBackgroundDrawable(CornerUtils.listItemSelector(radius, mLvBgColor, mItemPressColor, 1, 0));
 
-        tv_cancel.setOnClickListener(new View.OnClickListener() {
+        mTvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
@@ -230,201 +190,133 @@ public class ActionSheetDialog extends BottomBaseDialog {
         });
 
         /** listview */
-        lv.setDivider(new ColorDrawable(dividerColor));
-        lv.setDividerHeight(dp2px(dividerHeight_DP));
+        mLv.setDivider(new ColorDrawable(mDividerColor));
+        mLv.setDividerHeight(dp2px(mDividerHeight));
 
-        if (isTitleShow) {
-            lv.setBackgroundDrawable(CornerUtils.cornerDrawable(lvBgColor, new float[]{0, 0, 0, 0, radius, radius, radius,
+        if (mIsTitleShow) {
+            mLv.setBackgroundDrawable(CornerUtils.cornerDrawable(mLvBgColor, new float[]{0, 0, 0, 0, radius, radius, radius,
                     radius}));
         } else {
-            lv.setBackgroundDrawable(CornerUtils.cornerDrawable(lvBgColor, radius));
+            mLv.setBackgroundDrawable(CornerUtils.cornerDrawable(mLvBgColor, radius));
         }
 
-        if (adapter == null) {
-            adapter = new ListDialogAdapter();
+        if (mAdapter == null) {
+            mAdapter = new ListDialogAdapter();
         }
 
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new OnItemClickListener() {
+        mLv.setAdapter(mAdapter);
+        mLv.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (onOperItemClickL != null) {
-                    onOperItemClickL.onOperItemClick(parent, view, position, id);
+                if (mOnOperItemClickL != null) {
+                    mOnOperItemClickL.onOperItemClick(parent, view, position, id);
                 }
             }
         });
 
-        lv.setLayoutAnimation(lac);
+        mLv.setLayoutAnimation(mLac);
     }
 
-    /**
-     * set title background color(设置标题栏背景色)
-     *
-     * @param titleBgColor
-     * @return ActionSheetDialog
-     */
+    /** set title background color(设置标题栏背景色) */
     public ActionSheetDialog titleBgColor(int titleBgColor) {
-        this.titleBgColor = titleBgColor;
+        mTitleBgColor = titleBgColor;
         return this;
     }
 
-    /**
-     * set title text(设置标题内容)
-     *
-     * @param title
-     * @return ActionSheetDialog
-     */
+    /** set title text(设置标题内容) */
     public ActionSheetDialog title(String title) {
-        this.title = title;
+        mTitle = title;
         return this;
     }
 
-    /**
-     * set titleHeight(设置标题高度)
-     *
-     * @param titleHeight
-     * @return ActionSheetDialog
-     */
+    /** set titleHeight(设置标题高度) */
     public ActionSheetDialog titleHeight(float titleHeight) {
-        this.titleHeight = titleHeight;
+        mTitleHeight = titleHeight;
         return this;
     }
 
-    /**
-     * set title textsize(设置标题字体大小)
-     *
-     * @param titleTextSize_SP
-     * @return ActionSheetDialog
-     */
+    /** set title textsize(设置标题字体大小) */
     public ActionSheetDialog titleTextSize_SP(float titleTextSize_SP) {
-        this.titleTextSize_SP = titleTextSize_SP;
+        mTitleTextSize = titleTextSize_SP;
         return this;
     }
 
-    /**
-     * set title textcolor(设置标题字体颜色)
-     *
-     * @param titleTextColor
-     * @return ActionSheetDialog
-     */
+    /** set title textcolor(设置标题字体颜色) */
     public ActionSheetDialog titleTextColor(int titleTextColor) {
-        this.titleTextColor = titleTextColor;
+        mTitleTextColor = titleTextColor;
         return this;
     }
 
-    /**
-     * enable title show(设置标题是否显示)
-     *
-     * @param isTitleShow
-     * @return ActionSheetDialog
-     */
+    /** enable title show(设置标题是否显示) */
     public ActionSheetDialog isTitleShow(boolean isTitleShow) {
-        this.isTitleShow = isTitleShow;
+        mIsTitleShow = isTitleShow;
         return this;
     }
 
-    /**
-     * set ListView background color(设置ListView背景)
-     *
-     * @param lvBgColor
-     * @return ActionSheetDialog
-     */
+    /** set ListView background color(设置ListView背景) */
     public ActionSheetDialog lvBgColor(int lvBgColor) {
-        this.lvBgColor = lvBgColor;
+        mLvBgColor = lvBgColor;
         return this;
     }
 
-    /**
-     * set corner radius(设置圆角程度,单位dp)
-     *
-     * @param cornerRadius_DP
-     * @return ActionSheetDialog
-     */
+    /** set corner radius(设置圆角程度,单位dp) */
     public ActionSheetDialog cornerRadius(float cornerRadius_DP) {
-        this.cornerRadius_DP = cornerRadius_DP;
+        mCornerRadius = cornerRadius_DP;
         return this;
     }
 
-    /**
-     * set divider color(ListView divider颜色)
-     *
-     * @param dividerColor
-     * @return ActionSheetDialog
-     */
+    /** set divider color(ListView divider颜色) */
     public ActionSheetDialog dividerColor(int dividerColor) {
-        this.dividerColor = dividerColor;
+        mDividerColor = dividerColor;
         return this;
     }
 
-    /**
-     * set divider height(ListView divider高度)
-     *
-     * @return ActionSheetDialog
-     */
+    /** set divider height(ListView divider高度) */
     public ActionSheetDialog dividerHeight(float dividerHeight_DP) {
-        this.dividerHeight_DP = dividerHeight_DP;
+        mDividerHeight = dividerHeight_DP;
         return this;
     }
 
-    /**
-     * set item press color(item按住颜色)
-     *
-     * @param itemPressColor
-     * @return ActionSheetDialog
-     */
+    /** set item press color(item按住颜色) */
     public ActionSheetDialog itemPressColor(int itemPressColor) {
-        this.itemPressColor = itemPressColor;
+        mItemPressColor = itemPressColor;
         return this;
     }
 
-    /**
-     * set item textcolor(item字体颜色)
-     *
-     * @param itemTextColor
-     * @return ActionSheetDialog
-     */
+    /** set item textcolor(item字体颜色)* @return ActionSheetDialog */
     public ActionSheetDialog itemTextColor(int itemTextColor) {
-        this.itemTextColor = itemTextColor;
+        mItemTextColor = itemTextColor;
         return this;
     }
 
-    /**
-     * set item textsize(item字体大小)
-     *
-     * @param itemTextSize_SP
-     * @return ActionSheetDialog
-     */
+    /** set item textsize(item字体大小) */
     public ActionSheetDialog itemTextSize(float itemTextSize_SP) {
-        this.itemTextSize_SP = itemTextSize_SP;
+        mItemTextSize = itemTextSize_SP;
         return this;
     }
 
-    /**
-     * set item height(item高度)
-     *
-     * @param itemHeight_DP
-     * @return ActionSheetDialog
-     */
+    /** set item height(item高度) */
     public ActionSheetDialog itemHeight(float itemHeight_DP) {
-        this.itemHeight_DP = itemHeight_DP;
+        mItemHeight = itemHeight_DP;
         return this;
     }
 
-    /**
-     * set layoutAnimation(设置layout动画 ,传入null将不显示layout动画)
-     *
-     * @param lac
-     * @return ActionSheetDialog
-     */
+    /** set layoutAnimation(设置layout动画 ,传入null将不显示layout动画) */
     public ActionSheetDialog layoutAnimation(LayoutAnimationController lac) {
-        this.lac = lac;
+        mLac = lac;
+        return this;
+    }
+
+    /** set mCancel btn text(设置取消按钮内容) */
+    public ActionSheetDialog cancelText(String cancelText) {
+        mCancelText = cancelText;
         return this;
     }
 
     class ListDialogAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return contents.size();
+            return mContents.size();
         }
 
         @Override
@@ -440,37 +332,37 @@ public class ActionSheetDialog extends BottomBaseDialog {
         @SuppressWarnings("deprecation")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            final DialogMenuItem item = contents.get(position);
+            final DialogMenuItem item = mContents.get(position);
 
-            LinearLayout ll_item = new LinearLayout(context);
+            LinearLayout ll_item = new LinearLayout(mContext);
             ll_item.setOrientation(LinearLayout.HORIZONTAL);
             ll_item.setGravity(Gravity.CENTER_VERTICAL);
 
-            ImageView iv_item = new ImageView(context);
+            ImageView iv_item = new ImageView(mContext);
             iv_item.setPadding(0, 0, dp2px(15), 0);
             ll_item.addView(iv_item);
 
-            TextView tv_item = new TextView(context);
+            TextView tv_item = new TextView(mContext);
             tv_item.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             tv_item.setSingleLine(true);
             tv_item.setGravity(Gravity.CENTER);
-            tv_item.setTextColor(itemTextColor);
-            tv_item.setTextSize(TypedValue.COMPLEX_UNIT_SP, itemTextSize_SP);
-            tv_item.setHeight(dp2px(itemHeight_DP));
+            tv_item.setTextColor(mItemTextColor);
+            tv_item.setTextSize(TypedValue.COMPLEX_UNIT_SP, mItemTextSize);
+            tv_item.setHeight(dp2px(mItemHeight));
 
             ll_item.addView(tv_item);
-            float radius = dp2px(cornerRadius_DP);
-            if (isTitleShow) {
-                ll_item.setBackgroundDrawable((CornerUtils.listItemSelector(radius, Color.TRANSPARENT, itemPressColor,
-                        position == contents.size() - 1)));
+            float radius = dp2px(mCornerRadius);
+            if (mIsTitleShow) {
+                ll_item.setBackgroundDrawable((CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
+                        position == mContents.size() - 1)));
             } else {
-                ll_item.setBackgroundDrawable(CornerUtils.listItemSelector(radius, Color.TRANSPARENT, itemPressColor,
-                        contents.size(), position));
+                ll_item.setBackgroundDrawable(CornerUtils.listItemSelector(radius, Color.TRANSPARENT, mItemPressColor,
+                        mContents.size(), position));
             }
 
-            iv_item.setImageResource(item.resId);
-            tv_item.setText(item.operName);
-            iv_item.setVisibility(item.resId == 0 ? View.GONE : View.VISIBLE);
+            iv_item.setImageResource(item.mResId);
+            tv_item.setText(item.mOperName);
+            iv_item.setVisibility(item.mResId == 0 ? View.GONE : View.VISIBLE);
 
             return ll_item;
         }

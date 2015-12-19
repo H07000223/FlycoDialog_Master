@@ -9,44 +9,42 @@ import android.view.animation.Animation.AnimationListener;
 import com.flyco.animation.BaseAnimatorSet;
 
 public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> extends BaseDialog {
-    protected View animateView;
-    private BaseAnimatorSet windowInAs;
-    private BaseAnimatorSet windowOutAs;
-    protected Animation innerShowAnim;
-    protected Animation innerDismissAnim;
-    protected long innerAnimDuration = 350;
-    protected boolean isInnerShowAnim;
-    protected boolean isInnerDismissAnim;
-    protected int left, top, right, bottom;
+    protected View mAnimateView;
+    private BaseAnimatorSet mWindowInAs;
+    private BaseAnimatorSet mWindowOutAs;
+    protected Animation mInnerShowAnim;
+    protected Animation mInnerDismissAnim;
+    protected long mInnerAnimDuration = 350;
+    protected boolean mIsInnerShowAnim;
+    protected boolean mIsInnerDismissAnim;
+    protected int mLeft, mTop, mRight, mBottom;
 
     public BottomTopBaseDialog(Context context) {
         super(context);
     }
 
-    /** set duration for inner animation of animateView(设置animateView内置动画时长) */
+    /** set duration for inner animation of mAnimateView(设置animateView内置动画时长) */
     public T innerAnimDuration(long innerAnimDuration) {
-        this.innerAnimDuration = innerAnimDuration;
+        mInnerAnimDuration = innerAnimDuration;
         return (T) this;
     }
 
     public T padding(int left, int top, int right, int bottom) {
-        this.left = left;
-        this.top = top;
-        this.right = right;
-        this.bottom = bottom;
+        mLeft = left;
+        mTop = top;
+        mRight = right;
+        mBottom = bottom;
         return (T) this;
     }
 
-    /**
-     * show dialog and animateView with inner show animation(设置dialog和animateView显示动画)
-     */
+    /** show dialog and mAnimateView with inner show animation(设置dialog和animateView显示动画) */
     protected void showWithAnim() {
-        if (innerShowAnim != null) {
-            innerShowAnim.setDuration(innerAnimDuration);
-            innerShowAnim.setAnimationListener(new AnimationListener() {
+        if (mInnerShowAnim != null) {
+            mInnerShowAnim.setDuration(mInnerAnimDuration);
+            mInnerShowAnim.setAnimationListener(new AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    isInnerShowAnim = true;
+                    mIsInnerShowAnim = true;
                 }
 
                 @Override
@@ -56,30 +54,28 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    isInnerShowAnim = false;
+                    mIsInnerShowAnim = false;
                 }
             });
-            ll_control_height.startAnimation(innerShowAnim);
+            mLinearLayoutControlHeight.startAnimation(mInnerShowAnim);
         }
 
-        if (animateView != null) {
+        if (mAnimateView != null) {
             if (getWindowInAs() != null) {
-                windowInAs = getWindowInAs();
+                mWindowInAs = getWindowInAs();
             }
-            windowInAs.duration(innerAnimDuration).playOn(animateView);
+            mWindowInAs.duration(mInnerAnimDuration).playOn(mAnimateView);
         }
     }
 
-    /**
-     * dimiss dialog and animateView with inner dismiss animation(设置dialog和animateView消失动画)
-     */
+    /** dimiss dialog and mAnimateView with inner dismiss animation(设置dialog和animateView消失动画) */
     protected void dismissWithAnim() {
-        if (innerDismissAnim != null) {
-            innerDismissAnim.setDuration(innerAnimDuration);
-            innerDismissAnim.setAnimationListener(new AnimationListener() {
+        if (mInnerDismissAnim != null) {
+            mInnerDismissAnim.setDuration(mInnerAnimDuration);
+            mInnerDismissAnim.setAnimationListener(new AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    isInnerDismissAnim = true;
+                    mIsInnerDismissAnim = true;
                 }
 
                 @Override
@@ -89,27 +85,27 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    isInnerDismissAnim = false;
+                    mIsInnerDismissAnim = false;
                     superDismiss();
                 }
             });
 
-            ll_control_height.startAnimation(innerDismissAnim);
+            mLinearLayoutControlHeight.startAnimation(mInnerDismissAnim);
         } else {
             superDismiss();
         }
 
-        if (animateView != null) {
+        if (mAnimateView != null) {
             if (getWindowOutAs() != null) {
-                windowOutAs = getWindowOutAs();
+                mWindowOutAs = getWindowOutAs();
             }
-            windowOutAs.duration(innerAnimDuration).playOn(animateView);
+            mWindowOutAs.duration(mInnerAnimDuration).playOn(mAnimateView);
         }
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (isInnerDismissAnim || isInnerShowAnim) {
+        if (mIsInnerDismissAnim || mIsInnerShowAnim) {
             return true;
         }
         return super.dispatchTouchEvent(ev);
@@ -117,7 +113,7 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
 
     @Override
     public void onBackPressed() {
-        if (isInnerDismissAnim || isInnerShowAnim) {
+        if (mIsInnerDismissAnim || mIsInnerShowAnim) {
             return;
         }
         super.onBackPressed();

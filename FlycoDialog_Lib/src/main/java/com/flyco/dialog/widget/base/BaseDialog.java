@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.nineoldandroids.animation.Animator;
@@ -21,34 +20,34 @@ import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.utils.StatusBarUtils;
 
 public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
-    /** TAG(日志) */
-    protected String TAG;
-    /** context(上下文) */
-    protected Context context;
+    /** mTag(日志) */
+    protected String mTag;
+    /** mContext(上下文) */
+    protected Context mContext;
     /** (DisplayMetrics)设备密度 */
-    protected DisplayMetrics dm;
+    protected DisplayMetrics mDisplayMetrics;
     /** enable dismiss outside dialog(设置点击对话框以外区域,是否dismiss) */
-    protected boolean cancel;
+    protected boolean mCancel;
     /** dialog width scale(宽度比例) */
-    protected float widthScale = 1;
+    protected float mWidthScale = 1;
     /** dialog height scale(高度比例) */
-    protected float heightScale;
-    /** showAnim(对话框显示动画) */
-    private BaseAnimatorSet showAnim;
-    /** dismissAnim(对话框消失动画) */
-    private BaseAnimatorSet dismissAnim;
+    protected float mHeightScale;
+    /** mShowAnim(对话框显示动画) */
+    private BaseAnimatorSet mShowAnim;
+    /** mDismissAnim(对话框消失动画) */
+    private BaseAnimatorSet mDismissAnim;
     /** top container(最上层容器) */
-    protected LinearLayout ll_top;
+    protected LinearLayout mLinearLayoutTop;
     /** container to control dialog height(用于控制对话框高度) */
-    protected LinearLayout ll_control_height;
-    /** is showAnim running(显示动画是否正在执行) */
-    private boolean isShowAnim;
+    protected LinearLayout mLinearLayoutControlHeight;
+    /** is mShowAnim running(显示动画是否正在执行) */
+    private boolean mIsShowAnim;
     /** is DismissAnim running(消失动画是否正在执行) */
-    private boolean isDismissAnim;
+    private boolean mIsDismissAnim;
     /** max height(最大高度) */
-    protected float maxHeight;
+    protected float mMaxHeight;
     /** show Dialog as PopupWindow(想PopupWindow一样展示Dialog) */
-    private boolean isPopupStyle;
+    private boolean mIsPopupStyle;
 
     /**
      * method execute order:
@@ -58,19 +57,18 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     public BaseDialog(Context context) {
         super(context);
         setDialogTheme();
-        this.context = context;
-        this.TAG = this.getClass().getSimpleName();
-        Log.d(TAG, "constructor");
+        mContext = context;
+        mTag = getClass().getSimpleName();
+        setCanceledOnTouchOutside(true);
+        Log.d(mTag, "constructor");
     }
 
     public BaseDialog(Context context, boolean isPopupStyle) {
         this(context);
-        this.isPopupStyle = isPopupStyle;
+        mIsPopupStyle = isPopupStyle;
     }
 
-    /**
-     * set dialog theme(设置对话框主题)
-     */
+    /** set dialog theme(设置对话框主题) */
     private void setDialogTheme() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);// android:windowNoTitle
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));// android:windowBackground
@@ -80,48 +78,44 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     /**
      * inflate layout for dialog ui and return (填充对话框所需要的布局并返回)
      * <pre>
-     *
      * public View onCreateView() {
-     * View inflate = View.inflate(context, R.layout.dialog_share, null);
-     * return inflate;
+     *      View inflate = View.inflate(mContext, R.layout.dialog_share, null);
+     *      return inflate;
      * }
      * </pre>
      */
     public abstract View onCreateView();
 
-    /**
-     * set Ui data or logic opreation before attatched window(在对话框显示之前,设置界面数据或者逻辑)
-     */
+    /** set Ui data or logic opreation before attatched window(在对话框显示之前,设置界面数据或者逻辑) */
     public abstract void setUiBeforShow();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate");
-        dm = context.getResources().getDisplayMetrics();
-        maxHeight = dm.heightPixels - StatusBarUtils.getHeight(context);
-        // maxHeight = dm.heightPixels;
+        Log.d(mTag, "onCreate");
+        mDisplayMetrics = mContext.getResources().getDisplayMetrics();
+        mMaxHeight = mDisplayMetrics.heightPixels - StatusBarUtils.getHeight(mContext);
+        // mMaxHeight = mDisplayMetrics.heightPixels;
 
-        ll_top = new LinearLayout(context);
-        ll_top.setGravity(Gravity.CENTER);
+        mLinearLayoutTop = new LinearLayout(mContext);
+        mLinearLayoutTop.setGravity(Gravity.CENTER);
 
-        ll_control_height = new LinearLayout(context);
-        ll_control_height.setOrientation(LinearLayout.VERTICAL);
+        mLinearLayoutControlHeight = new LinearLayout(mContext);
+        mLinearLayoutControlHeight.setOrientation(LinearLayout.VERTICAL);
 
-        ll_control_height.addView(onCreateView());
-        ll_top.addView(ll_control_height);
+        mLinearLayoutControlHeight.addView(onCreateView());
+        mLinearLayoutTop.addView(mLinearLayoutControlHeight);
 
-        if (isPopupStyle) {
-            setContentView(ll_top, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+        if (mIsPopupStyle) {
+            setContentView(mLinearLayoutTop, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
         } else {
-            setContentView(ll_top, new ViewGroup.LayoutParams(dm.widthPixels, (int) maxHeight));
+            setContentView(mLinearLayoutTop, new ViewGroup.LayoutParams(mDisplayMetrics.widthPixels, (int) mMaxHeight));
         }
-        setCanceledOnTouchOutside(true);
 
-        ll_top.setOnClickListener(new View.OnClickListener() {
+        mLinearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cancel) {
+                if (mCancel) {
                     dismiss();
                 }
             }
@@ -135,33 +129,34 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        Log.d(TAG, "onAttachedToWindow");
+        Log.d(mTag, "onAttachedToWindow");
 
         setUiBeforShow();
 
         int width;
-        if (widthScale == 0) {
+        if (mWidthScale == 0) {
             width = ViewGroup.LayoutParams.WRAP_CONTENT;
         } else {
-            width = (int) (dm.widthPixels * widthScale);
+            width = (int) (mDisplayMetrics.widthPixels * mWidthScale);
         }
 
         int height;
-        if (heightScale == 0) {
+        if (mHeightScale == 0) {
             height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        } else if (heightScale == 1) {
-            height = ViewGroup.LayoutParams.MATCH_PARENT;
+        } else if (mHeightScale == 1) {
+//            height = ViewGroup.LayoutParams.MATCH_PARENT;
+            height = (int) mMaxHeight;
         } else {
-            height = (int) (maxHeight * heightScale);
+            height = (int) (mMaxHeight * mHeightScale);
         }
 
-        ll_control_height.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        mLinearLayoutControlHeight.setLayoutParams(new LinearLayout.LayoutParams(width, height));
 
-        if (showAnim != null) {
-            showAnim.listener(new BaseAnimatorSet.AnimatorListener() {
+        if (mShowAnim != null) {
+            mShowAnim.listener(new BaseAnimatorSet.AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animator) {
-                    isShowAnim = true;
+                    mIsShowAnim = true;
                 }
 
                 @Override
@@ -170,29 +165,29 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
                 @Override
                 public void onAnimationEnd(Animator animator) {
-                    isShowAnim = false;
+                    mIsShowAnim = false;
                 }
 
                 @Override
                 public void onAnimationCancel(Animator animator) {
-                    isShowAnim = false;
+                    mIsShowAnim = false;
                 }
-            }).playOn(ll_control_height);
+            }).playOn(mLinearLayoutControlHeight);
         } else {
-            BaseAnimatorSet.reset(ll_control_height);
+            BaseAnimatorSet.reset(mLinearLayoutControlHeight);
         }
     }
 
 
     @Override
     public void setCanceledOnTouchOutside(boolean cancel) {
-        this.cancel = cancel;
+        this.mCancel = cancel;
         super.setCanceledOnTouchOutside(cancel);
     }
 
     @Override
     public void show() {
-        Log.d(TAG, "show");
+        Log.d(mTag, "show");
         super.show();
     }
 
@@ -200,29 +195,29 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart");
+        Log.d(mTag, "onStart");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop");
+        Log.d(mTag, "onStop");
     }
 
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        Log.d(TAG, "onDetachedFromWindow");
+        Log.d(mTag, "onDetachedFromWindow");
     }
 
     @Override
     public void dismiss() {
-        Log.d(TAG, "dismiss");
-        if (dismissAnim != null) {
-            dismissAnim.listener(new BaseAnimatorSet.AnimatorListener() {
+        Log.d(mTag, "dismiss");
+        if (mDismissAnim != null) {
+            mDismissAnim.listener(new BaseAnimatorSet.AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animator) {
-                    isDismissAnim = true;
+                    mIsDismissAnim = true;
                 }
 
                 @Override
@@ -231,16 +226,16 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
                 @Override
                 public void onAnimationEnd(Animator animator) {
-                    isDismissAnim = false;
+                    mIsDismissAnim = false;
                     superDismiss();
                 }
 
                 @Override
                 public void onAnimationCancel(Animator animator) {
-                    isDismissAnim = false;
+                    mIsDismissAnim = false;
                     superDismiss();
                 }
-            }).playOn(ll_control_height);
+            }).playOn(mLinearLayoutControlHeight);
         } else {
             superDismiss();
         }
@@ -258,9 +253,9 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         show();
     }
 
-    /** show at location only valid for isPopupStyle true(指定位置显示,只对isPopupStyle为true有效) */
+    /** show at location only valid for mIsPopupStyle true(指定位置显示,只对isPopupStyle为true有效) */
     public void showAtLocation(int gravity, int x, int y) {
-        if (isPopupStyle) {
+        if (mIsPopupStyle) {
             Window window = getWindow();
             LayoutParams params = window.getAttributes();
             window.setGravity(gravity);
@@ -271,7 +266,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         show();
     }
 
-    /** show at location only valid for isPopupStyle true(指定位置显示,只对isPopupStyle为true有效) */
+    /** show at location only valid for mIsPopupStyle true(指定位置显示,只对isPopupStyle为true有效) */
     public void showAtLocation(int x, int y) {
         int gravity = Gravity.LEFT | Gravity.TOP;//Left Top (坐标原点为右上角)
         showAtLocation(gravity, x, y);
@@ -289,31 +284,31 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
     /** set dialog width scale:0-1(设置对话框宽度,占屏幕宽的比例0-1) */
     public T widthScale(float widthScale) {
-        this.widthScale = widthScale;
+        this.mWidthScale = widthScale;
         return (T) this;
     }
 
     /** set dialog height scale:0-1(设置对话框高度,占屏幕宽的比例0-1) */
     public T heightScale(float heightScale) {
-        this.heightScale = heightScale;
+        this.mHeightScale = heightScale;
         return (T) this;
     }
 
     /** set show anim(设置显示的动画) */
     public T showAnim(BaseAnimatorSet showAnim) {
-        this.showAnim = showAnim;
+        this.mShowAnim = showAnim;
         return (T) this;
     }
 
     /** set dismiss anim(设置隐藏的动画) */
     public T dismissAnim(BaseAnimatorSet dismissAnim) {
-        this.dismissAnim = dismissAnim;
+        this.mDismissAnim = dismissAnim;
         return (T) this;
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (isDismissAnim || isShowAnim) {
+        if (mIsDismissAnim || mIsShowAnim) {
             return true;
         }
         return super.dispatchTouchEvent(ev);
@@ -321,7 +316,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
     @Override
     public void onBackPressed() {
-        if (isDismissAnim || isShowAnim) {
+        if (mIsDismissAnim || mIsShowAnim) {
             return;
         }
         super.onBackPressed();
@@ -329,7 +324,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
     /** dp to px */
     protected int dp2px(float dp) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+        final float scale = mContext.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);
     }
 }
