@@ -28,7 +28,7 @@ A powerful android dialog library with inner widgets and animations supports cus
 
 ```groovy
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.1.6@aar'
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.1.8@aar'
      compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
