@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_top_left"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:background="#E45171"
+        android:gravity="center"
+        android:text="Bubble"
+        android:textColor="#ffffff"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_top_right"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:background="#F6CE59"
+        android:gravity="center"
+        android:text="Bubble"
+        android:textColor="#ffffff"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_bottom_left"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="#3F9FE0"
+        android:gravity="center"
+        android:text="Bubble"
+        android:textColor="#ffffff"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_bottom_right"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#8BC34A"
+        android:gravity="center"
+        android:text="Bubble"
+        android:textColor="#ffffff"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="20dp"
+        android:background="#212121"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Bubble"
+        android:textColor="#ffffff"
+        android:textSize="16sp"/>
+
+</RelativeLayout>
