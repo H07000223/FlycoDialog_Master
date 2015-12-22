@@ -23,6 +23,9 @@
         <activity
             android:name=".ui.PopupHomeActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.BubblePopupActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

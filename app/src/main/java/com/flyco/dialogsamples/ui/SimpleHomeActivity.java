@@ -28,6 +28,7 @@ public class SimpleHomeActivity extends AppCompatActivity {
 
         ListView lv = new ListView(mContext);
         lv.setCacheColorHint(Color.TRANSPARENT);
+        lv.setBackgroundColor(Color.WHITE);
         lv.setFadingEdgeLength(0);
         lv.setAdapter(new SimpleHomeAdapter());
 

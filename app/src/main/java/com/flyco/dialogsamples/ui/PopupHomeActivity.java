@@ -1,92 +1,79 @@
 package com.flyco.dialogsamples.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.flyco.animation.BounceEnter.BounceTopEnter;
-import com.flyco.animation.SlideEnter.SlideBottomEnter;
-import com.flyco.animation.SlideExit.SlideBottomExit;
-import com.flyco.animation.SlideExit.SlideTopExit;
-import com.flyco.dialog.widget.BubblePopup;
-import com.flyco.dialogsamples.R;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class PopupHomeActivity extends AppCompatActivity {
-    @Bind(R.id.tv_top_left)
-    TextView mTvTopLeft;
-    @Bind(R.id.tv_top_right)
-    TextView mTvTopRight;
-    @Bind(R.id.tv_bottom_left)
-    TextView mTvBottomLeft;
-    @Bind(R.id.tv_bottom_right)
-    TextView mTvBottomRight;
-    @Bind(R.id.tv_center)
-    TextView mTvCenter;
     private Context mContext = this;
+    private final String[] mItems = {"BubblePopup"};
+    private final Class<?>[] mClazzs = {BubblePopupActivity.class};
+    private DisplayMetrics mDisplayMetrics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_popup_home);
-        ButterKnife.bind(this);
+        mDisplayMetrics = getResources().getDisplayMetrics();
+
+        ListView lv = new ListView(mContext);
+        lv.setCacheColorHint(Color.TRANSPARENT);
+        lv.setBackgroundColor(Color.WHITE);
+        lv.setFadingEdgeLength(0);
+        lv.setAdapter(new SimpleHomeAdapter());
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(mContext, mClazzs[position]);
+                startActivity(intent);
+            }
+        });
+
+        setContentView(lv);
     }
 
-    @OnClick(R.id.tv_center)
-    void clickCenterBtn() {
-        View inflate = View.inflate(mContext, R.layout.layout_bubble_image, null);
-        BubblePopup bubblePopup = new BubblePopup(mContext, inflate);
-        bubblePopup.anchorView(mTvCenter)
-                .show();
-    }
+    class SimpleHomeAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return mItems.length;
+        }
 
-    @OnClick(R.id.tv_top_left)
-    void clickTopLeftBtn() {
-        View inflate = View.inflate(mContext, R.layout.layout_bubble_text, null);
-        TextView tv = ButterKnife.findById(inflate, R.id.tv);
-        BubblePopup bubblePopup = new BubblePopup(mContext, inflate);
-        tv.setText("最美的不是下雨天,是曾与你躲过雨的屋檐~");
-        bubblePopup.anchorView(mTvTopLeft)
-                .gravity(Gravity.BOTTOM)
-                .backgroundColor(Color.parseColor("#E45171"))
-                .show();
-    }
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
 
-    @OnClick(R.id.tv_top_right)
-    void clickTopRightBtn() {
-        View inflate = View.inflate(mContext, R.layout.layout_bubble_image, null);
-        new BubblePopup(mContext, inflate)
-                .gravity(Gravity.BOTTOM)
-                .anchorView(mTvTopRight)
-                .backgroundColor(Color.parseColor("#F6CE59"))
-                .showAnim(new BounceTopEnter())
-                .dismissAnim(new SlideTopExit())
-                .show();
-    }
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-    @OnClick(R.id.tv_bottom_left)
-    void clickBottomLeftBtn() {
-        View inflate = View.inflate(mContext, R.layout.layout_bubble_text, null);
-        new BubblePopup(mContext, inflate)
-                .backgroundColor(Color.parseColor("#3F9FE0"))
-                .anchorView(mTvBottomLeft)
-                .show();
-    }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
 
-    @OnClick(R.id.tv_bottom_right)
-    void clickBottomRightBtn() {
-        View inflate = View.inflate(mContext, R.layout.layout_bubble_image, null);
-        new BubblePopup(mContext, inflate).anchorView(mTvBottomRight)
-                .backgroundColor(Color.parseColor("#8BC34A"))
-                .showAnim(new SlideBottomEnter())
-                .dismissAnim(new SlideBottomExit())
-                .show();
+            int padding = (int) (mDisplayMetrics.density * 10);
+
+            TextView tv = new TextView(mContext);
+            tv.setText(mItems[position]);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            tv.setTextColor(Color.parseColor("#468ED0"));
+            // tv.setGravity(Gravity.CENTER);
+            tv.setPadding(padding, padding, padding, padding);
+            AbsListView.LayoutParams lp = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,
+                    AbsListView.LayoutParams.WRAP_CONTENT);
+            tv.setLayoutParams(lp);
+            return tv;
+        }
     }
 }
