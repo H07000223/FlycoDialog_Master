@@ -48,6 +48,7 @@ public class BubblePopupActivity extends AppCompatActivity {
         bubblePopup.anchorView(mTvCenter)
                 .showAnim(new BounceRightEnter())
                 .dismissAnim(new SlideLeftExit())
+                .autoDismiss(true)
                 .show();
     }
 

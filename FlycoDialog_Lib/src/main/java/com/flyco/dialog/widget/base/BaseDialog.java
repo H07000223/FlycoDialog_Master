@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -46,8 +48,14 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     private boolean mIsDismissAnim;
     /** max height(最大高度) */
     protected float mMaxHeight;
-    /** show Dialog as PopupWindow(想PopupWindow一样展示Dialog) */
+    /** show Dialog as PopupWindow(像PopupWindow一样展示Dialog) */
     private boolean mIsPopupStyle;
+    /** automatic dimiss dialog after given delay(在给定时间后,自动消失) */
+    private boolean mAutoDismiss;
+    /** delay (milliseconds) to dimiss dialog(对话框消失延时时间,毫秒值) */
+    private long mAutoDismissDelay = 1500;
+
+    private Handler mHandler = new Handler(Looper.getMainLooper());
 
     /**
      * method execute order:
@@ -166,6 +174,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
                 @Override
                 public void onAnimationEnd(Animator animator) {
                     mIsShowAnim = false;
+                    delayDismiss();
                 }
 
                 @Override
@@ -175,6 +184,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
             }).playOn(mLlControlHeight);
         } else {
             BaseAnimatorSet.reset(mLlControlHeight);
+            delayDismiss();
         }
     }
 
@@ -290,25 +300,48 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
     /** set dialog height scale:0-1(设置对话框高度,占屏幕宽的比例0-1) */
     public T heightScale(float heightScale) {
-        this.mHeightScale = heightScale;
+        mHeightScale = heightScale;
         return (T) this;
     }
 
     /** set show anim(设置显示的动画) */
     public T showAnim(BaseAnimatorSet showAnim) {
-        this.mShowAnim = showAnim;
+        mShowAnim = showAnim;
         return (T) this;
     }
 
     /** set dismiss anim(设置隐藏的动画) */
     public T dismissAnim(BaseAnimatorSet dismissAnim) {
-        this.mDismissAnim = dismissAnim;
+        mDismissAnim = dismissAnim;
         return (T) this;
+    }
+
+    /** automatic dimiss dialog after given delay(在给定时间后,自动消失) */
+    public T autoDismiss(boolean autoDismiss) {
+        mAutoDismiss = autoDismiss;
+        return (T) this;
+    }
+
+    /** set dealy (milliseconds) to dimiss dialog(对话框消失延时时间,毫秒值) */
+    public T autoDismissDelay(long autoDismissDelay) {
+        mAutoDismissDelay = autoDismissDelay;
+        return (T) this;
+    }
+
+    private void delayDismiss() {
+        if (mAutoDismiss && mAutoDismissDelay > 0) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    dismiss();
+                }
+            }, mAutoDismissDelay);
+        }
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (mIsDismissAnim || mIsShowAnim) {
+        if (mIsDismissAnim || mIsShowAnim || mAutoDismiss) {
             return true;
         }
         return super.dispatchTouchEvent(ev);
@@ -316,7 +349,7 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
 
     @Override
     public void onBackPressed() {
-        if (mIsDismissAnim || mIsShowAnim) {
+        if (mIsDismissAnim || mIsShowAnim || mAutoDismiss) {
             return;
         }
         super.onBackPressed();

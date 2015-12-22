@@ -21,4 +21,8 @@ Version 1.1.8 *(2015-12-19)*
 * fix bug method setCanceledOnTouchOutside() sometime invalid 
 * change code style
 
+Version 1.1.9 *(2015-12-19)*
+----------------------------
+* new added built-in widget - BubblePopup
+* BaseDialog support auto dimiss in given delay
 
