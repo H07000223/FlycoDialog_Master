@@ -94,6 +94,9 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
      */
     public abstract View onCreateView();
 
+    public void onViewCreated(View inflate) {
+    }
+
     /** set Ui data or logic opreation before attatched window(在对话框显示之前,设置界面数据或者逻辑) */
     public abstract void setUiBeforShow();
 
@@ -110,8 +113,10 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         mLlControlHeight = new LinearLayout(mContext);
         mLlControlHeight.setOrientation(LinearLayout.VERTICAL);
 
-        mLlControlHeight.addView(onCreateView());
+        View onCreateView = onCreateView();
+        mLlControlHeight.addView(onCreateView);
         mLlTop.addView(mLlControlHeight);
+        onViewCreated(onCreateView);
 
         if (mIsPopupStyle) {
             setContentView(mLlTop, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,

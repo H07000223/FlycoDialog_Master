@@ -14,7 +14,7 @@ import com.flyco.animation.SlideEnter.SlideBottomEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.animation.SlideExit.SlideLeftExit;
 import com.flyco.animation.SlideExit.SlideTopExit;
-import com.flyco.dialog.widget.BubblePopup;
+import com.flyco.dialog.widget.popup.BubblePopup;
 import com.flyco.dialogsamples.R;
 
 import butterknife.Bind;
@@ -37,7 +37,7 @@ public class BubblePopupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ac_popup_home);
+        setContentView(R.layout.ac_bubble_popup);
         ButterKnife.bind(this);
     }
 
@@ -86,7 +86,7 @@ public class BubblePopupActivity extends AppCompatActivity {
     void clickBottomRightBtn() {
         View inflate = View.inflate(mContext, R.layout.layout_bubble_image, null);
         new BubblePopup(mContext, inflate).anchorView(mTvBottomRight)
-                .backgroundColor(Color.parseColor("#8BC34A"))
+                .bubbleColor(Color.parseColor("#8BC34A"))
                 .showAnim(new SlideBottomEnter())
                 .dismissAnim(new SlideBottomExit())
                 .show();

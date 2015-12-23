@@ -1,10 +1,9 @@
-package com.flyco.dialog.widget;
+package com.flyco.dialog.widget.popup;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -14,24 +13,19 @@ import com.flyco.dialog.R;
 import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.utils.StatusBarUtils;
 import com.flyco.dialog.view.TriangleView;
-import com.flyco.dialog.widget.base.BaseDialog;
+import com.flyco.dialog.widget.base.BasePopup;
 import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Use dialog to realize bubble style popup(利用Dialog实现泡泡样式的弹窗)
- * https://github.com/michaelye/EasyDialog
+ * thanks https://github.com/michaelye/EasyDialog
  */
-public class BubblePopup extends BaseDialog<BubblePopup> {
+public class BubblePopup extends BasePopup<BubblePopup> {
     private View mWrappedView;
     private LinearLayout mLlContent;
     private TriangleView mTriangleView;
     private RelativeLayout.LayoutParams mLayoutParams;
-    private int mX;
-    private int mY;
-    private View mAnchorView;
-    /** BubblePopup位于给定位置上方(Gravity.Top)或者下方(Gravity.Bottom) */
-    private int mGravity;
-    private int mBackgroundColor;
+    private int mBubbleColor;
     private int mCornerRadius;
     private int mMarginLeft;
     private int mMarginRight;
@@ -42,9 +36,8 @@ public class BubblePopup extends BaseDialog<BubblePopup> {
         showAnim(new BounceLeftEnter());
         dismissAnim(new FadeExit());
         dimEnabled(false);
-        heightScale(1);
 
-        backgroundColor(Color.parseColor("#BB000000"));
+        bubbleColor(Color.parseColor("#BB000000"));
         cornerRadius(5);
         margin(8, 8);
         gravity(Gravity.TOP);
@@ -52,8 +45,6 @@ public class BubblePopup extends BaseDialog<BubblePopup> {
 
     @Override
     public View onCreateView() {
-        mLlControlHeight.setClipChildren(false);
-
         View inflate = View.inflate(mContext, R.layout.popup_bubble, null);
         mLlContent = (LinearLayout) inflate.findViewById(R.id.ll_content);
         mTriangleView = (TriangleView) inflate.findViewById(R.id.triangle_view);
@@ -61,86 +52,31 @@ public class BubblePopup extends BaseDialog<BubblePopup> {
 
         mLayoutParams = (RelativeLayout.LayoutParams) mLlContent.getLayoutParams();
 
-        inflate.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                setViewLocation();
-            }
-        });
-
         return inflate;
     }
 
     @Override
     public void setUiBeforShow() {
         mLlContent.setBackgroundDrawable(
-                CornerUtils.cornerDrawable(mBackgroundColor, mCornerRadius));
+                CornerUtils.cornerDrawable(mBubbleColor, mCornerRadius));
         mLayoutParams.setMargins(mMarginLeft, 0, mMarginRight, 0);
         mLlContent.setLayoutParams(mLayoutParams);
 
-        mTriangleView.setColor(mBackgroundColor);
+        mTriangleView.setColor(mBubbleColor);
         mTriangleView.setGravity(mGravity == Gravity.TOP ? Gravity.BOTTOM : Gravity.TOP);
     }
 
-    public BubblePopup backgroundColor(int backgroundColor) {
-        mBackgroundColor = backgroundColor;
-        return this;
-    }
-
-    public BubblePopup cornerRadius(float cornerRadius) {
-        mCornerRadius = dp2px(cornerRadius);
-        return this;
-    }
-
-    /** Gravity.Top or Gravity.Bottom */
-    public BubblePopup gravity(int gravity) {
-        if (gravity != Gravity.TOP && gravity != Gravity.BOTTOM) {
-            throw new IllegalArgumentException("Gravity must be either Gravity.TOP or Gravity.BOTTOM");
-        }
-        mGravity = gravity;
-        anchorView(mAnchorView);
-        return this;
-    }
-
-    public BubblePopup margin(float marginLeft, float marginRight) {
-        mMarginLeft = dp2px(marginLeft);
-        mMarginRight = dp2px(marginRight);
-        return this;
-    }
-
-    public BubblePopup location(int x, int y) {
-        this.mX = x;
-        this.mY = y;
-        return this;
-    }
-
-    public BubblePopup anchorView(View anchorView) {
-        if (anchorView != null) {
-            mAnchorView = anchorView;
-            int[] location = new int[2];
-            mAnchorView.getLocationOnScreen(location);
-
-            mX = location[0] + anchorView.getWidth() / 2;
-            if (mGravity == Gravity.TOP) {
-                mY = location[1] - dp2px(1);
-            } else {
-                mY = location[1] + anchorView.getHeight() + dp2px(1);
-            }
-        }
-        return this;
-    }
-
-    private void setViewLocation() {
+    @Override
+    public void onLayoutObtain() {
         ViewHelper.setX(mTriangleView, mX - mTriangleView.getWidth() / 2);
 
         if (mGravity == Gravity.TOP) {
-            int y = mY - mTriangleView.getHeight() - StatusBarUtils.getHeight(mContext);
+            int y = mY - mTriangleView.getHeight();
             ViewHelper.setY(mTriangleView, y);
             ViewHelper.setY(mLlContent, y - mLlContent.getHeight());
         } else {
-            int y = mY - StatusBarUtils.getHeight(mContext);
-            ViewHelper.setY(mTriangleView, y);
-            ViewHelper.setY(mLlContent, y + mTriangleView.getHeight());
+            ViewHelper.setY(mTriangleView, mY);
+            ViewHelper.setY(mLlContent, mY + mTriangleView.getHeight());
         }
 
         /**
@@ -162,5 +98,42 @@ public class BubblePopup extends BaseDialog<BubblePopup> {
             }
         }
         ViewHelper.setX(mLlContent, x);
+    }
+
+    @Override
+    public BubblePopup anchorView(View anchorView, int xOffset, int yOffset) {
+        if (anchorView != null) {
+            mAnchorView = anchorView;
+            mXOffset = xOffset;
+            mYOffset = yOffset;
+            int[] location = new int[2];
+            mAnchorView.getLocationOnScreen(location);
+
+            mX = location[0] + anchorView.getWidth() / 2 + mXOffset;
+            if (mGravity == Gravity.TOP) {
+                mY = location[1] - StatusBarUtils.getHeight(mContext)
+                        - dp2px(1) + mYOffset;
+            } else {
+                mY = location[1] - StatusBarUtils.getHeight(mContext)
+                        + anchorView.getHeight() + dp2px(1) + mYOffset;
+            }
+        }
+        return this;
+    }
+
+    public BubblePopup bubbleColor(int bubbleColor) {
+        mBubbleColor = bubbleColor;
+        return this;
+    }
+
+    public BubblePopup cornerRadius(float cornerRadius) {
+        mCornerRadius = dp2px(cornerRadius);
+        return this;
+    }
+
+    public BubblePopup margin(float marginLeft, float marginRight) {
+        mMarginLeft = dp2px(marginLeft);
+        mMarginRight = dp2px(marginRight);
+        return this;
     }
 }
