@@ -12,7 +12,7 @@
 
 ####[DemoApk下载](http://fir.im/mj9p)
 
-##内置Dialog
+## <a name="内置Dialog"></a>内置Dialog
 |对话框|描述|截图|gif动画
 |:---:|:---:|:---:|:---:|
 | NormalDialog | 默认(两个按钮) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_1.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_1.gif)
