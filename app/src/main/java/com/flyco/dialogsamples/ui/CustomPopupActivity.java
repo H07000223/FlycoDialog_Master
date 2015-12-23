@@ -51,8 +51,9 @@ public class CustomPopupActivity extends AppCompatActivity {
                 .alignCenter(true)
                 .anchorView(mTvCenter)
                 .gravity(Gravity.BOTTOM)
-                .showAnim(new BounceTopEnter())
+                .showAnim(new SlideTopEnter())
                 .dismissAnim(new SlideTopExit())
+                .offset(0, 0)
                 .dimEnabled(false)
                 .show();
     }
@@ -62,6 +63,7 @@ public class CustomPopupActivity extends AppCompatActivity {
         mQuickCustomPopup
                 .anchorView(mTvTopLeft)
                 .gravity(Gravity.BOTTOM)
+                .offset(10, 5)
                 .showAnim(new BounceTopEnter())
                 .dismissAnim(new SlideTopExit())
                 .dimEnabled(false)
