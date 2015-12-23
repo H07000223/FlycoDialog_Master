@@ -44,7 +44,8 @@
   - 新增支持Dialog自动消失技能
 
 ## <a name="如何快速自定义Dialog"></a>如何快速自定义Dialog
-> - 步骤一:继承BaseDialog(或者BottomBaseDialog或者TopBaseDialog)
+> 
+  - 步骤一:继承BaseDialog(或者BottomBaseDialog或者TopBaseDialog)
   - 步骤二:在onCreateView方法填充布局和查找控件
   - 步骤三:在setUiBeforShow方法中做一些逻辑操作,例如设置数据,设置监听之类
   
@@ -94,7 +95,8 @@
   ```
   
 ## <a name="如何快速自定义Popup"></a>如何快速自定义Popup
-> - 步骤一:继承BasePopup
+> 
+  - 步骤一:继承BasePopup
   - 步骤二:在onCreatePopupView方法填充布局和查找控件
   - 步骤三:在setUiBeforShow方法中做一些逻辑操作,例如设置数据,设置监听之类
   
