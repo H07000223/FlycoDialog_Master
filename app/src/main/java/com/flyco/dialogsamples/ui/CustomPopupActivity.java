@@ -116,5 +116,10 @@ public class CustomPopupActivity extends AppCompatActivity {
         public View onCreatePopupView() {
             return View.inflate(mContext, R.layout.popup_custom, null);
         }
+
+        @Override
+        public void setUiBeforShow() {
+
+        }
     }
 }

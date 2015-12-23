@@ -23,7 +23,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':FlycoDialog_Lib')
 
-//    compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.0@aar'
+//    compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.2@aar'
 //    compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
 //    compile 'com.nineoldandroids:library:2.4.0'
 

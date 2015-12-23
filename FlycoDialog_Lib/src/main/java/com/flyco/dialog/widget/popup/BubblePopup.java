@@ -57,7 +57,6 @@ public class BubblePopup extends InternalBasePopup<BubblePopup> {
 
     @Override
     public void setUiBeforShow() {
-        super.setUiBeforShow();
         mLlContent.setBackgroundDrawable(
                 CornerUtils.cornerDrawable(mBubbleColor, mCornerRadius));
         mLayoutParams.setMargins(mMarginLeft, 0, mMarginRight, 0);

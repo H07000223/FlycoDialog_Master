@@ -40,7 +40,8 @@ public abstract class InternalBasePopup<T extends InternalBasePopup<T>> extends 
     }
 
     @Override
-    public void setUiBeforShow() {
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
         if (isLayoutObtain) {
             onLayoutObtain();
         }

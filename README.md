@@ -8,7 +8,7 @@
 - [丰富的内置动画库,方便直接使用]()
 - [支持快速自定义Dialog](#如何快速自定义Dialog)
 - [支持快速自定义Popup](#如何快速自定义Popup)
-- [支持自定义Dialog动画](#自定义Dialog动画)
+- [支持自定义Dialog动画]()
 
 ####[DemoApk下载](http://fir.im/mj9p)
 
@@ -35,17 +35,92 @@
 | 弹窗 | 带三角箭头的提示弹窗 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
 
 >## 更新说明
-
+ > v1.2.2
+   - BasePopup 小bug修复
+ 
  > v1.2.0
   - 新增基类BasePopup,用于快速自定义Popwindow样式Dialog
   - 新增内置控件BubblePopup
   - 新增支持Dialog自动消失技能
+
+## <a name="如何快速自定义Dialog"></a>如何快速自定义Dialog
+> - 步骤一:继承BaseDialog(或者BottomBaseDialog或者TopBaseDialog)
+  - 步骤二:在onCreateView方法填充布局和查找控件
+  - 步骤三:在setUiBeforShow方法中做一些逻辑操作,例如设置数据,设置监听之类
+  
+  ```Java
+  public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
+      private TextView tv_cancel;
+      private TextView tv_exit;
+  
+      public CustomBaseDialog(Context context) {
+          super(context);
+      }
+  
+      @Override
+      public View onCreateView() {
+          widthScale(0.85f);
+          showAnim(new Swing());
+  
+          // dismissAnim(this, new ZoomOutExit());
+          View inflate = View.inflate(context, R.layout.dialog_custom_base, null);
+          tv_cancel = ViewFindUtils.find(inflate, R.id.tv_cancel);
+          tv_exit = ViewFindUtils.find(inflate, R.id.tv_exit);
+          inflate.setBackgroundDrawable(
+                  CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(5)));
+  
+          return inflate;
+      }
+  
+      @Override
+      public boolean setUiBeforShow() {
+          tv_cancel.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  dismiss();
+              }
+          });
+  
+          tv_exit.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  dismiss();
+              }
+          });
+  
+          return false;
+      }
+  }
+  ```
+  
+## <a name="如何快速自定义Popup"></a>如何快速自定义Popup
+> - 步骤一:继承BasePopup
+  - 步骤二:在onCreatePopupView方法填充布局和查找控件
+  - 步骤三:在setUiBeforShow方法中做一些逻辑操作,例如设置数据,设置监听之类
+  
+  ```java
+  public class SimpleCustomPop extends BasePopup<SimpleCustomPop> {
+          public SimpleCustomPop(Context context) {
+              super(context);
+          }
+  
+          @Override
+          public View onCreatePopupView() {
+              return View.inflate(mContext, R.layout.popup_custom, null);
+          }
+  
+          @Override
+          public void setUiBeforShow() {
+  
+          }
+      }
+  ```
   
 ##Gradle
 
 ```groovy
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.0@aar'
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.2@aar'
      compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
