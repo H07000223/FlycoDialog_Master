@@ -13,19 +13,20 @@
 ##内置Dialog
 |对话框|描述|截图|gif动画
 |:---:|:---:|:---:|:---:|
-| NormalDialog | 默认(两个按钮) | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_1.gif)
-| NormalDialog | 第二种风格 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_2.gif)
-| NormalDialog | 自定义属性 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_3.gif)
-| NormalDialog | 一个按钮 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_4.gif)
-| NormalDialog | 三个按钮 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_5.gif)
-| MaterialDialog | 默认(两个按钮) | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_6.gif)
-| MaterialDialog | 一个按钮 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_7.gif)
-| MaterialDialog | 三个按钮 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_8.gif)
-| NormalListDialog | 默认 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_9.gif)
-| NormalListDialog | 自定义属性 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_10.gif)
-| NormalListDialog | 无标题 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_11.gif)
-| ActionSheetDialog | 默认 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
-| ActionSheetDialog | 无标题 | <img src="" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
+| NormalDialog | 默认(两个按钮) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_1.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_1.gif)
+| NormalDialog | 第二种风格 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_2.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_2.gif)
+| NormalDialog | 自定义属性 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_3.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_3.gif)
+| NormalDialog | 一个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_4.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_4.gif)
+| NormalDialog | 三个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_5.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_5.gif)
+| MaterialDialog | 默认(两个按钮) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_1.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_6.gif)
+| MaterialDialog | 一个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_2.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_7.gif)
+| MaterialDialog | 三个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_3.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_8.gif)
+| NormalListDialog | 默认 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_1.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_9.gif)
+| NormalListDialog | 自定义属性 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_2.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_10.gif)
+| NormalListDialog | 无标题 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_3.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_11.gif)
+| ActionSheetDialog | 默认 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_1.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
+| ActionSheetDialog | 无标题 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_2.png" width="320"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
+
 
 >## 更新说明
 
