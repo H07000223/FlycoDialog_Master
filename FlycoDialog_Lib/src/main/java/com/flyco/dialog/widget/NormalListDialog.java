@@ -26,7 +26,7 @@ import com.flyco.dialog.widget.base.BaseDialog;
 
 import java.util.ArrayList;
 
-public class NormalListDialog extends BaseDialog {
+public class NormalListDialog extends BaseDialog<NormalListDialog> {
     /** ListView */
     private ListView mLv;
     /** title */

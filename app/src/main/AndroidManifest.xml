@@ -27,7 +27,7 @@
             android:name=".ui.BubblePopupActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.CommonPopupActivity"
+            android:name=".ui.CustomPopupActivity"
             android:screenOrientation="portrait"/>
     </application>
 

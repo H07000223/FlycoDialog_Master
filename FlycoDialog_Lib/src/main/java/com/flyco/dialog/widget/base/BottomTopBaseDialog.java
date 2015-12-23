@@ -8,7 +8,7 @@ import android.view.animation.Animation.AnimationListener;
 
 import com.flyco.animation.BaseAnimatorSet;
 
-public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> extends BaseDialog {
+public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> extends BaseDialog<T> {
     protected View mAnimateView;
     private BaseAnimatorSet mWindowInAs;
     private BaseAnimatorSet mWindowOutAs;

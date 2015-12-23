@@ -10,44 +10,55 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:padding="15dp"
             android:text="标记已读"
             android:textColor="#666666"
-            android:textSize="14sp"/>
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#eeeeee"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:padding="15dp"
             android:text="全部标记已读"
             android:textColor="#666666"
-            android:textSize="14sp"/>
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#eeeeee"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:padding="15dp"
             android:text="标签"
             android:textColor="#666666"
-            android:textSize="14sp"/>
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#eeeeee"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
             android:text="添加星标"
             android:textColor="#666666"
-            android:textSize="14sp"/>
-
+            android:textSize="15sp"/>
     </LinearLayout>
 </RelativeLayout>

@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 public class PopupHomeActivity extends AppCompatActivity {
     private Context mContext = this;
-    private final String[] mItems = {"CommonPopup", "BubblePopup"};
-    private final Class<?>[] mClazzs = {CommonPopupActivity.class, BubblePopupActivity.class};
+    private final String[] mItems = {"Custom Popup", "BubblePopup"};
+    private final Class<?>[] mClazzs = {CustomPopupActivity.class, BubblePopupActivity.class};
     private DisplayMetrics mDisplayMetrics;
 
     @Override

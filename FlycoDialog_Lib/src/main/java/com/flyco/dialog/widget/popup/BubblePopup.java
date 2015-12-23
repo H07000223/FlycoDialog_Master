@@ -13,14 +13,14 @@ import com.flyco.dialog.R;
 import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.utils.StatusBarUtils;
 import com.flyco.dialog.view.TriangleView;
-import com.flyco.dialog.widget.base.BasePopup;
+import com.flyco.dialog.widget.internal.InternalBasePopup;
 import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Use dialog to realize bubble style popup(利用Dialog实现泡泡样式的弹窗)
  * thanks https://github.com/michaelye/EasyDialog
  */
-public class BubblePopup extends BasePopup<BubblePopup> {
+public class BubblePopup extends InternalBasePopup<BubblePopup> {
     private View mWrappedView;
     private LinearLayout mLlContent;
     private TriangleView mTriangleView;
@@ -57,6 +57,7 @@ public class BubblePopup extends BasePopup<BubblePopup> {
 
     @Override
     public void setUiBeforShow() {
+        super.setUiBeforShow();
         mLlContent.setBackgroundDrawable(
                 CornerUtils.cornerDrawable(mBubbleColor, mCornerRadius));
         mLayoutParams.setMargins(mMarginLeft, 0, mMarginRight, 0);
@@ -101,21 +102,19 @@ public class BubblePopup extends BasePopup<BubblePopup> {
     }
 
     @Override
-    public BubblePopup anchorView(View anchorView, int xOffset, int yOffset) {
+    public BubblePopup anchorView(View anchorView) {
         if (anchorView != null) {
             mAnchorView = anchorView;
-            mXOffset = xOffset;
-            mYOffset = yOffset;
             int[] location = new int[2];
             mAnchorView.getLocationOnScreen(location);
 
-            mX = location[0] + anchorView.getWidth() / 2 + mXOffset;
+            mX = location[0] + anchorView.getWidth() / 2;
             if (mGravity == Gravity.TOP) {
                 mY = location[1] - StatusBarUtils.getHeight(mContext)
-                        - dp2px(1) + mYOffset;
+                        - dp2px(1);
             } else {
                 mY = location[1] - StatusBarUtils.getHeight(mContext)
-                        + anchorView.getHeight() + dp2px(1) + mYOffset;
+                        + anchorView.getHeight() + dp2px(1);
             }
         }
         return this;

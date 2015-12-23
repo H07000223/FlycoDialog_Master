@@ -30,7 +30,7 @@ import java.util.ArrayList;
 /**
  * Dialog like iOS ActionSheet(iOS风格对话框)
  */
-public class ActionSheetDialog extends BottomBaseDialog {
+public class ActionSheetDialog extends BottomBaseDialog<ActionSheetDialog> {
     /** ListView */
     private ListView mLv;
     /** title */

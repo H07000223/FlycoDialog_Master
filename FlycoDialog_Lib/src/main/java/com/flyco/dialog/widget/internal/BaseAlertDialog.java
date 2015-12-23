@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.base.BaseDialog;
 
-public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends BaseDialog {
+public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends BaseDialog<T> {
     /** container */
     protected LinearLayout mLlContainer;
     //title
