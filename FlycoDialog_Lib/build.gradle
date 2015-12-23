@@ -3,15 +3,15 @@ apply plugin: 'com.android.library'
 //apply plugin: 'com.jfrog.bintray'
 
 // 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
-version = "1.1.8"
+version = "1.2.0"
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
     resourcePrefix "FlycoDialog_"    //这个随便填
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 22
-        versionCode 118
+        targetSdkVersion 23
+        versionCode 120
         versionName version
     }
     buildTypes {

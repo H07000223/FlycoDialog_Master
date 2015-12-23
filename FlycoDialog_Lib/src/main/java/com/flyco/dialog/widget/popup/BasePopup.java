@@ -10,8 +10,6 @@ import com.flyco.dialog.utils.StatusBarUtils;
 import com.flyco.dialog.widget.internal.InternalBasePopup;
 import com.nineoldandroids.view.ViewHelper;
 
-import org.apache.http.auth.MalformedChallengeException;
-
 public abstract class BasePopup<T extends BasePopup<T>> extends InternalBasePopup<T> {
     protected View mWrappedView;
     protected LinearLayout mLlContent;
