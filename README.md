@@ -3,7 +3,7 @@
 ####[中文版](https://github.com/H07000223/FlycoDialog_Master/blob/master/README_CN.md)
 An Android Dialog Lib simplify customization. Supprot 2.2+.
 
-##特点
+##Features
 - [Built-in Dialog, convenient to use](#Built-in Dialog)
 - [Abundant Built-in Animations, convenient to use](#Abundant Built-in Animations)
 - [Qucik Customize Dialog](#Qucik Customize Dialog)
