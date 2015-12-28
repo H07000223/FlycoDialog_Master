@@ -27,3 +27,7 @@ Version 1.2.0 *(2015-12-19)*
 * new added built-in widget - BubblePopup
 * BaseDialog support auto dimiss in given delay
 
+Version 1.2.2 *(2015-12-20)*
+----------------------------
+* BasePopup small bug fix
+

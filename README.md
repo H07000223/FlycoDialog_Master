@@ -1,53 +1,53 @@
 #FlycoDialog-Master
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoDialog--Matser-green.svg?style=flat)](https://android-arsenal.com/details/1/2430)
-
-一个强大的Android对话框库,简化自定义对话框.支持2.2+.
+####[中文版](https://github.com/H07000223/FlycoDialog_Master/blob/master/README_CN.md)
+An Android Dialog Lib simplify customization. Supprot 2.2+.
 
 ##特点
-- [内置Dialog,方便直接使用](#内置Dialog)
-- [丰富的内置动画库,方便直接使用](#丰富的内置动画库)
-- [支持快速自定义Dialog](#如何快速自定义Dialog)
-- [支持快速自定义Popup](#如何快速自定义Popup)
-- [支持自定义Dialog动画](#自定义Dialog动画)
+- [Built-in Dialog, convenient to use](#Built-in Dialog)
+- [Abundant Built-in Animations, convenient to use](#Abundant Built-in Animations)
+- [Qucik Customize Dialog](#Qucik Customize Dialog)
+- [Qucik Customize Popup](#Qucik Customize Popup)
+- [Support Customize Dialog Animation](#Customize Dialog Animation)
 
-####[DemoApk下载](http://fir.im/mj9p)
+####[DemoApk Download](http://fir.im/mj9p)
 
-## <a name="内置Dialog"></a>内置Dialog
-|对话框|描述|截图|gif动画
+## <a name="Built-in Dialog"></a>Built-in Dialog
+|Dialog|Description|ScreenShot|gif
 |:---:|:---:|:---:|:---:|
-| NormalDialog | 默认(两个按钮) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_1.gif)
-| NormalDialog | 第二种风格 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_2.gif)
-| NormalDialog | 自定义属性 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_3.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_3.gif)
-| NormalDialog | 一个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_4.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_4.gif)
-| NormalDialog | 三个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_5.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_5.gif)
-| MaterialDialog | 默认(两个按钮) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_6.gif)
-| MaterialDialog | 一个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_7.gif)
-| MaterialDialog | 三个按钮 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_3.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_8.gif)
-| NormalListDialog | 默认 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_9.gif)
-| NormalListDialog | 自定义属性 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_10.gif)
-| NormalListDialog | 无标题 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_3.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_11.gif)
-| ActionSheetDialog | 默认 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
-| ActionSheetDialog | 无标题 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
+| NormalDialog | Default(Two Btns) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_1.gif)
+| NormalDialog | Style Two | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_2.gif)
+| NormalDialog | Custom Attr | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_3.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_3.gif)
+| NormalDialog | One Btn | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_4.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_4.gif)
+| NormalDialog | Three Btns | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_dialog_5.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_5.gif)
+| MaterialDialog | Default(Two Btns) | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_6.gif)
+| MaterialDialog | One Btn | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_7.gif)
+| MaterialDialog | Three Btns | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/material_dialog_3.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_8.gif)
+| NormalListDialog | Default | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_9.gif)
+| NormalListDialog | Custom Attr | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_10.gif)
+| NormalListDialog | No Title| <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/normal_list_3.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_11.gif)
+| ActionSheetDialog | Default | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
+| ActionSheetDialog | No Title | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
 
-##内置Popup
-|弹窗|描述|截图|gif动画
+##Built-in Popup
+|Popup|Description|ScreenShot|gif
 |:---:|:---:|:---:|:---:|
-| 弹窗 | 带三角箭头的提示弹窗 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
+| BubblePopup | BubblePopup | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
 
->## 更新说明
- > v1.2.2
-   - BasePopup 小bug修复
+>##Change Log
+ > v1.2.2(2015-12-20)
+   - BasePopup small bug fix
  
- > v1.2.0
-  - 新增基类BasePopup,用于快速自定义Popwindow样式Dialog
-  - 新增内置控件BubblePopup
-  - 新增支持Dialog自动消失技能
+ > v1.2.0(2015-12-19)
+   - new added base widget - BasePopup
+   - new added built-in widget - BubblePopup
+   - BaseDialog support auto dimiss in given delay
 
-## <a name="如何快速自定义Dialog"></a>如何快速自定义Dialog
+## <a name="Qucik Customize Dialog"></a>Qucik Customize Dialog
 > 
-  - 步骤一:继承BaseDialog(或者BottomBaseDialog或者TopBaseDialog)
-  - 步骤二:在onCreateView方法填充布局和查找控件
-  - 步骤三:在setUiBeforShow方法中做一些逻辑操作,例如设置数据,设置监听之类
+  - step1:extends BaseDialog(or BottomBaseDialog or TopBaseDialog)
+  - step2:inflate layout and find views in onCreateView method
+  - step3:do logic operation in setUiBeforShow method
   
   ```Java
   public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
@@ -94,11 +94,11 @@
   }
   ```
   
-## <a name="如何快速自定义Popup"></a>如何快速自定义Popup
+## <a name="Qucik Customize Popup"></a>Qucik Customize Popup
 > 
-  - 步骤一:继承BasePopup
-  - 步骤二:在onCreatePopupView方法填充布局和查找控件
-  - 步骤三:在setUiBeforShow方法中做一些逻辑操作,例如设置数据,设置监听之类
+  - step1:extends BasePopup
+  - step2:inflate layout and find views in onCreatePopupView method
+  - step3:do logic operation in setUiBeforShow method
   
   ```java
   public class SimpleCustomPop extends BasePopup<SimpleCustomPop> {
@@ -128,7 +128,7 @@ dependencies{
 }
 ```
 
-##Eclispe(不再维护更新)
+##Eclispe(no update)
 Eclipse Developers should include jars below into your project.
 *   [FlycoAnimation_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoAnimation_Lib-v1.0.0.jar)
 *   [FlycoDialog_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoDialog_Lib-v1.0.0.jar)
