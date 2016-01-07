@@ -41,7 +41,7 @@ public class HomeAdapter extends BaseExpandableListAdapter {
             convertView = View.inflate(mContext, R.layout.ad_dialog_home, null);
         }
 
-        TextView tv = ViewFindUtils.find(convertView, R.id.tv);
+        TextView tv = ViewFindUtils.find(convertView, R.id.tv_bubble);
         tv.setText(DialogHomeActivity.mGroups[groupPosition]);
         return convertView;
     }
@@ -69,7 +69,7 @@ public class HomeAdapter extends BaseExpandableListAdapter {
             convertView = View.inflate(mContext, R.layout.ad_dialog_home, null);
         }
 
-        TextView tv = ViewFindUtils.find(convertView, R.id.tv);
+        TextView tv = ViewFindUtils.find(convertView, R.id.tv_bubble);
         View v_line = ViewFindUtils.find(convertView, R.id.v_line);
 
         v_line.setVisibility(View.INVISIBLE);

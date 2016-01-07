@@ -31,3 +31,7 @@ Version 1.2.2 *(2015-12-20)*
 ----------------------------
 * BasePopup small bug fix
 
+Version 1.2.6 *(2015-12-20)*
+----------------------------
+* Combine FlycoAnimation_Lib into FlycoDialog_Lib
+

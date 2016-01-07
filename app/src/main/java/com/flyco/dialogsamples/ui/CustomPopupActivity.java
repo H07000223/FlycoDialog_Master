@@ -15,7 +15,7 @@ import com.flyco.animation.SlideEnter.SlideBottomEnter;
 import com.flyco.animation.SlideEnter.SlideTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.animation.SlideExit.SlideTopExit;
-import com.flyco.dialog.widget.popup.BasePopup;
+import com.flyco.dialog.widget.popup.base.BasePopup;
 import com.flyco.dialogsamples.R;
 
 import butterknife.Bind;

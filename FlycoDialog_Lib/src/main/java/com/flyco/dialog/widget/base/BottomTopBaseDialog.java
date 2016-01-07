@@ -23,7 +23,7 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
         super(context);
     }
 
-    /** set duration for inner animation of mAnimateView(设置animateView内置动画时长) */
+    /** set duration for inner com.flyco.animation of mAnimateView(设置animateView内置动画时长) */
     public T innerAnimDuration(long innerAnimDuration) {
         mInnerAnimDuration = innerAnimDuration;
         return (T) this;
@@ -37,7 +37,7 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
         return (T) this;
     }
 
-    /** show dialog and mAnimateView with inner show animation(设置dialog和animateView显示动画) */
+    /** show dialog and mAnimateView with inner show com.flyco.animation(设置dialog和animateView显示动画) */
     protected void showWithAnim() {
         if (mInnerShowAnim != null) {
             mInnerShowAnim.setDuration(mInnerAnimDuration);
@@ -68,7 +68,7 @@ public abstract class BottomTopBaseDialog<T extends BottomTopBaseDialog<T>> exte
         }
     }
 
-    /** dimiss dialog and mAnimateView with inner dismiss animation(设置dialog和animateView消失动画) */
+    /** dimiss dialog and mAnimateView with inner dismiss com.flyco.animation(设置dialog和animateView消失动画) */
     protected void dismissWithAnim() {
         if (mInnerDismissAnim != null) {
             mInnerDismissAnim.setDuration(mInnerAnimDuration);
