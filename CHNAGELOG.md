@@ -31,8 +31,9 @@ Version 1.2.2 *(2015-12-20)*
 ----------------------------
 * BasePopup small bug fix
 
-Version 1.2.4 *(2015-01-07)*
+Version 1.2.6 *(2015-01-07)*
 ----------------------------
 * Combine FlycoAnimation_Lib into FlycoDialog_Lib
-* fix bug for View in Popup click no response
+* Fix bug for View in Popup click no response
+* Improve the function of BaseBubblePopup
 

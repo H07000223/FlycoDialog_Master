@@ -80,6 +80,8 @@ public class BubblePopupActivity extends AppCompatActivity {
         customBubblePopup
                 .gravity(Gravity.BOTTOM)
                 .anchorView(mTvTopRight)
+                .triangleWidth(20)
+                .triangleHeight(10)
                 .showAnim(null)
                 .dismissAnim(null)
                 .show();

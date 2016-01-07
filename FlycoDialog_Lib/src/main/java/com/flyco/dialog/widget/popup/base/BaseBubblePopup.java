@@ -29,6 +29,9 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
     protected int mCornerRadius;
     protected int mMarginLeft;
     protected int mMarginRight;
+    protected int triangleWidth;
+    protected int triangleHeight;
+    private RelativeLayout.LayoutParams mTriangleLayoutParams;
 
     public BaseBubblePopup(Context context) {
         super(context);
@@ -51,6 +54,8 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
         cornerRadius(5);
         margin(8, 8);
         gravity(Gravity.TOP);
+        triangleWidth(24);
+        triangleHeight(12);
     }
 
     public abstract View onCreateBubbleView();
@@ -63,6 +68,7 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
         mLlContent.addView(mWrappedView);
 
         mLayoutParams = (RelativeLayout.LayoutParams) mLlContent.getLayoutParams();
+        mTriangleLayoutParams = (RelativeLayout.LayoutParams) mTriangleView.getLayoutParams();
         //让mOnCreateView充满父控件,防止ViewHelper.setXY导致点击事件无效
         inflate.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -78,6 +84,10 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
 
         mTriangleView.setColor(mBubbleColor);
         mTriangleView.setGravity(mGravity == Gravity.TOP ? Gravity.BOTTOM : Gravity.TOP);
+
+        mTriangleLayoutParams.width = triangleWidth;
+        mTriangleLayoutParams.height = triangleHeight;
+        mTriangleView.setLayoutParams(mTriangleLayoutParams);
     }
 
     @Override
@@ -146,6 +156,16 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
     public T margin(float marginLeft, float marginRight) {
         mMarginLeft = dp2px(marginLeft);
         mMarginRight = dp2px(marginRight);
+        return (T) this;
+    }
+
+    public T triangleWidth(float width) {
+        triangleWidth = dp2px(width);
+        return (T) this;
+    }
+
+    public T triangleHeight(float height) {
+        triangleHeight = dp2px(height);
         return (T) this;
     }
 }
