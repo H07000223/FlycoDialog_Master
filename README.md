@@ -35,6 +35,12 @@ An Android Dialog Lib simplify customization. Supprot 2.2+.
 | BubblePopup | BubblePopup | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
 
 >##Change Log
+
+ > v1.2.6(2015-01-07)
+   - Combine FlycoAnimation_Lib into FlycoDialog_Lib
+   - Fix bug for View in Popup click no response
+   - Improve the function of BaseBubblePopup
+   
  > v1.2.2(2015-12-20)
    - BasePopup small bug fix
  
@@ -124,6 +130,12 @@ An Android Dialog Lib simplify customization. Supprot 2.2+.
 dependencies{
      compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.2@aar'
      compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
+     compile 'com.nineoldandroids:library:2.4.0'
+}
+
+After v1.2.6
+dependencies{
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
 ```

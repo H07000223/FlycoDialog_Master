@@ -35,6 +35,12 @@
 | 弹窗 | 带三角箭头的提示弹窗 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
 
 >## 更新说明
+
+ > v1.2.6(2015-01-07)
+   - 将FlycoAnimation_Lib库合并到FlycoDialog_Lib中
+   - 修复bug,在Popup中的View设置点击监听无效
+   - 完善BaseBubblePopup功能
+   
  > v1.2.2(2015-12-20)
    - BasePopup 小bug修复
  
@@ -126,6 +132,14 @@ dependencies{
      compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
+
+
+After v1.2.6
+dependencies{
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
+     compile 'com.nineoldandroids:library:2.4.0'
+}
+
 ```
 
 ##Eclispe(不再维护更新)
