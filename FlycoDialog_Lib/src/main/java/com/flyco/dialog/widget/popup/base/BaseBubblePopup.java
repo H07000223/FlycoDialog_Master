@@ -63,7 +63,9 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
         mLlContent.addView(mWrappedView);
 
         mLayoutParams = (RelativeLayout.LayoutParams) mLlContent.getLayoutParams();
-
+        //让mOnCreateView充满父控件,防止ViewHelper.setXY导致点击事件无效
+        inflate.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
         return inflate;
     }
 

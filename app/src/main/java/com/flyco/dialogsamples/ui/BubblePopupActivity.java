@@ -64,6 +64,13 @@ public class BubblePopupActivity extends AppCompatActivity {
         bubblePopup.anchorView(mTvTopLeft)
                 .gravity(Gravity.BOTTOM)
                 .show();
+
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                T.showShort(mContext, "tv_bubble");
+            }
+        });
     }
 
     @OnClick(R.id.tv_top_right)

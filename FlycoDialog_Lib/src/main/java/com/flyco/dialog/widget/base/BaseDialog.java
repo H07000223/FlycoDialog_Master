@@ -42,6 +42,8 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
     protected LinearLayout mLlTop;
     /** container to control dialog height(用于控制对话框高度) */
     protected LinearLayout mLlControlHeight;
+    /** the child of mLlControlHeight you create.(创建出来的mLlControlHeight的直接子View) */
+    protected View mOnCreateView;
     /** is mShowAnim running(显示动画是否正在执行) */
     private boolean mIsShowAnim;
     /** is DismissAnim running(消失动画是否正在执行) */
@@ -113,10 +115,10 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
         mLlControlHeight = new LinearLayout(mContext);
         mLlControlHeight.setOrientation(LinearLayout.VERTICAL);
 
-        View onCreateView = onCreateView();
-        mLlControlHeight.addView(onCreateView);
+        mOnCreateView = onCreateView();
+        mLlControlHeight.addView(mOnCreateView);
         mLlTop.addView(mLlControlHeight);
-        onViewCreated(onCreateView);
+        onViewCreated(mOnCreateView);
 
         if (mIsPopupStyle) {
             setContentView(mLlTop, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
