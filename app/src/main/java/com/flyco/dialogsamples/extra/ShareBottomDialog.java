@@ -5,16 +5,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.flyco.animation.FlipEnter.FlipVerticalSwingEnter;
+import com.flyco.dialog.widget.base.BottomBaseDialog;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.utils.T;
-import com.flyco.dialogsamples.utils.ViewFindUtils;
-import com.flyco.dialog.widget.base.BottomBaseDialog;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ShareBottomDialog extends BottomBaseDialog<ShareBottomDialog> {
-    private LinearLayout mLlWechatFriendCircle;
-    private LinearLayout mLlWechatFriend;
-    private LinearLayout mLlQq;
-    private LinearLayout mLlSms;
+    @Bind(R.id.ll_wechat_friend_circle) LinearLayout mLlWechatFriendCircle;
+    @Bind(R.id.ll_wechat_friend) LinearLayout mLlWechatFriend;
+    @Bind(R.id.ll_qq) LinearLayout mLlQq;
+    @Bind(R.id.ll_sms) LinearLayout mLlSms;
 
     public ShareBottomDialog(Context context, View animateView) {
         super(context, animateView);
@@ -29,10 +31,7 @@ public class ShareBottomDialog extends BottomBaseDialog<ShareBottomDialog> {
         showAnim(new FlipVerticalSwingEnter());
         dismissAnim(null);
         View inflate = View.inflate(mContext, R.layout.dialog_share, null);
-        mLlWechatFriendCircle = ViewFindUtils.find(inflate, R.id.ll_wechat_friend_circle);
-        mLlWechatFriend = ViewFindUtils.find(inflate, R.id.ll_wechat_friend);
-        mLlQq = ViewFindUtils.find(inflate, R.id.ll_qq);
-        mLlSms = ViewFindUtils.find(inflate, R.id.ll_sms);
+        ButterKnife.bind(this, inflate);
 
         return inflate;
     }

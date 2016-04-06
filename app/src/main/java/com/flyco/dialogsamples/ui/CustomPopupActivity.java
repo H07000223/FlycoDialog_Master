@@ -1,12 +1,10 @@
 package com.flyco.dialogsamples.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -108,12 +106,12 @@ public class CustomPopupActivity extends AppCompatActivity {
                 .show();
     }
 
-    private class SimpleCustomPop extends BasePopup<SimpleCustomPop> {
+    class SimpleCustomPop extends BasePopup<SimpleCustomPop> {
 
-        private TextView mTvItem1;
-        private TextView mTvItem2;
-        private TextView mTvItem3;
-        private TextView mTvItem4;
+        @Bind(R.id.tv_item_1) TextView mTvItem1;
+        @Bind(R.id.tv_item_2) TextView mTvItem2;
+        @Bind(R.id.tv_item_3) TextView mTvItem3;
+        @Bind(R.id.tv_item_4) TextView mTvItem4;
 
         public SimpleCustomPop(Context context) {
             super(context);
@@ -122,10 +120,7 @@ public class CustomPopupActivity extends AppCompatActivity {
         @Override
         public View onCreatePopupView() {
             View inflate = View.inflate(mContext, R.layout.popup_custom, null);
-            mTvItem1 = (TextView) inflate.findViewById(R.id.tv_item_1);
-            mTvItem2 = (TextView) inflate.findViewById(R.id.tv_item_2);
-            mTvItem3 = (TextView) inflate.findViewById(R.id.tv_item_3);
-            mTvItem4 = (TextView) inflate.findViewById(R.id.tv_item_4);
+            ButterKnife.bind(this, inflate);
             return inflate;
         }
 

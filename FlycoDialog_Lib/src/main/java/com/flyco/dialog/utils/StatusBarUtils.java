@@ -15,7 +15,6 @@ public class StatusBarUtils {
         if (resourceId > 0) {
             statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
         }
-        Log.d(StatusBarUtils.class.getSimpleName(), "statusBarHeight--->" + statusBarHeight);
         if (isFlymeOs4x()) {
             return 2 * statusBarHeight;
         }

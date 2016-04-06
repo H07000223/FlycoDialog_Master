@@ -5,15 +5,17 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
-import com.flyco.dialogsamples.R;
-import com.flyco.dialogsamples.utils.ViewFindUtils;
 import com.flyco.animation.Attention.Swing;
 import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.widget.base.BaseDialog;
+import com.flyco.dialogsamples.R;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
-    private TextView mTvCancel;
-    private TextView mTvExit;
+    @Bind(R.id.tv_cancel) TextView mTvCancel;
+    @Bind(R.id.tv_exit) TextView mTvExit;
 
     public CustomBaseDialog(Context context) {
         super(context);
@@ -26,8 +28,7 @@ public class CustomBaseDialog extends BaseDialog<CustomBaseDialog> {
 
         // dismissAnim(this, new ZoomOutExit());
         View inflate = View.inflate(mContext, R.layout.dialog_custom_base, null);
-        mTvCancel = ViewFindUtils.find(inflate, R.id.tv_cancel);
-        mTvExit = ViewFindUtils.find(inflate, R.id.tv_exit);
+        ButterKnife.bind(this, inflate);
         inflate.setBackgroundDrawable(
                 CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(5)));
 

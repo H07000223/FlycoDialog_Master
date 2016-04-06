@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.ui.DialogHomeActivity;
-import com.flyco.dialogsamples.utils.ViewFindUtils;
+
+import butterknife.ButterKnife;
 
 
 public class HomeAdapter extends BaseExpandableListAdapter {
@@ -41,7 +42,7 @@ public class HomeAdapter extends BaseExpandableListAdapter {
             convertView = View.inflate(mContext, R.layout.ad_dialog_home, null);
         }
 
-        TextView tv = ViewFindUtils.find(convertView, R.id.tv_bubble);
+        TextView tv = ButterKnife.findById(convertView, R.id.tv_bubble);
         tv.setText(DialogHomeActivity.mGroups[groupPosition]);
         return convertView;
     }
@@ -69,8 +70,8 @@ public class HomeAdapter extends BaseExpandableListAdapter {
             convertView = View.inflate(mContext, R.layout.ad_dialog_home, null);
         }
 
-        TextView tv = ViewFindUtils.find(convertView, R.id.tv_bubble);
-        View v_line = ViewFindUtils.find(convertView, R.id.v_line);
+        TextView tv = ButterKnife.findById(convertView, R.id.tv_bubble);
+        View v_line = ButterKnife.findById(convertView, R.id.v_line);
 
         v_line.setVisibility(View.INVISIBLE);
         tv.setTextColor(Color.parseColor("#383838"));

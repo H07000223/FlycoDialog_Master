@@ -28,11 +28,14 @@ import com.flyco.dialogsamples.extra.ShareBottomDialog;
 import com.flyco.dialogsamples.extra.ShareTopDialog;
 import com.flyco.dialogsamples.utils.DiaogAnimChoose;
 import com.flyco.dialogsamples.utils.T;
-import com.flyco.dialogsamples.utils.ViewFindUtils;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class DialogHomeActivity extends AppCompatActivity implements ExpandableListView.OnChildClickListener {
+    @Bind(R.id.elv) ExpandableListView mElv;
     private Context mContext = this;
     public static String[] mGroups = {"Default Inner Dialog", "Custom Dialog", "Default Inner Anim", "Custom Anim"};
     public static String[][] mChilds = {
@@ -71,8 +74,6 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
     private String[] mStringItems = {"收藏", "下载", "分享", "删除", "歌手", "专辑"};
     private BaseAnimatorSet mBasIn;
     private BaseAnimatorSet mBasOut;
-    private ExpandableListView mElv;
-
 
     public void setBasIn(BaseAnimatorSet bas_in) {
         this.mBasIn = bas_in;
@@ -88,6 +89,7 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.ac_dialog_home);
+        ButterKnife.bind(this);
 
         mMenuItems.add(new DialogMenuItem("收藏", R.mipmap.ic_winstyle_favor));
         mMenuItems.add(new DialogMenuItem("下载", R.mipmap.ic_winstyle_download));
@@ -101,7 +103,6 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
 
 
         View decorView = getWindow().getDecorView();
-        mElv = ViewFindUtils.find(decorView, R.id.elv);
         HomeAdapter adapter = new HomeAdapter(mContext);
         mElv.setAdapter(adapter);
         // extend all group

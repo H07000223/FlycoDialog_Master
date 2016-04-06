@@ -1,15 +1,12 @@
 package com.flyco.dialogsamples.extra;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.flyco.dialog.widget.popup.base.BaseBubblePopup;
 import com.flyco.dialogsamples.R;
-import com.flyco.dialogsamples.utils.L;
 import com.flyco.dialogsamples.utils.T;
 
 public class CustomBubblePopup extends BaseBubblePopup<CustomBubblePopup> {

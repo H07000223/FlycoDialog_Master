@@ -4,18 +4,20 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.flyco.dialogsamples.R;
-import com.flyco.dialogsamples.utils.T;
-import com.flyco.dialogsamples.utils.ViewFindUtils;
-import com.nineoldandroids.animation.ObjectAnimator;
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.widget.base.BottomBaseDialog;
+import com.flyco.dialogsamples.R;
+import com.flyco.dialogsamples.utils.T;
+import com.nineoldandroids.animation.ObjectAnimator;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
-    private LinearLayout mLlWechatFriendCircle;
-    private LinearLayout mLlWechatFriend;
-    private LinearLayout mLlQq;
-    private LinearLayout mLlSms;
+    @Bind(R.id.ll_wechat_friend_circle) LinearLayout mLlWechatFriendCircle;
+    @Bind(R.id.ll_wechat_friend) LinearLayout mLlWechatFriend;
+    @Bind(R.id.ll_qq) LinearLayout mLlQq;
+    @Bind(R.id.ll_sms) LinearLayout mLlSms;
 
     public IOSTaoBaoDialog(Context context, View animateView) {
         super(context, animateView);
@@ -28,10 +30,7 @@ public class IOSTaoBaoDialog extends BottomBaseDialog<IOSTaoBaoDialog> {
     @Override
     public View onCreateView() {
         View inflate = View.inflate(mContext, R.layout.dialog_ios_taobao, null);
-        mLlWechatFriendCircle = ViewFindUtils.find(inflate, R.id.ll_wechat_friend_circle);
-        mLlWechatFriend = ViewFindUtils.find(inflate, R.id.ll_wechat_friend);
-        mLlQq = ViewFindUtils.find(inflate, R.id.ll_qq);
-        mLlSms = ViewFindUtils.find(inflate, R.id.ll_sms);
+        ButterKnife.bind(this, inflate);
 
         return inflate;
     }
