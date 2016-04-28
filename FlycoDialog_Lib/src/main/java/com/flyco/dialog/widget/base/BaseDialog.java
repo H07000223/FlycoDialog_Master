@@ -135,6 +135,13 @@ public abstract class BaseDialog<T extends BaseDialog<T>> extends Dialog {
                 }
             }
         });
+
+        mOnCreateView.setClickable(true);
+    }
+
+    /** get actual created view(获取实际创建的View) */
+    public View getCreateView() {
+        return mOnCreateView;
     }
 
     /**

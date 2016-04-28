@@ -37,3 +37,7 @@ Version 1.2.6 *(2015-01-07)*
 * Fix bug for View in Popup click no response
 * Improve the function of BaseBubblePopup
 
+Version 1.2.8 *(2015-04-28)*
+----------------------------
+* bugfix issue14
+

@@ -136,7 +136,7 @@ dependencies{
 
 After v1.2.6
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.8@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
 
