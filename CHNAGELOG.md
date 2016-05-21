@@ -41,3 +41,9 @@ Version 1.2.8 *(2015-04-28)*
 ----------------------------
 * bugfix issue14
 
+Version 1.3.0 *(2015-05-21)*
+----------------------------
+* remove the dependence of NineOldAnimation(only support 3.0+)
+
+
+

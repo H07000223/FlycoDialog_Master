@@ -14,7 +14,6 @@ import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.utils.StatusBarUtils;
 import com.flyco.dialog.view.TriangleView;
 import com.flyco.dialog.widget.internal.InternalBasePopup;
-import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Use dialog to realize bubble style popup(利用Dialog实现泡泡样式的弹窗)
@@ -92,15 +91,15 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
 
     @Override
     public void onLayoutObtain() {
-        ViewHelper.setX(mTriangleView, mX - mTriangleView.getWidth() / 2);
+        mTriangleView.setX(mX - mTriangleView.getWidth() / 2);
 
         if (mGravity == Gravity.TOP) {
             int y = mY - mTriangleView.getHeight();
-            ViewHelper.setY(mTriangleView, y);
-            ViewHelper.setY(mLlContent, y - mLlContent.getHeight());
+            mTriangleView.setY(y);
+            mLlContent.setY(y - mLlContent.getHeight());
         } else {
-            ViewHelper.setY(mTriangleView, mY);
-            ViewHelper.setY(mLlContent, mY + mTriangleView.getHeight());
+            mTriangleView.setY(mY);
+            mLlContent.setY(mY + mTriangleView.getHeight());
         }
 
         /**
@@ -121,7 +120,7 @@ public abstract class BaseBubblePopup<T extends BaseBubblePopup<T>> extends Inte
                 x = mDisplayMetrics.widthPixels - (contentWidth + mLayoutParams.rightMargin);
             }
         }
-        ViewHelper.setX(mLlContent, x);
+        mLlContent.setX(x);
     }
 
     @Override

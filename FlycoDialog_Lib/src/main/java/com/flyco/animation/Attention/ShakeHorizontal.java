@@ -1,9 +1,8 @@
 package com.flyco.animation.Attention;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.animation.CycleInterpolator;
-
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import com.flyco.animation.BaseAnimatorSet;
 

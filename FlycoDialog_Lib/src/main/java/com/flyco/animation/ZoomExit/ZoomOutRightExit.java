@@ -1,9 +1,8 @@
 package com.flyco.animation.ZoomExit;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.View.MeasureSpec;
-
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import com.flyco.animation.BaseAnimatorSet;
 

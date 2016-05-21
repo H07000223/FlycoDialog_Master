@@ -36,6 +36,9 @@
 
 >## 更新说明
 
+ > v1.3.0(2015-05-21)
+   - 删除了对NineOldAnimation库依赖(仅支持3.0+)
+
  > v1.2.6(2015-01-07)
    - 将FlycoAnimation_Lib库合并到FlycoDialog_Lib中
    - 修复bug,在Popup中的View设置点击监听无效
@@ -138,6 +141,11 @@ After v1.2.6
 dependencies{
      compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.8@aar'
      compile 'com.nineoldandroids:library:2.4.0'
+}
+
+After v1.3.0
+dependencies{
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.0@aar'
 }
 
 ```

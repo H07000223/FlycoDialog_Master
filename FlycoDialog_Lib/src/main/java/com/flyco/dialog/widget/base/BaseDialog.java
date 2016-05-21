@@ -1,5 +1,6 @@
 package com.flyco.dialog.widget.base;
 
+import android.animation.Animator;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -17,7 +18,6 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.LinearLayout;
 
-import com.nineoldandroids.animation.Animator;
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.utils.StatusBarUtils;
 

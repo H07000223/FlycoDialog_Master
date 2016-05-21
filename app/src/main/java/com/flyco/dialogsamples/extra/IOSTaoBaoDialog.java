@@ -1,5 +1,6 @@
 package com.flyco.dialogsamples.extra;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -8,7 +9,6 @@ import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.widget.base.BottomBaseDialog;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.utils.T;
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

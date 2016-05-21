@@ -36,6 +36,9 @@ An Android Dialog Lib simplify customization. Supprot 2.2+.
 
 >##Change Log
 
+ > v1.3.0(2015-05-21)
+   - remove the dependence of NineOldAnimation(only support 3.0+)
+
  > v1.2.6(2015-01-07)
    - Combine FlycoAnimation_Lib into FlycoDialog_Lib
    - Fix bug for View in Popup click no response
@@ -138,6 +141,12 @@ dependencies{
      compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.8@aar'
      compile 'com.nineoldandroids:library:2.4.0'
 }
+
+After v1.3.0
+dependencies{
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.0@aar'
+}
+
 ```
 
 ##Eclispe(no update)

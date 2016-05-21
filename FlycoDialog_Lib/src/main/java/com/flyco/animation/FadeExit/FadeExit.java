@@ -1,8 +1,7 @@
 package com.flyco.animation.FadeExit;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
-
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import com.flyco.animation.BaseAnimatorSet;
 

@@ -1,8 +1,7 @@
 package com.flyco.animation;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
-
-import com.nineoldandroids.animation.ObjectAnimator;
 
 public class NewsPaperEnter extends BaseAnimatorSet {
 	@Override

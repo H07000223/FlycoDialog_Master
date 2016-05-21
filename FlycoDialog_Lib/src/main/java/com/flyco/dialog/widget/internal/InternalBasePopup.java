@@ -1,7 +1,6 @@
 package com.flyco.dialog.widget.internal;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;

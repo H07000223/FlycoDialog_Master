@@ -1,5 +1,6 @@
 package com.flyco.dialog.widget.base;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
@@ -7,7 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 
-import com.nineoldandroids.animation.ObjectAnimator;
 import com.flyco.animation.BaseAnimatorSet;
 
 public abstract class TopBaseDialog<T extends TopBaseDialog<T>> extends BottomTopBaseDialog<T> {

@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import com.flyco.dialog.R;
 import com.flyco.dialog.utils.StatusBarUtils;
 import com.flyco.dialog.widget.internal.InternalBasePopup;
-import com.nineoldandroids.view.ViewHelper;
 
 public abstract class BasePopup<T extends BasePopup<T>> extends InternalBasePopup<T> {
     protected View mWrappedView;
@@ -84,8 +83,8 @@ public abstract class BasePopup<T extends BasePopup<T>> extends InternalBasePopu
         x = getX(x + dp2px(mXOffset));
         y = getY(y + dp2px(mYOffset));
 
-        ViewHelper.setX(mLlContent, x);
-        ViewHelper.setY(mLlContent, y);
+        mLlContent.setX(x);
+        mLlContent.setY(y);
     }
 
     private int getX(int x) {

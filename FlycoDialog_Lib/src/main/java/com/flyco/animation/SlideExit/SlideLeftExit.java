@@ -1,9 +1,8 @@
 package com.flyco.animation.SlideExit;
 
+import android.animation.ObjectAnimator;
 import android.util.DisplayMetrics;
 import android.view.View;
-
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import com.flyco.animation.BaseAnimatorSet;
 
