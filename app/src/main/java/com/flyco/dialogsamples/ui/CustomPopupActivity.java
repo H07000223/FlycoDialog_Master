@@ -42,6 +42,7 @@ public class CustomPopupActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mQuickCustomPopup = new SimpleCustomPop(mContext);
+//        mQuickCustomPopup.setCanceledOnTouchOutside(false);
     }
 
     @OnClick(R.id.tv_center)
@@ -115,6 +116,7 @@ public class CustomPopupActivity extends AppCompatActivity {
 
         public SimpleCustomPop(Context context) {
             super(context);
+//            setCanceledOnTouchOutside(false);
         }
 
         @Override

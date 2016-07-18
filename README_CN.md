@@ -145,7 +145,7 @@ dependencies{
 
 After v1.3.0
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.0@aar'
+     compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.2@aar'
 }
 
 ```

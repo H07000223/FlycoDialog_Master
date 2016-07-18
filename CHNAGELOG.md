@@ -31,19 +31,23 @@ Version 1.2.2 *(2015-12-20)*
 ----------------------------
 * BasePopup small bug fix
 
-Version 1.2.6 *(2015-01-07)*
+Version 1.2.6 *(2016-01-07)*
 ----------------------------
 * Combine FlycoAnimation_Lib into FlycoDialog_Lib
 * Fix bug for View in Popup click no response
 * Improve the function of BaseBubblePopup
 
-Version 1.2.8 *(2015-04-28)*
+Version 1.2.8 *(2016-04-28)*
 ----------------------------
 * bugfix issue14
 
-Version 1.3.0 *(2015-05-21)*
+Version 1.3.0 *(2016-05-21)*
 ----------------------------
 * remove the dependence of NineOldAnimation(only support 3.0+)
+
+Version 1.3.2 *(2016-07-18)*
+----------------------------
+* bugfix issue22
 
 
 

@@ -42,6 +42,7 @@ public abstract class InternalBasePopup<T extends InternalBasePopup<T>> extends 
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
+        mOnCreateView.setClickable(false);
         if (isLayoutObtain) {
             onLayoutObtain();
         }
