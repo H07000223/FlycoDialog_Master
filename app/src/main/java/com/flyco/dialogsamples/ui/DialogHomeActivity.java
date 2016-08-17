@@ -200,16 +200,16 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
@@ -226,16 +226,16 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
@@ -261,16 +261,16 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
@@ -286,9 +286,9 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(mBasOut)//
                 .show();
 
-        dialog.setOnBtnClickL(new OnBtnClickL() {
+        dialog.setOnBtnClickL(new OnBtnClickL<NormalDialog>() {
             @Override
-            public void onBtnClick() {
+            public void onBtnClick(NormalDialog dialog) {
                 T.showShort(mContext, "middle");
                 dialog.dismiss();
             }
@@ -306,23 +306,23 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "middle");
                         dialog.dismiss();
                     }
@@ -340,16 +340,16 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {//left btn click listener
+                new OnBtnClickL<NormalDialog>() {//left btn click listener
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {//right btn click listener
+                new OnBtnClickL<NormalDialog>() {//right btn click listener
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
@@ -369,24 +369,24 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {//left btn click listener
+                new OnBtnClickL<NormalDialog>() {//left btn click listener
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "left");
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {//right btn click listener
+                new OnBtnClickL<NormalDialog>() {//right btn click listener
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "right");
                         dialog.dismiss();
                     }
                 }
                 ,
-                new OnBtnClickL() {//middle btn click listener
+                new OnBtnClickL<NormalDialog>() {//middle btn click listener
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         T.showShort(mContext, "middle");
                         dialog.dismiss();
                     }
@@ -404,9 +404,9 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .dismissAnim(mBasOut)//
                 .show();
 
-        dialog.setOnBtnClickL(new OnBtnClickL() {
+        dialog.setOnBtnClickL(new OnBtnClickL<NormalDialog>() {
             @Override
-            public void onBtnClick() {
+            public void onBtnClick(NormalDialog dialog) {
                 T.showShort(mContext, "middle");
                 dialog.dismiss();
             }
@@ -543,15 +543,15 @@ public class DialogHomeActivity extends AppCompatActivity implements ExpandableL
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         dialog.dismiss();
                     }
                 },
-                new OnBtnClickL() {
+                new OnBtnClickL<NormalDialog>() {
                     @Override
-                    public void onBtnClick() {
+                    public void onBtnClick(NormalDialog dialog) {
                         dialog.superDismiss();
                         finish();
                     }
