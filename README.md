@@ -149,7 +149,7 @@ dependencies{
 
 ```
 
-##Eclispe(no update)
+##Eclipse(no update)
 Eclipse Developers should include jars below into your project.
 *   [FlycoAnimation_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoAnimation_Lib-v1.0.0.jar)
 *   [FlycoDialog_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoDialog_Lib-v1.0.0.jar)
