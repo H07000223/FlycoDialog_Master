@@ -1,16 +1,16 @@
-#FlycoDialog-Master
+# FlycoDialog-Master
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoDialog--Matser-green.svg?style=flat)](https://android-arsenal.com/details/1/2430)
-####[中文版](https://github.com/H07000223/FlycoDialog_Master/blob/master/README_CN.md)
+#### [中文版](https://github.com/H07000223/FlycoDialog_Master/blob/master/README_CN.md)
 An Android Dialog Lib simplify customization. Supprot 2.2+.
 
-##Features
+## Features
 - [Built-in Dialog, convenient to use](#Built-in Dialog)
 - [Abundant Built-in Animations, convenient to use](#Abundant Built-in Animations)
 - [Qucik Customize Dialog](#Qucik Customize Dialog)
 - [Qucik Customize Popup](#Qucik Customize Popup)
 - [Support Customize Dialog Animation](#Customize Dialog Animation)
 
-####[DemoApk Download](http://fir.im/mj9p)
+#### [DemoApk Download](http://fir.im/mj9p)
 
 ## <a name="Built-in Dialog"></a>Built-in Dialog
 |Dialog|Description|ScreenShot|gif
@@ -29,7 +29,7 @@ An Android Dialog Lib simplify customization. Supprot 2.2+.
 | ActionSheetDialog | Default | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
 | ActionSheetDialog | No Title | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
 
-##Built-in Popup
+## Built-in Popup
 |Popup|Description|ScreenShot|gif
 |:---:|:---:|:---:|:---:|
 | BubblePopup | BubblePopup | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
@@ -127,7 +127,7 @@ An Android Dialog Lib simplify customization. Supprot 2.2+.
       }
   ```
   
-##Gradle
+## Gradle
 
 ```groovy
 dependencies{
@@ -149,13 +149,13 @@ dependencies{
 
 ```
 
-##Eclispe(no update)
+## Eclispe(no update)
 Eclipse Developers should include jars below into your project.
 *   [FlycoAnimation_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoAnimation_Lib-v1.0.0.jar)
 *   [FlycoDialog_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoDialog_Lib-v1.0.0.jar)
 *   [nineoldandroids-2.4.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/nineoldandroids-2.4.0.jar)
 
-##Thanks
+## Thanks
 *   [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 *   [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects)
 *   [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations)
