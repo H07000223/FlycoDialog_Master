@@ -155,7 +155,7 @@ Eclipse Developers should include jars below into your project.
 *   [FlycoDialog_Lib-v1.0.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/v1.0.0/FlycoDialog_Lib-v1.0.0.jar)
 *   [nineoldandroids-2.4.0.jar](https://github.com/H07000223/FlycoDialog_Master/blob/master/Jar/nineoldandroids-2.4.0.jar)
 
-##Thanks
+## Thanks
 *   [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 *   [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects)
 *   [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations)
