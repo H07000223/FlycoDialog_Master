@@ -1,16 +1,16 @@
-#FlycoDialog-Master
+# FlycoDialog-Master
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoDialog--Matser-green.svg?style=flat)](https://android-arsenal.com/details/1/2430)
 
 一个强大的Android对话框库,简化自定义对话框.支持2.2+.
 
-##特点
+## 特点
 - [内置Dialog,方便直接使用](#内置Dialog)
 - [丰富的内置动画库,方便直接使用](#丰富的内置动画库)
 - [支持快速自定义Dialog](#如何快速自定义Dialog)
 - [支持快速自定义Popup](#如何快速自定义Popup)
 - [支持自定义Dialog动画](#自定义Dialog动画)
 
-####[DemoApk下载](http://fir.im/mj9p)
+#### [DemoApk下载](http://fir.im/mj9p)
 
 ## <a name="内置Dialog"></a>内置Dialog
 |对话框|描述|截图|gif动画
@@ -29,9 +29,9 @@
 | ActionSheetDialog | 默认 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_1.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_12.gif)
 | ActionSheetDialog | 无标题 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/action_sheet_2.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_13.gif)
 
-##内置Popup
+## 内置Popup
 |弹窗|描述|截图|gif动画
-|:---:|:---:|:---:|:---:|
+|---|---|---|---|
 | 弹窗 | 带三角箭头的提示弹窗 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
 
 >## 更新说明
