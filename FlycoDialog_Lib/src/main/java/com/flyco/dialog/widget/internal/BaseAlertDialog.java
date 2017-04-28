@@ -63,11 +63,11 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
     /** btn press color(按钮点击颜色) */
     protected int mBtnPressColor = Color.parseColor("#E3E3E3");// #85D3EF,#ffcccccc,#E3E3E3
     /** left btn click listener(左按钮接口) */
-    protected OnBtnClickL mOnBtnLeftClickL;
+    protected OnBtnClickL<BaseAlertDialog> mOnBtnLeftClickL;
     /** right btn click listener(右按钮接口) */
-    protected OnBtnClickL mOnBtnRightClickL;
+    protected OnBtnClickL<BaseAlertDialog> mOnBtnRightClickL;
     /** middle btn click listener(右按钮接口) */
-    protected OnBtnClickL mOnBtnMiddleClickL;
+    protected OnBtnClickL<BaseAlertDialog> mOnBtnMiddleClickL;
 
     /** corner radius,dp(圆角程度,单位dp) */
     protected float mCornerRadius = 3;
@@ -148,7 +148,7 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
             @Override
             public void onClick(View v) {
                 if (mOnBtnLeftClickL != null) {
-                    mOnBtnLeftClickL.onBtnClick();
+                    mOnBtnLeftClickL.onBtnClick(BaseAlertDialog.this);
                 } else {
                     dismiss();
                 }
@@ -159,7 +159,7 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
             @Override
             public void onClick(View v) {
                 if (mOnBtnRightClickL != null) {
-                    mOnBtnRightClickL.onBtnClick();
+                    mOnBtnRightClickL.onBtnClick(BaseAlertDialog.this);
                 } else {
                     dismiss();
                 }
@@ -170,7 +170,7 @@ public abstract class BaseAlertDialog<T extends BaseAlertDialog<T>> extends Base
             @Override
             public void onClick(View v) {
                 if (mOnBtnMiddleClickL != null) {
-                    mOnBtnMiddleClickL.onBtnClick();
+                    mOnBtnMiddleClickL.onBtnClick(BaseAlertDialog.this);
                 } else {
                     dismiss();
                 }
