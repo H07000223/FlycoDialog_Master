@@ -31,7 +31,7 @@
 
 ## 内置Popup
 |弹窗|描述|截图|gif动画
-|:---:|:---:|:---:|:---:|
+|---|---|---|---|
 | 弹窗 | 带三角箭头的提示弹窗 | <img src="https://github.com/H07000223/FlycoDialog_Master/blob/master/screenshot/bubble_popup.png" width="250"> |[gif](https://github.com/H07000223/FlycoDialog_Master/blob/master/gif/preview_popup_1.gif)
 
 >## 更新说明
