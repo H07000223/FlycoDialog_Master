@@ -31,11 +31,11 @@ import com.flyco.dialogsamples.utils.T;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DialogHomeActivity extends AppCompatActivity implements ExpandableListView.OnChildClickListener {
-    @Bind(R.id.elv) ExpandableListView mElv;
+    @BindView(R.id.elv) ExpandableListView mElv;
     private Context mContext = this;
     public static String[] mGroups = {"Default Inner Dialog", "Custom Dialog", "Default Inner Anim", "Custom Anim"};
     public static String[][] mChilds = {
