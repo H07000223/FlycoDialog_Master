@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.animation.BounceEnter.BounceBottomEnter;
@@ -17,20 +16,20 @@ import com.flyco.dialog.widget.popup.base.BasePopup;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.utils.T;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class CustomPopupActivity extends AppCompatActivity {
-    @Bind(R.id.tv_top_left)
+    @BindView(R.id.tv_top_left)
     TextView mTvTopLeft;
-    @Bind(R.id.tv_top_right)
+    @BindView(R.id.tv_top_right)
     TextView mTvTopRight;
-    @Bind(R.id.tv_bottom_left)
+    @BindView(R.id.tv_bottom_left)
     TextView mTvBottomLeft;
-    @Bind(R.id.tv_bottom_right)
+    @BindView(R.id.tv_bottom_right)
     TextView mTvBottomRight;
-    @Bind(R.id.tv_center)
+    @BindView(R.id.tv_center)
     TextView mTvCenter;
     private Context mContext = this;
     private SimpleCustomPop mQuickCustomPopup;
@@ -109,10 +108,10 @@ public class CustomPopupActivity extends AppCompatActivity {
 
     class SimpleCustomPop extends BasePopup<SimpleCustomPop> {
 
-        @Bind(R.id.tv_item_1) TextView mTvItem1;
-        @Bind(R.id.tv_item_2) TextView mTvItem2;
-        @Bind(R.id.tv_item_3) TextView mTvItem3;
-        @Bind(R.id.tv_item_4) TextView mTvItem4;
+        @BindView(R.id.tv_item_1) TextView mTvItem1;
+        @BindView(R.id.tv_item_2) TextView mTvItem2;
+        @BindView(R.id.tv_item_3) TextView mTvItem3;
+        @BindView(R.id.tv_item_4) TextView mTvItem4;
 
         public SimpleCustomPop(Context context) {
             super(context);

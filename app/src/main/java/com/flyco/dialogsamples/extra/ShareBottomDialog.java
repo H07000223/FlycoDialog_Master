@@ -9,14 +9,14 @@ import com.flyco.dialog.widget.base.BottomBaseDialog;
 import com.flyco.dialogsamples.R;
 import com.flyco.dialogsamples.utils.T;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ShareBottomDialog extends BottomBaseDialog<ShareBottomDialog> {
-    @Bind(R.id.ll_wechat_friend_circle) LinearLayout mLlWechatFriendCircle;
-    @Bind(R.id.ll_wechat_friend) LinearLayout mLlWechatFriend;
-    @Bind(R.id.ll_qq) LinearLayout mLlQq;
-    @Bind(R.id.ll_sms) LinearLayout mLlSms;
+    @BindView(R.id.ll_wechat_friend_circle) LinearLayout mLlWechatFriendCircle;
+    @BindView(R.id.ll_wechat_friend) LinearLayout mLlWechatFriend;
+    @BindView(R.id.ll_qq) LinearLayout mLlQq;
+    @BindView(R.id.ll_sms) LinearLayout mLlSms;
 
     public ShareBottomDialog(Context context, View animateView) {
         super(context, animateView);
