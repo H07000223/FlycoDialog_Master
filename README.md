@@ -131,20 +131,20 @@ An Android Dialog Lib simplify customization. Supprot 2.2+.
 
 ```groovy
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.2@aar'
-     compile 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
-     compile 'com.nineoldandroids:library:2.4.0'
+     implementation 'com.flyco.dialog:FlycoDialog_Lib:1.2.2@aar'
+     implementation 'com.flyco.animation:FlycoAnimation_Lib:1.0.0@aar'
+     implementation 'com.nineoldandroids:library:2.4.0'
 }
 
 After v1.2.6
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.8@aar'
-     compile 'com.nineoldandroids:library:2.4.0'
+     implementation 'com.flyco.dialog:FlycoDialog_Lib:1.2.8@aar'
+     implementation 'com.nineoldandroids:library:2.4.0'
 }
 
 After v1.3.0
 dependencies{
-     compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.2@aar'
+     implementation 'com.flyco.dialog:FlycoDialog_Lib:1.3.2@aar'
 }
 
 ```
